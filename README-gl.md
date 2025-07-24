@@ -10,7 +10,6 @@
 - [Ferramentas](#ferramentas)
 - [Instalación](#instalación)
 - [Chaves](#chaves)
-- [Créditos e Licenza](#créditos-e-licenza)
 
 ## Introdución
 
@@ -57,10 +56,13 @@ _Instaladores (Versión 2.0 en diante)_: Executar o instalador e, se é necesari
 
 ⚠️ **NON** é preciso mercar unha chave para usar o software. Entrégase unha chave de balde ao iniciar o software por primeira vez.
 
-## Créditos e Licenza
+---
 
-Creado por [byAd12](https://byad12.pages.dev) o _4/10/2024_.
+<p align="center">
+  <a href="https://byad12.pages.dev" target="_blank_">byAd12</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>  •  4/10/2024 - Today
+</p>
 
-Calquera dúbida ou problema, contacta comigo por [correo electrónico](mailto:adgimenezp@gmail.com).
+<p align="center">
+  <img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS">
+</p>
 
-<p align="center"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS"></p>
