@@ -10,7 +10,6 @@
 - [Tools](#tools)
 - [Installation](#installation)
 - [Keys](#keys)
-- [Credits and License](#credits-and-license)
 
 ## Introduction
 
@@ -57,10 +56,12 @@ _Installers (Version 2.0 and up)_: Run the installer and grant permissions if ne
 
 ⚠️ You **DO NOT** need to purchase a key to use the software. A key is provided for free the first time the software is launched.
 
-## Credits and License
+---
 
-Created by [byAd12](https://byad12.pages.dev) on _2024-10-04_.
+<p align="center">
+  <a href="https://byad12.pages.dev" target="_blank_">byAd12</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>  •  4/10/2024 - Today
+</p>
 
-For any questions or issues, contact me by [email](mailto:adgimenezp@gmail.com).
-
-<p align="center"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS"></p>
+<p align="center">
+  <img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS">
+</p>
