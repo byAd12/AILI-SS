@@ -35,8 +35,6 @@ AILI-SS es un proyecto de una empresa de seguridad para redes de área local (LA
  
 Para descargar el software puede dirigirse directamente a [la página de releases](https://github.com/byAd12/AILI-SS/releases) o a [nuestro sitio web](https://www.aili-ss.xyz/Descargar), con información detallada sobre cada versión. A continuación podrá ver como instalarlo según los sistemas operativos soportados:
 
----
-
 ### Windows
 
 _Versiones portables_: No hace falta instalar :)
@@ -58,7 +56,5 @@ _Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es nece
 ## Créditos y Licencia
 
 Creado por [byAd12](https://byad12.pages.dev) el _4/10/2024_.
-
-Se publicó el proyecto bajo la licencia **¿?¿?**. Para más información consulte **¿?¿?**.
 
 Cuaiquier duda o problema contáctame por [correo](mailto:adgimenezp@gmail.com).
