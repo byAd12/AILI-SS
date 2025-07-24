@@ -5,7 +5,7 @@
 - [Introducción](#introducción)
 - [Herramientas](#herramientas)
 - [Instalación](#instalación)
-- [Uso](#uso)
+- [Claves](#claves)
 - [Créditos y Licencia](#créditos-y-licencia)
 
 ## Introducción
