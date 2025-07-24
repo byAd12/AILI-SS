@@ -3,6 +3,7 @@
 ## Índice
 
 - [Introducción](#introducción)
+- [Herramientas](#herramientas)
 - [Instalación](#instalación)
 - [Uso](#uso)
 
@@ -11,9 +12,12 @@
 ## Introducción
 
 **Español:**  
-Este software ofrece una gran variedad de herramientas sobre una LAN (Local Area Network) para poder detectar problemas que se puedan producir junto a otras herramientas en red útiles.
+xxx
 
-_Listado de herramientas_:
+---
+
+## Herramientas
+
 * Detección de interfaces de red y calcular datos relacionados.
 * Detección de ataques ARP spoofing.
 * Escaneo de dispositivos BLE.
