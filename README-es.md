@@ -48,22 +48,14 @@ _Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es nece
 2. ```sudo chmod 750 ./AILI-SS```
 3. ```./AILI-SS```
 
-## Capturas
+## Claves
 
-1. Reporte de la información sobre las interfaces de red:
-
-<img width="615" height="848" alt="image" src="https://github.com/user-attachments/assets/8318da43-106d-4d95-b0ac-f821ba9caa48" />
-
----
-
-2. Cálculo de direccionamiento IP:
-
-<img width="892" height="661" alt="image" src="https://github.com/user-attachments/assets/ee876be7-e37e-415b-8ce4-dfbeccfd142b" />
-
----
+⚠️ **NO** hace falta comprar una clave para comprar el software. Se da una clave gratuitamente al iniciar el software por primera vez.
 
 ## Créditos y Licencia
 
 Creado por [byAd12](https://byad12.pages.dev) el _4/10/2024_.
 
 Se publicó el proyecto bajo la licencia **¿?¿?**. Para más información consulte **¿?¿?**.
+
+Cuaiquier duda o problema contáctame por [correo](mailto:adgimenezp@gmail.com).
