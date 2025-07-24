@@ -6,5 +6,4 @@
 
 ## Créditos / Credits
 
-- Por / By: [byAd12](https://byad12.pages.dev)
-- [aili-ss.pages.dev](https://aili-ss.pages.dev)
+[byAd12](https://byad12.pages.dev)  -  [aili-ss.pages.dev](https://aili-ss.pages.dev)
