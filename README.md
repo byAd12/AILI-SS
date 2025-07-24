@@ -1,25 +1,46 @@
 # AILI-SS Software
 
-[Español](#español)  -  [Galego](#galego)  -  [English](#english)
+## Índice / Index / Índice
 
-# Español
+- [Introducción / Introdución / Introduction](#introducción--introdución--introduction)
+- [Instalación / Instalación / Installation](#instalación--instalación--installation)
+- [Uso / Uso / Usage](#uso--uso--usage)
 
-## Introducción
+---
 
-x
+## Introducción / Introdución / Introduction
 
-## Instalación
+**Español:**  
+Este software está diseñado para...
 
-x
+**Galego:**  
+Este software está deseñado para...
 
-## Uso
+**English:**  
+This software is designed to...
 
-x
+---
 
-# Galego
+## Instalación / Instalación / Installation
 
-Aquí vai o contido en galego...
+**Español:**  
+Para instalar, sigue estos pasos...
 
-# English
+**Galego:**  
+Para instalar, segue estes pasos...
 
-Here goes the content in English...
+**English:**  
+To install, follow these steps...
+
+---
+
+## Uso / Uso / Usage
+
+**Español:**  
+Para usar el software...
+
+**Galego:**  
+Para usar o software...
+
+**English:**  
+To use the software...
