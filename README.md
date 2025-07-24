@@ -20,10 +20,10 @@ AILI-SS es un proyecto de una empresa de seguridad para redes de área local (LA
 * Ping con generación de gráficos.
 * Calcular tiempos de respuesta.
 * Escaneo de redes Wi-Fi.
-* Escaneo de hosts en red - Nmap.
-* Escaneo de puertos activos - Nmap.
-* Escaneo de vulnerabilidades - Nmap.
-* Monitorización del tráfico de red - Npcap.
+* Escaneo de hosts en red - _Nmap_.
+* Escaneo de puertos activos - _Nmap_.
+* Escaneo de vulnerabilidades - _Nmap_.
+* Monitorización del tráfico de red - _Npcap_.
 
 * Hashing.
 * Cifrar texto con AES usando claves aleatorias.
@@ -40,3 +40,4 @@ Para usar el software
 ## Créditos y Licencia
 
 Creado por [byAd12](https://byad12.pages.dev) el _4/10/2024_.
+Se publicó el proyecto bajo la licencia ¿?¿?.
