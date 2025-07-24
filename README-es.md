@@ -27,10 +27,9 @@ AILI-SS es un proyecto de una empresa de seguridad para redes de área local (LA
 | Escaneo de puertos activos            | [Nmap](https://nmap.org).    |
 | Escaneo de vulnerabilidades           | [Nmap](https://nmap.org).    |
 | Monitorización del tráfico de red     | [Npcap](https://npcap.org).   |
-
-* Hashing.
-* Cifrar texto con AES usando claves aleatorias.
-* Realizar un reporte completo de hardware y software del equipo.
+| Hashing.                              | No.        |
+| Cifrar texto con AES usando claves aleatorias. | No.        |
+| Realizar un reporte completo de hardware y software del equipo. | No.        |
 
 ## Instalación
  
