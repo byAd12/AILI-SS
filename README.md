@@ -6,5 +6,4 @@
 
 ---
 
-[byAd12](https://byad12.pages.dev)  •  [aili-ss.pages.dev](https://aili-ss.pages.dev)
-4/10/2024 - Today
+[byAd12](https://byad12.pages.dev)  •  [aili-ss.pages.dev](https://aili-ss.pages.dev)  •  4/10/2024 - Today
