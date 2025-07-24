@@ -24,7 +24,11 @@ _Listado de herramientas_:
 * Escaneo de hosts en red - Nmap.
 * Escaneo de puertos activos - Nmap.
 * Escaneo de vulnerabilidades - Nmap.
-* Monitorización del tráfico de red.
+* Monitorización del tráfico de red - Npcap.
+
+* Hashing.
+* Cifrar texto con AES usando claves aleatorias.
+* Realizar un reporte completo de hardware y software del equipo.
 
 **Galego:**  
 Este software está deseñado para...
