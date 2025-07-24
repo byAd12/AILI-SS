@@ -37,7 +37,7 @@ This software is designed to...
 ## Instalación / Instalación / Installation
 
 **Español:**  
-Para instalar el software puede dirigirse directamente a [la página de github](https://github.com/byAd12/AILI-SS/releases) o a [nuestro sitio web, con información de cada versión](https://www.aili-ss.xyz/Descargar).
+Para instalar el software puede dirigirse directamente a [la página de releases](https://github.com/byAd12/AILI-SS/releases) o a [nuestro sitio web](https://www.aili-ss.xyz/Descargar), con información detallada sobre cada versión.
 
 **Galego:**  
 Para instalar, segue estes pasos...
