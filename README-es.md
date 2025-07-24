@@ -37,7 +37,16 @@ Para descargar el software puede dirigirse directamente a [la página de release
 ### Windows
 
 _Versiones portables_: No hace falta instalar :)
-_Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es necesario, dar permisos.
+
+_Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es necesario, dar permisos.ç
+
+---
+
+### Linux
+
+- Abrir una terminal en el ruta del archivo.
+- ```sudo chmod 750 ./AILI-SS```
+- ```./AILI-SS```
 
 ## Uso
 
