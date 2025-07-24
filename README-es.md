@@ -62,3 +62,5 @@ _Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es nece
 Creado por [byAd12](https://byad12.pages.dev) el _4/10/2024_.
 
 Cuaiquier duda o problema contáctame por [correo](mailto:adgimenezp@gmail.com).
+
+<p align="center"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS"></p>
