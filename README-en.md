@@ -62,3 +62,5 @@ _Installers (Version 2.0 and up)_: Run the installer and grant permissions if ne
 Created by [byAd12](https://byad12.pages.dev) on _2024-10-04_.
 
 For any questions or issues, contact me by [email](mailto:adgimenezp@gmail.com).
+
+<p align="center"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS"></p>
