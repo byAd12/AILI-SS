@@ -6,5 +6,5 @@
 
 ## Créditos / Credits
 
-- Creador / Creator: [byAd12](https://byad12.pages.dev)
-- Project: [aili-ss.pages.dev](https://aili-ss.pages.dev)
+- Por / By: [byAd12](https://byad12.pages.dev)
+- [aili-ss.pages.dev](https://aili-ss.pages.dev)
