@@ -1,6 +1,4 @@
-<p align="center"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></p>
-
-<h1 align="center">AILI-SS</h1>
+<p align="center"><img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></p>
 
 ---
 
