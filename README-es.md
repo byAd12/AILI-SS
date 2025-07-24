@@ -56,6 +56,12 @@ _Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es nece
 
 ---
 
+2. Cálculo de direccionamiento IP:
+
+<img width="892" height="661" alt="image" src="https://github.com/user-attachments/assets/ee876be7-e37e-415b-8ce4-dfbeccfd142b" />
+
+---
+
 ## Créditos y Licencia
 
 Creado por [byAd12](https://byad12.pages.dev) el _4/10/2024_.
