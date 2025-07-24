@@ -38,19 +38,30 @@ Para descargar el software puede dirigirse directamente a [la página de release
 
 _Versiones portables_: No hace falta instalar :)
 
-_Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es necesario, dar permisos.ç
+_Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es necesario, dar permisos.
 
 ---
 
 ### Linux
 
-- Abrir una terminal en el ruta del archivo.
-- ```sudo chmod 750 ./AILI-SS```
-- ```./AILI-SS```
+1. Abrir una terminal en el ruta del archivo.
+2. ```sudo chmod 750 ./AILI-SS```
+3. ```./AILI-SS```
 
-## Uso
+## Capturas
 
-Para usar el software 
+1. Página pricipal
+
+<img width="824" height="432" alt="image" src="https://github.com/user-attachments/assets/7d95f10d-b15d-47c3-840e-641c563259a0" />
+
+2. Herramientas de red
+
+<img width="826" height="676" alt="image" src="https://github.com/user-attachments/assets/a4225bac-091d-4aac-bde7-0cfb28ec9b7e" />
+
+3. Otras herramientas
+
+<img width="830" height="424" alt="image" src="https://github.com/user-attachments/assets/3a71acf1-4638-43c7-bc65-724c1a38e326" />
+
 
 ## Créditos y Licencia
 
