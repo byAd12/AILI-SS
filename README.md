@@ -1,14 +1,14 @@
-# AILI-SS Software
+# AILI-SS Software - Español
 
-## Índice / Index / Índice
+## Índice
 
-- [Introducción / Introdución / Introduction](#introducción--introdución--introduction)
-- [Instalación / Instalación / Installation](#instalación--instalación--installation)
-- [Uso / Uso / Usage](#uso--uso--usage)
+- [Introducción](#introducción)
+- [Instalación](#instalación)
+- [Uso](#uso)
 
 ---
 
-## Introducción / Introdución / Introduction
+## Introducción
 
 **Español:**  
 Este software ofrece una gran variedad de herramientas sobre una LAN (Local Area Network) para poder detectar problemas que se puedan producir junto a otras herramientas en red útiles.
@@ -30,34 +30,16 @@ _Listado de herramientas_:
 * Cifrar texto con AES usando claves aleatorias.
 * Realizar un reporte completo de hardware y software del equipo.
 
-**Galego:**  
-Este software está deseñado para...
-
-**English:**  
-This software is designed to...
-
 ---
 
-## Instalación / Instalación / Installation
+## Instalación
 
 **Español:**  
 Para instalar el software puede dirigirse directamente a [la página de releases](https://github.com/byAd12/AILI-SS/releases) o a [nuestro sitio web](https://www.aili-ss.xyz/Descargar), con información detallada sobre cada versión.
 
-**Galego:**  
-Para instalar, segue estes pasos...
-
-**English:**  
-To install, follow these steps...
-
 ---
 
-## Uso / Uso / Usage
+## Uso
 
 **Español:**  
-Para usar el software...
-
-**Galego:**  
-Para usar o software...
-
-**English:**  
-To use the software...
+Para usar el software 
