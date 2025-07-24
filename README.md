@@ -7,14 +7,9 @@
 - [Instalación](#instalación)
 - [Uso](#uso)
 
----
-
 ## Introducción
 
-**Español:**  
-xxx
-
----
+AILI-SS es un proyecto de una empresa de seguridad para redes de área local (LAN) en ámbitos de empresa y hogares dotando de un servicio como aplicación donde se incluyen varias tecnologías y herramientas para ahorrar tiempo al usuario que usa nuestro servicio y sobre todo para ser de utilidad en el ámbito de las redes locales.
 
 ## Herramientas
 
@@ -34,16 +29,14 @@ xxx
 * Cifrar texto con AES usando claves aleatorias.
 * Realizar un reporte completo de hardware y software del equipo.
 
----
-
 ## Instalación
-
-**Español:**  
+ 
 Para instalar el software puede dirigirse directamente a [la página de releases](https://github.com/byAd12/AILI-SS/releases) o a [nuestro sitio web](https://www.aili-ss.xyz/Descargar), con información detallada sobre cada versión.
-
----
 
 ## Uso
 
-**Español:**  
 Para usar el software 
+
+## Créditos y Licencia
+
+Creado por ![byAd12](https://byad12.pages.dev)
