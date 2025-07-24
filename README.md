@@ -1,10 +1,6 @@
 # AILI-SS Software
 
-## Índice / Index / Índice
-
-- [Español](#español)
-- [Galego](#galego)
-- [English](#english)
+[Español](#español)  -  [Galego](#galego)  -  [English](#english)
 
 # Español
 
