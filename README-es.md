@@ -45,7 +45,7 @@ _Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es nece
 
 ### Linux
 
-1. Abrir una terminal en el ruta del archivo.
+1. Abrir una terminal en la ruta del archivo.
 2. ```sudo chmod 750 ./AILI-SS```
 3. ```./AILI-SS```
 
