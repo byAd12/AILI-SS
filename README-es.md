@@ -14,6 +14,7 @@ AILI-SS es un proyecto de una empresa de seguridad para redes de área local (LA
 
 ## Herramientas
 
+| Función | Requisitos |
 * Detección de interfaces de red y calcular datos relacionados.
 * Detección de ataques ARP spoofing.
 * Escaneo de dispositivos BLE.
