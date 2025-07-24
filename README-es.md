@@ -6,7 +6,7 @@
 - [Herramientas](#herramientas)
 - [Instalación](#instalación)
 - [Uso](#uso)
-- [Créditos y Licencia](#créditos--y--licencia)
+- [Créditos y Licencia](#créditos-y-licencia)
 
 ## Introducción
 
