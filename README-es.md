@@ -41,4 +41,5 @@ Para usar el software
 ## Créditos y Licencia
 
 Creado por [byAd12](https://byad12.pages.dev) el _4/10/2024_.
-Se publicó el proyecto bajo la licencia ¿?¿?.
+
+Se publicó el proyecto bajo la licencia **¿?¿?**. Para más información consulte **¿?¿?**.
