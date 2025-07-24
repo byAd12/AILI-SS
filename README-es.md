@@ -50,25 +50,11 @@ _Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es nece
 
 ## Capturas
 
-1. Página pricipal
+1. Reporte de la información sobre las interfaces de red:
 
-<img width="824" height="432" alt="image" src="https://github.com/user-attachments/assets/7d95f10d-b15d-47c3-840e-641c563259a0" />
-
----
-2. Herramientas de red
-
-<img width="826" height="676" alt="image" src="https://github.com/user-attachments/assets/a4225bac-091d-4aac-bde7-0cfb28ec9b7e" />
+<img width="615" height="848" alt="image" src="https://github.com/user-attachments/assets/8318da43-106d-4d95-b0ac-f821ba9caa48" />
 
 ---
-3. Otras herramientas
-
-<img width="830" height="424" alt="image" src="https://github.com/user-attachments/assets/3a71acf1-4638-43c7-bc65-724c1a38e326" />
-
----
-4. Una parte del reporte del equipo
-
-<img width="475" height="853" alt="image" src="https://github.com/user-attachments/assets/37876860-7380-4d29-ae69-e0714285b448" />
-
 
 ## Créditos y Licencia
 
