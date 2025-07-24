@@ -8,6 +8,6 @@
 
 ---
 
-[byAd12](https://byad12.pages.dev)  •  [aili-ss.pages.dev](https://aili-ss.pages.dev)  •  4/10/2024 - Today
+<p><a href="https://byad12.pages.dev" target="_blank_">byAd12</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>  •  4/10/2024 - Today</p>
 
 <p align="center"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS"></p>
