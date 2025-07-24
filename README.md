@@ -11,7 +11,10 @@
 ## Introducción / Introdución / Introduction
 
 **Español:**  
-Este software está diseñado para...
+Este software ofrece una gran variedad de herramientas sobre una LAN (Local Area Network) para poder detectar problemas que se puedan producir junto a otras herramientas en red útiles.
+
+_Listado de herramientas_:
+* 
 
 **Galego:**  
 Este software está deseñado para...
