@@ -1,4 +1,8 @@
-# AILI-SS Software - Galego
+<p align="center"><img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></p>
+
+<p align="center">Galego</p>
+
+---
 
 ## Índice
 
