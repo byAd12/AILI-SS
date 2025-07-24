@@ -14,19 +14,19 @@ AILI-SS es un proyecto de una empresa de seguridad para redes de área local (LA
 
 ## Herramientas
 
-| Función | Requisitos |
-| ------- | ---------- |
-| Detección de interfaces de red y calcular datos relacionados. | No. |
-| Detección de ataques ARP spoofing. | x
-| Escaneo de dispositivos BLE. | x
-| Calcular direccionamiento IP. | x
-| Ping con generación de gráficos. | x
-| Calcular tiempos de respuesta. | x
-| Escaneo de redes Wi-Fi | x
-| Escaneo de hosts en red | _Nmap_.
-| Escaneo de puertos activos | _Nmap_.
-| Escaneo de vulnerabilidades | _Nmap_.
-| Monitorización del tráfico de red | _Npcap_.
+| Función                               | Requisitos |
+|---------------------------------------|------------|
+| Detección de interfaces de red y calcular datos relacionados. | No.        |
+| Detección de ataques ARP spoofing.    | No.        |
+| Escaneo de dispositivos BLE.          | No.        |
+| Calcular direccionamiento IP.         | No.        |
+| Ping con generación de gráficos.      | No.        |
+| Calcular tiempos de respuesta.        | No.        |
+| Escaneo de redes Wi-Fi                | No.        |
+| Escaneo de hosts en red               | [Nmap](https://nmap.org).    |
+| Escaneo de puertos activos            | [Nmap](https://nmap.org).    |
+| Escaneo de vulnerabilidades           | [Nmap](https://nmap.org).    |
+| Monitorización del tráfico de red     | [Npcap](https://npcap.org).   |
 
 * Hashing.
 * Cifrar texto con AES usando claves aleatorias.
