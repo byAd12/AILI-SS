@@ -15,7 +15,16 @@ Este software ofrece una gran variedad de herramientas sobre una LAN (Local Area
 
 _Listado de herramientas_:
 * Detección de interfaces de red y calcular datos relacionados.
-* 
+* Detección de ataques ARP spoofing.
+* Escaneo de dispositivos BLE.
+* Calcular direccionamiento IP.
+* Ping con generación de gráficos.
+* Calcular tiempos de respuesta.
+* Escaneo de redes Wi-Fi.
+* Escaneo de hosts en red - Nmap.
+* Escaneo de puertos activos - Nmap.
+* Escaneo de vulnerabilidades - Nmap.
+* Monitorización del tráfico de red.
 
 **Galego:**  
 Este software está deseñado para...
