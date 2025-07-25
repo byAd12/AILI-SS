@@ -61,7 +61,7 @@ _Instaladores (Versión 2.0 en adeltante)_: Ejecutar el instalador y, si es nece
 <p align="center">
   <a href="https://byad12.pages.dev" target="_blank_">Adrián Leonardo Giménez Payo</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>
   <br>
-  4/10/2024 - Today
+  <a href="https://www.paypal.com/donate/?hosted_button_id=9D8YV9UW5LYKQ" target="_blank_">PayPal</a>  •  <a href="https://www.patreon.com/c/byAd12" target="_blank_">Patreon</a>
 </p>
 
 <p align="center">
