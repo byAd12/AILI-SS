@@ -59,7 +59,9 @@ _Instaladores (Versión 2.0 en diante)_: Executar o instalador e, se é necesari
 ---
 
 <p align="center">
-  <a href="https://byad12.pages.dev" target="_blank_">byAd12</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>  •  4/10/2024 - Today
+  <a href="https://byad12.pages.dev" target="_blank_">Adrián Leonardo Giménez Payo</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>
+  <br>
+  4/10/2024 - Today
 </p>
 
 <p align="center">
