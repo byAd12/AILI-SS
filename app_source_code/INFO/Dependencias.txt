@@ -1,0 +1,1 @@
+pip install PySide6 requests python-nmap ping3 psutil scapy beautifulsoup4 dnspython pywifi cryptography matplotlib bleak netifaces2 comtypes
