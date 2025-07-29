@@ -21,4 +21,3 @@
 <p align="center">
   <img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS">
 </p>
- 
