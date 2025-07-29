@@ -1,0 +1,143 @@
+───────────────────────────────────────────────
+    AILI-SS · Licencias de Uso y Créditos
+───────────────────────────────────────────────
+
+© 2025 - Presente  
+Sitio web:      https://aili-ss.pages.dev
+Desarrollador:  https://byad12.pages.dev
+
+Este documento detalla las licencias de las bibliotecas de código abierto utilizadas en este software, así como los créditos correspondientes a recursos gráficos de terceros.
+
+Idioma: Español
+
+───────────────────────────────────────────────
+
+
+MIT License
+
+Copyright (c) 2025 Adrián Leonardo Giménez Payo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+───────────────────────────────────────────────
+
+
+LICENCIAS DE BIBLIOTECAS (Python3):
+
+
+1. os, subprocess, json, base64, socket, datetime, struct, time, sys, string (Template), platform, hashlib, asyncio
+   -  Licencia:  Python Software Foundation License (PSF)
+   -  Enlace:    https://docs.python.org/3/license.html
+
+2. psutil
+   -  Licencia:  BSD 3-Clause License
+   -  Enlace:    https://github.com/giampaolo/psutil/blob/master/LICENSE
+
+3. nmap (python-nmap)
+   -  Licencia:  GPLv3
+   -  Enlace:    https://bitbucket.org/xael/python-nmap/src/master/gpl-3.0.txt
+
+4. netifaces
+   -  Licencia:  MIT License
+   -  Enlace:    https://github.com/al45tair/netifaces/blob/master/LICENSE
+
+5. ping3
+   -  Licencia:  MIT License
+   -  Enlace:    https://github.com/kyan001/ping3/blob/master/LICENSE
+
+6. scapy
+   -  Licencia:  GPLv2
+   -  Enlace:    https://github.com/secdev/scapy/blob/master/LICENSE
+
+7. pymongo
+   -  Licencia:  Apache License 2.0
+   -  Enlace:    https://github.com/mongodb/mongo-python-driver/blob/master/LICENSE
+
+8. PySide6 (Qt for Python), incluyendo PySide6.QtGui, PySide6.QtWidgets, PySide6.QtCore
+   -  Licencia:  LGPLv3
+   -  Enlace:    https://github.com/pyside/PySide
+
+9. matplotlib
+   -  Licencia:  PSF-based (similar a BSD)
+   -  Enlace:    https://github.com/matplotlib/matplotlib/blob/main/LICENSE/LICENSE
+
+10. bleak
+   -  Licencia:  MIT License
+   -  Enlace:    https://github.com/hbldh/bleak/blob/develop/LICENSE
+
+11. requests
+   -  Licencia:  Apache License 2.0
+   -  Enlace:    https://github.com/psf/requests/blob/main/LICENSE
+
+12. webbrowser
+   -  Licencia:  Python Software Foundation License (PSF)
+   -  Enlace:    https://docs.python.org/3/library/webbrowser.html
+
+13. ipaddress
+   -  Licencia:  Python Software Foundation License (PSF)
+   -  Enlace:    https://docs.python.org/3/library/ipaddress.html
+
+14. bs4 (BeautifulSoup)
+   -  Licencia:  MIT License
+   -  Enlace:    https://www.crummy.com/software/BeautifulSoup/#Download
+
+15. dns.resolver (dnspython)
+   -  Licencia:  ISC License
+   -  Enlace:    https://github.com/rthalley/dnspython/blob/master/LICENSE
+
+16. pywifi
+   -  Licencia:  MIT License
+   -  Enlace:    https://github.com/awkman/pywifi/blob/master/LICENSE
+
+17. comtypes
+   -  Licencia:  MIT License
+   -  Enlace:    https://github.com/enthought/comtypes/blob/master/LICENSE.txt
+
+18. chardet
+   -  Licencia:  LGPLv2.1
+   -  Enlace:    https://github.com/chardet/chardet/blob/main/LICENSE
+
+
+───────────────────────────────────────────────
+
+
+CRÉDITOS:
+
+
+1. Icono "Cheque":
+   -  Enlace:  https://www.flaticon.es/icono-gratis/cheque_3285799
+   -  En:      flaticon.es
+   -  Por:     Freepik
+      https://www.flaticon.es/autores/freepik
+
+2. Icono "Cerca":
+   -  Enlace:  https://www.flaticon.es/icono-gratis/cerca_2919559
+   -  En:      flaticon.es
+   -  Por:     Freepik
+      https://www.flaticon.es/autores/freepik
+
+3. Icono "Esperar":
+   -  Enlace:  https://www.flaticon.es/icono-gratis/esperar_1686925
+   -  En:      flaticon.es
+   -  Por:     Freepik
+      https://www.flaticon.es/autores/freepik
+
+
+───────────────────────────────────────────────
