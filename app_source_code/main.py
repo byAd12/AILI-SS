@@ -25,7 +25,7 @@ from Recursos.Func.main import crear_directorios_
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
-# Ruta de ejecución
+# Ruta de ejecución 
 
 crear_directorios_()
 
