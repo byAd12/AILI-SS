@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AILI-SS - Producción y Costes</title>
+        <link rel="stylesheet" href="estilos.css">
+        <link rel="icon" href="Img/Logos/Logo.ico">
+        <meta name="description" content="Descargar el software de AILI-SS.">
+        <!-- Open Graph -->
+        
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </head>
+    <body class="EmpresaBODY">
+        <img style="position: fixed; z-index: 0; bottom: 10px; left: 10px; width: 8%; user-select: none;" src="Img/Logos/HolaANA.gif">
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="MenúFIX"></div>
+        <div class="menú menúNoIndex" id="menú">
+            <div class="logo">
+                <a href="index.html"><img src="Img/Logos/Logo.png"></a>
+                <h1 translate="no">AILI-<span class="azul">SS</span></h1>
+            </div>
+            <div class="NoBorde">
+                <ul>
+                    <!--<a onclick="toggleMode()" style="cursor: pointer;" class="LiUltMenu1"><span class="ModoOscuroClass">☼ / ✩</span></a>-->
+                    <a style="cursor: pointer" onclick="ensenarmenumov()" class="LiUltMenu2 menucc"><span>Menú</span></a>
+                    <a href="Productos.html" class="esconderMÓVIL"><li>Productos</li></a>
+                    <a href="FAQ.html" class="esconderMÓVIL"><li>FAQ</li></a>
+                    <a href="Descargar.html" class="esconderMÓVIL"><li>Descargar</li></a>
+                    <a href="Contacto.html"><li>Contacto</li></a>
+                    <a href="Empresa.html"><li>Nuestra Empresa</li></a>
+                    <a href="Terminos.html"><li class="terminos LiUltMenu2">Términos</li></a>
+                </ul>
+            </div>
+        </div>
+        <script src="Script.js"></script>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <h1 class="EmpresaBODYH1XX">Empresa: Producción y Costes</h1>
+ 
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="DuoEmpresa">
+            <div class="block">
+                <h2>Costes fijos</h2>
+                <!-- ================= -->
+                <table class="Costes">
+                    <tbody>
+                        <tr>
+                            <td><b>Equipos y apps informáticas</b></td>
+                            <td>1500 €</td>
+                        </tr>
+                        <tr>
+                            <td><b>Diseño y alojamiento web</b></td>
+                            <td>5 €</td>
+                        </tr>
+                        <tr>
+                            <td><b>Formación en Seguridad</b></td>
+                            <td>100 €</td>
+                        </tr>
+                        <tr>
+                            <td><b>Publicidad</b></td>
+                            <td>50 €</td>
+                        </tr>
+                        <tr>
+                            <td><b>Renting</b></td>
+                            <td>11 €</td>
+                        </tr>
+                        <tr>
+                            <td><b>Sueldos (incluido Seg. Social)</b></td>
+                            <td>7500 € / mes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- ================= -->
+                <canvas style="max-width: max-content; max-height: 300px; display: block; margin: auto;" id="costesChart"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const ctx = document.getElementById('costesChart').getContext('2d');
+                    const costesChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Equipos y apps informáticas', 'Diseño y alojamiento web', 'Formación', 'Publicidad', 'Renting', 'Sueldos'],
+                            datasets: [{data: [1500, 5, 100, 50, 11, 7500], backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)']}]
+                        },
+                        options: {responsive: true, maintainAspectRatio: false, plugins: {legend: { position: 'right' }, tooltip: {callbacks: {label: (tooltipItem) => tooltipItem.raw + ' €'}}}}
+                    });
+                </script>
+                <!-- ================= -->
+                <!-- ================= -->
+            </div>
+            <!-- ================= -->
+            <!-- ================= -->
+            <div class="block">
+                <h2>Costes variables</h2>
+                <table class="Costes">
+                    <tbody>
+                        <tr>
+                            <td><b>Gorra</b></td>
+                            <td>40 € / ud.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Camisetas con logo</b></td>
+                            <td>10 € / ud.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div style="transform: translateY(-60px); height: 250px;" class="QuienesSomos zxzxaxaz">
+            <h2 class="block">Punto muerto (Licencias)</h2>
+            <p class="block">Punto donde se junta los <u>Ingresos Totales</u> y los <u>Costes Totales</u>.<br>Producir una licencia no produce ningún coste, por lo tanto los <u>Ingresos Totales</u> = <u>Costes Totales</u>.<br><br><u>Resultado</u>: 917 licencias vendidas / mes<br><br>Gráfico:<br><br><br></p>
+            
+            <canvas class="block" id="grafico1" style="max-width: 100% !important; height: 200px; display: block; margin: auto; margin-bottom: 10px;"></canvas>
+            <script>
+                function generarGrafico(id, datos, puntoMuerto = false) {
+                    const costeFijo = 9166, precioVentaPorUnidad = 10;
+                    const unidadesVendidas = [0, 200, 400, 600, 800, 1000, 1200, 1400];
+                    const costeTotal = unidadesVendidas.map(() => costeFijo);
+                    const ingresosTotales = unidadesVendidas.map(u => precioVentaPorUnidad * u);
+                    const unidadesPuntoMuerto = costeFijo / precioVentaPorUnidad;
+                    const ingresosPuntoMuerto = precioVentaPorUnidad * unidadesPuntoMuerto;
+                
+                    new Chart(document.getElementById(id), {
+                        type: 'line',
+                        data: {
+                            labels: unidadesVendidas.map(u => u.toString()),
+                            datasets: [
+                                {label: 'Coste Fijo', data: new Array(unidadesVendidas.length).fill(costeFijo), borderColor: 'blue', borderWidth: 2, fill: false},
+                                {label: 'Coste Total', data: costeTotal, borderColor: 'red', borderWidth: 2, fill: false},
+                                {label: 'Ingresos Totales', data: ingresosTotales, borderColor: 'green', borderWidth: 2, fill: false}
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {x: {title: {display: true, text: 'Unidades vendidas (Licencias) - AILI-SS'}}, y: {title: {display: true, text: 'Euros (€)'}}},
+                            plugins: {legend: {position: 'top'},annotation: puntoMuerto ? {annotations: {puntoEquilibrio: {type: 'point', xValue: unidadesPuntoMuerto, yValue: ingresosPuntoMuerto, backgroundColor: 'black', radius: 6, borderColor: 'black', borderWidth: 2, label: {content: `Punto de Equilibrio\n(${unidadesPuntoMuerto.toFixed(0)} uds, ${ingresosPuntoMuerto.toFixed(0)} €)`, display: true,position: 'top', color: 'black'}}}} : {}}
+                        }
+                    });
+                }
+                generarGrafico('grafico1', false, true);
+            </script>
+        </div>
+        <div style="height: 250px;"></div>
+        
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div style="transform: translateY(-50px); height: 250px;" class="QuienesSomos zxzxaxaz">
+            <h2 class="block">Punto muerto (Merchandising)</h2>
+            <p class="block">Punto donde se junta los <u>Ingresos Totales</u> y los <u>Costes Totales</u>.<br><br><u>Resultado:</u> 183 ud. de merchandising vendidos / mes<br><br>Gráfico:<br><br><br></p>
+            
+            <canvas class="block" id="grafico2" style="max-width: 100% !important; height: 200px; display: block; margin: auto; margin-bottom: 10px;"></canvas>
+            <script>
+                function generarGrafico2(id, datos, puntoMuerto = false) {
+                    const costeFijo = 9166, costeVariablePorUnidad = 50, precioVentaPorUnidad = 100;
+                    const unidadesVendidas = [0, 50, 100, 150, 200, 250, 300];
+                    const costeTotal = unidadesVendidas.map(u => costeFijo + costeVariablePorUnidad * u);
+                    const ingresosTotales = unidadesVendidas.map(u => precioVentaPorUnidad * u);
+                    const unidadesPuntoMuerto = costeFijo / (precioVentaPorUnidad - costeVariablePorUnidad);
+                    const ingresosPuntoMuerto = precioVentaPorUnidad * unidadesPuntoMuerto;
+                
+                    new Chart(document.getElementById(id), {
+                        type: 'line',
+                        data: {
+                            labels: unidadesVendidas.map(u => u.toString()),
+                            datasets: [
+                                {label: 'Coste Fijo', data: new Array(unidadesVendidas.length).fill(costeFijo), borderColor: 'blue', borderWidth: 2, fill: false},
+                                {label: 'Coste Total', data: costeTotal, borderColor: 'red', borderWidth: 2, fill: false},
+                                {label: 'Ingresos Totales', data: ingresosTotales, borderColor: 'green', borderWidth: 2, fill: false}
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {x: {title: {display: true, text: 'Unidades vendidas'}}, y: {title: {display: true, text: 'Euros (€)'}}},
+                            plugins: {
+                                legend: {position: 'top'},
+                                annotation: puntoMuerto ? {
+                                    annotations: {punto: {type: 'point', xValue: unidadesPuntoMuerto, yValue: ingresosPuntoMuerto, backgroundColor: 'black', radius: 5, label: {content: `Punto Muerto (${unidadesPuntoMuerto.toFixed(2)}, ${ingresosPuntoMuerto.toFixed(2)})`, display: true, position: 'top'}}}
+                                } : {}}}});}
+                generarGrafico2('grafico2', false, true);
+            </script>
+        </div>
+
+
+        <div style="height: 200px;"></div>
+
+
+        <div class="DuoEmpresa">
+            <div class="block">
+                <h2>Inversiones previstas</h2>
+                <table class="Costes2">
+                    <tbody>
+                        <tr style="width: max-content;">
+                            <td style="width: 60%;">Inversión (ud.)</td>
+                            <td style="width: 40%;"><b>Lugar de adquisición</b></td>
+                        </tr>
+                        <tr style="width: max-content;">
+                            <td style="width: 60%;">◆</td>
+                            <td style="width: 40%;">◆</td>
+                        </tr>
+                        <tr style="width: max-content;">
+                            <td style="width: 60%;"><b>VPS (1 ud.)</b></td>
+                            <td style="width: 40%;">Proveedor de VPS</td>
+                        </tr>
+                        <tr style="width: max-content;">
+                            <td style="width: 60%;"><b>Renovación de dominios (5)</b></td>
+                            <td style="width: 40%;">Namecheap, One.com</td>
+                        </tr>
+                        <tr style="width: max-content;">
+                            <td style="width: 60%;"><b>Merchandising (5 ud.)</b></td>
+                            <td style="width: 40%;">Tienda de terceros</td>
+                        </tr>
+                        <tr style="width: max-content;">
+                            <td style="width: 60%;"><b>Ordenadores de Trabajo (u ud.)</b></td>
+                            <td style="width: 40%;">PcComponentes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="SecMarkt block">
+                <h2>Fuentes de Financiación</h2>
+                <p>Nuestra empresa escogerá como fuente de financiación el <b>método de capital propio</b> ya que el negocio, al requerir una poca inversión, se puede cubrir con nuestros ahorros evitando así entrar en préstamos y en deudas.</p>
+            </div>
+        </div>
+
+        <div class="QuienesSomos SecMarkt">
+            <h2 class="block">Búsqueda de subvenciones</h2>
+            <p class="block">Nuestra empresa buscará ayudas o subvenciones en <a href="https://www.cdti.es" target="_blank">CDTI</a> (Centro para el Desarrollo Tecnológico Industrial) porque esta entidad, además de ayudar a empresas tecnológicas a crecer, promueve su innovación y su desarrollo tecnológico. Como nuestra empresa se centra en los servicios y la seguridad de tus datos en la red, esta entidad es ideal para poder financiarnos con ayudas o subvenciones en casos de emergencia.</p>
+        </div>
+
+        <div style="height: 50px;"></div>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <footer id="Footer">
+            <div class="ContenidoNoBotton">
+                <div class="footerlogo">
+                    <h1 translate="no">AILI-<span>SS</span></h1>
+                    <p>Hecho con <span class="corazon"></span> por Adrián<br>© 2024 - Presente<br><br><span class="FooterAviso">No somos una empresa, <a href="Empresa.html">más información</a>.<br><a href="Legal.html">Consulta</a> nuestros dominios oficiales.</span><br><br>Always innovating</p>
+                    <br>
+                </div>
+                <div class="footerlinks">
+                    <ul>
+                        <p class="FooterSeparación">GitHub</p>
+                        <a href="https://github.com/byAd12/AILI-SS/" target="_blank">
+                            <img alt="GitHub Created At" src="https://img.shields.io/github/created-at/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub License" src="https://img.shields.io/github/license/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                        </a>
+                    </ul>
+                    <ul>
+                        <p class="FooterSeparación">Patrocinado por</p>
+                        <a target="_blank" href="https://iesjorgeguillen.es/"><img src="Img/Logos/LogoIesJG.png" class="FooterIESjg" style="width: 100%;"></a>
+                    </ul>
+                    <ul>
+                        <p class="FooterSeparación">Enlaces</p>
+                        <li>
+                            <div class="gtranslate_wrapper"></div>
+                            <script>window.gtranslateSettings = {"default_language":"es","native_language_names":true,"detect_browser_language":true,"languages":["es","en","gl","ro","de"],"wrapper_selector":".gtranslate_wrapper"}</script>
+                            <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
+                        </li>
+                        <li class="OcultarGrande"><a href="index.html">Página Principal</a></li>
+                        <li><a href="Terminos.html">Términos de Servicio</a></li>
+                        <li><a href="Legal.html">Términos Legales</a></li>
+                        <li><a href="https://forms.gle/fZnLpJuD6iJ2Z9sP7" target="_blank">Reporta un Problema</a></li>
+                        <li><a href="https://estado.aili-ss.xyz/" target="_blank">Estado de Servicios</a></li>
+                        <li><a href="https://docs.google.com/document/d/1U_22svrDiOL9wDL3swyrd7DtAKyM98GXHaHvM0GHbCE/edit?usp=sharing" target="_blank">Plan de Empresa</a></li>
+                        <li><a href="Clave_Gratis.html">Clave gratuita</a></li>
+                        <li><a href="Logo.html">Uso del logo</a></li>
+                        <li><a class="OcultarGrande" href="Descargar.html">Centro de Descargas</a></li>
+                        <li class="OcultarGrande"><a href="Contacto.html">Contáctanos</a></li>
+                        <li class="OcultarGrande"><a href="Empresa.html">Nuestra Empresa</a></li>
+                        <li class="OcultarGrande"><a href="FAQ.html">FAQ</a></li>
+                        <li class="OcultarGrande"><a href="Productos.html">Nuestros Productos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </body>
+</html>

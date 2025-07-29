@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AILI-SS - Centro de Descargas</title>
+        <meta name="keywords" content="aili-ss, aili ss, aili, seguridad, descargar">
+        <link rel="stylesheet" href="estilos.css">
+        <link rel="icon" href="Img/Logos/Logo.ico">
+        <meta name="description" content="Descargar el software de AILI-SS.">
+        <!-- Open Graph -->
+        
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </head>
+    <body class="BodyDESCARGAS">
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="MenúFIX"></div>
+        <div class="menú menúNoIndex" id="menú">
+            <div class="logo">
+                <a href="index.html"><img src="Img/Logos/Logo.png"></a>
+                <h1 translate="no">AILI-<span class="azul">SS</span></h1>
+            </div>
+            <div class="NoBorde">
+                <ul>
+                    <!--<a onclick="toggleMode()" style="cursor: pointer;" class="LiUltMenu1"><span class="ModoOscuroClass">☼ / ✩</span></a>-->
+                    <a style="cursor: pointer" onclick="ensenarmenumov()" class="LiUltMenu2 menucc"><span>Menú</span></a>
+                    <a href="Productos.html" class="esconderMÓVIL"><li>Productos</li></a>
+                    <a href="FAQ.html" class="esconderMÓVIL"><li>FAQ</li></a>
+                    <a href="Contacto.html"><li>Contacto</li></a>
+                    <a href="Empresa.html"><li>Nuestra Empresa</li></a>
+                    <a href="Terminos.html"><li class="terminos LiUltMenu2">Términos</li></a>
+                </ul>
+            </div>
+        </div>
+        <script src="Script.js"></script>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <h1 class="BodyDESCARGASh1">Centro de Descargas</h1>
+        <p class="advertenciaH2CLAVE block">Para activar el producto se requiere una clave de activación que ud. puede adquirir <a href="Productos.html">aquí</a>.<br>Al no tener un certificado digital como firma algunos antivirus lo detecta como malicioso.<br>Si quieres, puedes comprobar sus acciones en máquinas virtuales como <a href="https://any.run/" target="_blank">any.run</a>.<br><span class="ProbarMV">Consulte que hace la aplicación <a href="FAQ.html#QueHaceAPP">aquí</a></span>.</p>
+
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div style="text-align: center;">
+            <h2 style="margin-top: 50px;" class="H2RedMin block">Requisitos mínimos</h2>
+        </div>
+        <div class="carrusel-container block">
+            <div class="carrusel" id="carrusel">
+                <div class="carrusel-item">Windows</div>
+                <div class="carrusel-item">Pantalla que medio funcione</div>
+                <div class="carrusel-item">PC que encienda</div>
+                <div class="carrusel-item">Red de área local</div>
+
+                <div class="carrusel-item">Windows</div>
+                <div class="carrusel-item">Pantalla que medio funcione</div>
+                <div class="carrusel-item">PC que encienda</div>
+                <div class="carrusel-item">Red de área local</div>
+            </div>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="IndiceGlobal">
+            <div><h2 class="block">Recursos sobre la aplicación</h2></div>
+            <a class="block" href="Productos.html#Tutorial">Tutoriales</a>
+            <a class="block" href="mailto:admin@ailiss.eu" target="_blank">¿Necesitas una demo?</a>
+            <a class="block" href="FAQ.html">¿Alguna duda?</a>
+            <a class="block" href="FAQ.html#Linux">¿Cómo usar AILI-SS en Linux?</a>
+            <a class="block" href="https://forms.gle/3FQD8mzsB1SfjVAA7" target="_blank">Ayudanos con tu opinión</a>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="contenidoDESC">
+            <div class="TodoDESC">
+                <div style="text-align: center;">
+                    <h2 class="block">Versiones disponibles</h2>
+                </div>
+                <div class="InfoVersiones">
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>2.0</span> <span class="UltimaVersion">Última versión</span></h3>
+                            <p><a href="Registros.html#v2-0"><span>Registros de Cambios</span></a>  •  <span class="fecha">29/07/2025</span></p>
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT10" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Instalador (x86, x64)</span> <span>56.8 MiB</span></a></li>
+                                        <li><a href="?link=GIT11" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>76.81 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <!-- <div class="DivCentralSistemasLin">
+                                    <div>
+                                        <img src="Img/Logos/LinuxLogo.png">
+                                        <h3>Linux</h3>
+                                    </div>
+
+                                    <ul>
+                                        <p class="ComandoInstalacion">wget x</p>
+                                    </ul>
+                                </div> -->
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v2-0_Instalador.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Instalador</a></li>
+                                        <li><a href="SHA256/AILI-SS_Windows_v2-0.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.7</span></h3>
+                            <p><a href="Registros.html#v1-7"><span>Registros de Cambios</span></a>  •  <span class="fecha">08/03/2025 (Linux)</span>  •  <span class="fecha">28/01/2025 (Windows)</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT8" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>47.6 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasLin">
+                                    <div>
+                                        <img src="Img/Logos/LinuxLogo.png">
+                                        <h3>Linux</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT9" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>57.57 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1-7.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                        <li><a href="SHA256/AILI-SS_Linux_v1-7.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Linux - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.6</span></h3>
+                            <p><a href="Registros.html#v1-6"><span>Registros de Cambios</span></a>  •  <span class="fecha">24/12/2024</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT7" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>47.5 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1-6.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.5</span></h3>
+                            <p><a href="Registros.html#v1-5"><span>Registros de Cambios</span></a>  •  <span class="fecha">18/12/2024</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT6" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>47.4 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1-5.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.4</span></h3>
+                            <p><a href="Registros.html#v1-4"><span>Registros de Cambios</span></a>  •  <span class="fecha">16/12/2024</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT5" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>47.2 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1-4.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.3</span></h3>
+                            <p><a href="Registros.html#v1-3"><span>Registros de Cambios</span></a>  •  <span class="fecha">14/12/2024</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT4" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>47.2 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1-3.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.2</span></h3>
+                            <p><a href="Registros.html#v1-2"><span>Registros de Cambios</span></a>  •  <span class="fecha">13/12/2024</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT3" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>46.5 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1-2.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.1</span></h3>
+                            <p><a href="Registros.html#v1-1"><span>Registros de Cambios</span></a>  •  <span class="fecha">4/12/2024</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT2" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>46.5 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1-1.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                    <div class="VersionesDESCARGA block">
+                        <div>
+                            <h3><span>1.0</span></h3>
+                            <p><a href="Registros.html#v1"><span>Registros de Cambios</span></a>  •  <span class="fecha">14/11/2024</span></p>
+                            <!-- <a href="" style="background-color: red !important; pointer-events: none;">bin (Linux)</a> -->
+                            <div class="DivCentralSistemas">
+                                <div class="DivCentralSistemasWin">
+                                    <div>
+                                        <img src="Img/Logos/WindowsLogoWhite.png">
+                                        <h3>Windows</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="?link=GIT1" target="_blank" class="AvisoDescarga" translate="no"><span class="span1">Portable (x86, x64)</span> <span>45.7 MiB</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="DivCentralSistemasSha">
+                                    <div>
+                                        <img src="Img/Logos/ShaLogo.png">
+                                        <h3>Sha256</h3>
+                                    </div>
+
+                                    <ul>
+                                        <li><a href="SHA256/AILI-SS_Windows_v1.sha256" target="_blank" class="AvisoDescarga span1" translate="no">Windows - Portable</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- === -->
+                </div>
+            </div>
+        </div>
+
+        <div class="NoSomosEmpresa prevz">
+            <h2 class="block">Tecnologías</h2>
+            <p class="block">La aplicación se creó con:</p>
+            <div class="TecnologíasExtensión block">
+                <a href="https://www.python.org/" target="_blank"><img class="PythonLogoDescargas" src="Img/Programacion/Python.svg"></a>
+                <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank"><img class="PythonLogoDescargas" src="Img/Programacion/HTML.svg"></a>
+                <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank"><img class="PythonLogoDescargas" src="Img/Programacion/CSS.svg"></a>
+            </div>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <footer id="Footer">
+            <div class="ContenidoNoBotton">
+                <div class="footerlogo">
+                    <h1 translate="no">AILI-<span>SS</span></h1>
+                    <p>Hecho con <span class="corazon"></span> por Adrián<br>© 2024 - Presente<br><br><span class="FooterAviso">No somos una empresa, <a href="Empresa.html">más información</a>.<br><a href="Legal.html">Consulta</a> nuestros dominios oficiales.</span><br><br>Always innovating</p>
+                    <br>
+                </div>
+                <div class="footerlinks">
+                    <ul>
+                        <p class="FooterSeparación">GitHub</p>
+                        <a href="https://github.com/byAd12/AILI-SS/" target="_blank">
+                            <img alt="GitHub Created At" src="https://img.shields.io/github/created-at/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub License" src="https://img.shields.io/github/license/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                        </a>
+                    </ul>
+                    <ul>
+                        <p class="FooterSeparación">Patrocinado por</p>
+                        <a target="_blank" href="https://iesjorgeguillen.es/"><img src="Img/Logos/LogoIesJG.png" class="FooterIESjg" style="width: 100%;"></a>
+                    </ul>
+                    <ul>
+                        <p class="FooterSeparación">Enlaces</p>
+                        <li>
+                            <div class="gtranslate_wrapper"></div>
+                            <script>window.gtranslateSettings = {"default_language":"es","native_language_names":true,"detect_browser_language":true,"languages":["es","en","gl","ro","de"],"wrapper_selector":".gtranslate_wrapper"}</script>
+                            <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
+                        </li>
+                        <li class="OcultarGrande"><a href="index.html">Página Principal</a></li>
+                        <li><a href="Terminos.html">Términos de Servicio</a></li>
+                        <li><a href="Legal.html">Términos Legales</a></li>
+                        <li><a href="https://forms.gle/fZnLpJuD6iJ2Z9sP7" target="_blank">Reporta un Problema</a></li>
+                        <li><a href="https://estado.aili-ss.xyz/" target="_blank">Estado de Servicios</a></li>
+                        <li><a href="https://docs.google.com/document/d/1U_22svrDiOL9wDL3swyrd7DtAKyM98GXHaHvM0GHbCE/edit?usp=sharing" target="_blank">Plan de Empresa</a></li>
+                        <li><a href="Clave_Gratis.html">Clave gratuita</a></li>
+                        <li><a href="Logo.html">Uso del logo</a></li>
+                        <li><a class="OcultarGrande" href="Descargar.html">Centro de Descargas</a></li>
+                        <li class="OcultarGrande"><a href="Contacto.html">Contáctanos</a></li>
+                        <li class="OcultarGrande"><a href="Empresa.html">Nuestra Empresa</a></li>
+                        <li class="OcultarGrande"><a href="FAQ.html">FAQ</a></li>
+                        <li class="OcultarGrande"><a href="Productos.html">Nuestros Productos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AILI-SS - FAQ</title>
+        <meta name="keywords" content="aili-ss, aili ss, aili, seguridad, faq, preguntas">
+        <link rel="stylesheet" href="estilos.css">
+        <link rel="icon" href="Img/Logos/Logo.ico">
+        <meta name="description" content="Descargar el software de AILI-SS.">
+        <!-- Open Graph -->
+        
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </head>
+    <body class="BodyFAQ">
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="MenúFIX"></div>
+        <div class="menú menúNoIndex" id="menú">
+            <div class="logo">
+                <a href="index.html"><img src="Img/Logos/Logo.png"></a>
+                <h1 translate="no">AILI-<span class="azul">SS</span></h1>
+            </div>
+            <div class="NoBorde">
+                <ul>
+                    <!--<a onclick="toggleMode()" style="cursor: pointer;" class="LiUltMenu1"><span class="ModoOscuroClass">☼ / ✩</span></a>-->
+                    <a style="cursor: pointer" onclick="ensenarmenumov()" class="LiUltMenu2 menucc"><span>Menú</span></a>
+                    <a href="Productos.html" class="esconderMÓVIL"><li>Productos</li></a>
+                    <a href="Descargar.html" class="esconderMÓVIL"><li>Descargar</li></a>
+                    <a href="Contacto.html"><li>Contacto</li></a>
+                    <a href="Empresa.html"><li>Nuestra Empresa</li></a>
+                    <a href="Terminos.html"><li class="terminos LiUltMenu2">Términos</li></a>
+                </ul>
+            </div>
+        </div>
+        <script src="Script.js"></script>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <h1 class="BodyFAQh1">Preguntas y Respuestas</h1>
+        <div class="PreguntasPRODUC">
+            <!-- /////////// -->
+            <div id="PruebaGratis" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block" id="PrGRID">
+                    <h2>¿Quieres una prueba gratis del software?</h2>
+                    <ol>
+                        <li class="ListaElementoFlecha">Contacta via e-mail con un miembro del equipo en la <a href="Contacto.html">página de contacto</a> y se te concederá una licencia de 3 días de expiración.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- /////////// -->
+            <div id="PruebaGratis" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>Guía para obtener AILI-SS</h2>
+                    <ol>
+                        <li class="ListaElementoFlecha">Obtenga una clave contactando con el responsable mediante un <a href="Contacto.html">e-mail</a>.</li>
+                        <li class="ListaElementoFlecha">Descargar la aplicación en la página de <a href="Descargar.html">Descargas</a>. Es recomendable instalar la última versión estable.</li>
+                        <li class="ListaElementoFlecha">Inicie la aplicación ejecutando el archivo "AILI.exe" (Windows).</li>
+                        <li class="ListaElementoFlecha">Inicie la aplicación como administrador para poder crear el archivo de registros (.txt) correspondiente.</li>
+                        <li class="ListaElementoFlecha">Registre su clave después de aceptar los términos de uso.</li>
+                        <li class="ListaElementoFlecha">Configure la aplicación con el botón "Config.json".</li>
+                        <li class="ListaElementoFlecha">Disfrute de una variedad de herramientas útiles.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- /////////// -->
+            <div id="Linux" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>¿Cómo ejecutar AILI-SS en Linux?</h2>
+                    <ol>
+                        <li class="ListaElementoFlecha">Descargue el fichero con formato zip.</li>
+                        <li class="ListaElementoFlecha">Click derecho en el archivo ⇨ Extraer.</li>
+                        <li class="ListaElementoFlecha">Haga click derecho en la carpeta donde se encuentra la aplicación ⇨ Abrir Terminal.</li>
+                        <li class="ListaElementoFlecha">Escriba en la terminal lo siguiente para darle permisos de ejecución: <span class="NoCambiarColor" style="user-select: all; color: rgb(141, 141, 216) !important;">sudo chmod 750 ./AILI-SS</span></li>
+                        <li class="ListaElementoFlecha">Si es la primera vez usando AILI-SS ejecute en la terminal: <span class="NoCambiarColor" style="user-select: all; color: rgb(141, 141, 216) !important;">sudo ./AILI-SS</span></li>
+                        <li class="ListaElementoFlecha">Si ya registró su clave, haga  click derecho en el archivo con nombre "AILI-SS" ⇨ Ejecutar.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- /////////// -->
+            <div id="QueHaceAPP" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>¿Qué hace AILI-SS al ejecutarse?</h2>
+                    <ol>
+                        <li>Primero extrae del archivo comprimido (.exe o .bin) los archivos necesarios para ser ejecutado en una ruta temporal que el sistema operativo elija.</li>
+                        <li>Luego el archivo principal arranca con ayuda de los archivos necesarios para su correcto funcionamiento.</li>
+                        <li>Al verificar una clave se hace una consulta a una base de datos externa para verificar si la clave introducida coincide, después actualizará el archivo de registros (.txt).</li>
+                        <li>Al configurar Config.json se modifica un archivo temporal con el nombre mencionado que tiene como formato: <span class="NoCambiarColor" style="user-select: all; color: rgb(141, 141, 216) !important;">{"Interfaz": null, "Direc_Red": null}</span></li>
+                        <li>Al borrar la clave con la que iniciaste sesión modifica elimina la configuración dada.</li>
+                        <li>Cuando cierres la aplicación también se eliminarán todas las configuraciones al hacerse en caché.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- /////////// -->
+            <div id="PruebaGratis" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>¿Es segura la aplicación?</h2>
+                    <ol>
+                        <li class="ListaElementoFlecha">Sí, y le animamos a monitorizar la aplicación en máquinas virtuales como <a href="https://any.run" target="_blank">any.run</a>.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- /////////// -->
+            <div id="PorqueAntivirus" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>¿Porqué el antivirus actúa?</h2>
+                    <ol>
+                        <li>El archivo ejecutable contiene archivos python (.py) que por defecto, como en otros lenguajes, no se confía en ellos.</li>
+                        <li>El archivo ejecutable no está firmado con un certificado digital, por lo tanto no tiene autor y es una causa común de que no se confíe.</li>
+                        <li>Los navegadores advierten que no se ha descargado el archivo muchas veces como para que sea seguro.</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /////////// -->
+            <div id="PorqueAntivirus" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>¿Porqué AILI-SS requiere algunas dependencias para algunas funciones?</h2>
+                    <ol>
+                        <li>Requerimos <a href="https://nmap.org" target="_blank">nmap</a> únicamente para la función de escaneo de puertos de algún dispositivo de la red ya que integra ciertas funciones que ayudan a la realización de estas búsquedas.</li>
+                        <li>Requerimos el interpretador de <a href="https://python.org" target="_blank">python</a> para las funciones de monitoreo de paquetes y detección de arp spoofing al tratarse de terminales que ejecutan una función de python (versión 3). Además se requieren unas librerías específicas para facilitar la ejecucción de estas funciones.</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /////////// -->
+            <div id="EncontrarBug" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>He encontrado un error</h2>
+                    <ol>
+                        <li class="ListaElementoFlecha">Porfavor, repórtalo en el <a href="https://forms.gle/fZnLpJuD6iJ2Z9sP7" target="_blank">formulario de google</a> que disponemos para estas situaciones. Puede ser recompensado con un aumento o regalo de licencia.</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /////////// -->
+            <div id="MasDudas" class="sepr" style="height: 5px;"></div>
+            <div onclick="ensenarFAQpr(this)" id="hoverA">
+                <div class="PreguntaPRODUC block">
+                    <h2>¿Tienes más dudas?</h2>
+                    <ol>
+                        <li class="ListaElementoFlecha">Siéntete libre de contactar via <a href="mailto:admin@ailiss.eu" target="_blank">e-mail</a> con el administrador del proyecto.</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /////////// -->
+        </div>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <footer id="Footer">
+            <div class="ContenidoNoBotton">
+                <div class="footerlogo">
+                    <h1 translate="no">AILI-<span>SS</span></h1>
+                    <p>Hecho con <span class="corazon"></span> por Adrián<br>© 2024 - Presente<br><br><span class="FooterAviso">No somos una empresa, <a href="Empresa.html">más información</a>.<br><a href="Legal.html">Consulta</a> nuestros dominios oficiales.</span><br><br>Always innovating</p>
+                    <br>
+                </div>
+                <div class="footerlinks">
+                    <ul>
+                        <p class="FooterSeparación">GitHub</p>
+                        <a href="https://github.com/byAd12/AILI-SS/" target="_blank">
+                            <img alt="GitHub Created At" src="https://img.shields.io/github/created-at/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub License" src="https://img.shields.io/github/license/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                            <br>
+                            <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/byAd12/AILI-SS?style=for-the-badge&color=rgb(107%2C%20107%2C%20236)">
+                        </a>
+                    </ul>
+                    <ul>
+                        <p class="FooterSeparación">Patrocinado por</p>
+                        <a target="_blank" href="https://iesjorgeguillen.es/"><img src="Img/Logos/LogoIesJG.png" class="FooterIESjg" style="width: 100%;"></a>
+                    </ul>
+                    <ul>
+                        <p class="FooterSeparación">Enlaces</p>
+                        <li>
+                            <div class="gtranslate_wrapper"></div>
+                            <script>window.gtranslateSettings = {"default_language":"es","native_language_names":true,"detect_browser_language":true,"languages":["es","en","gl","ro","de"],"wrapper_selector":".gtranslate_wrapper"}</script>
+                            <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
+                        </li>
+                        <li class="OcultarGrande"><a href="index.html">Página Principal</a></li>
+                        <li><a href="Terminos.html">Términos de Servicio</a></li>
+                        <li><a href="Legal.html">Términos Legales</a></li>
+                        <li><a href="https://forms.gle/fZnLpJuD6iJ2Z9sP7" target="_blank">Reporta un Problema</a></li>
+                        <li><a href="https://estado.aili-ss.xyz/" target="_blank">Estado de Servicios</a></li>
+                        <li><a href="https://docs.google.com/document/d/1U_22svrDiOL9wDL3swyrd7DtAKyM98GXHaHvM0GHbCE/edit?usp=sharing" target="_blank">Plan de Empresa</a></li>
+                        <li><a href="Clave_Gratis.html">Clave gratuita</a></li>
+                        <li><a href="Logo.html">Uso del logo</a></li>
+                        <li><a class="OcultarGrande" href="Descargar.html">Centro de Descargas</a></li>
+                        <li class="OcultarGrande"><a href="Contacto.html">Contáctanos</a></li>
+                        <li class="OcultarGrande"><a href="Empresa.html">Nuestra Empresa</a></li>
+                        <li class="OcultarGrande"><a href="FAQ.html">FAQ</a></li>
+                        <li class="OcultarGrande"><a href="Productos.html">Nuestros Productos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </body>
+</html>
