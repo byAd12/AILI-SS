@@ -14,4 +14,4 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Please contact the developer via [email](mailto:adgimenezp@gmail.com) (adgimenezp@gmail.com).
+Please contact the developer via email: adgimenezp@gmail.com.
