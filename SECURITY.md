@@ -13,7 +13,7 @@ Versions that have security patches and fixes applied.
 
 Please contact the developer via email: adgimenezp@gmail.com.
 
----
+## 
 
 <p align="center">
   <img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS">
