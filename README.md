@@ -10,6 +10,10 @@
   <a href="https://github.com/byAd12/AILI-SS/blob/main/README-en.md"><img style="width: 100px;" src="https://img.shields.io/badge/language-english-white?style=flat" alt="AILI-SS"></a>
 </p>
 
+<p align="center">
+  <img alt="GitHub Release Date" style="width: 100px;" src="https://img.shields.io/github/release-date/byAd12/AILI-SS">
+</p>
+
 ---
 
 <p align="center">
