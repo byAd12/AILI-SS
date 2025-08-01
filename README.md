@@ -11,7 +11,7 @@
 <p>
   <a href="https://github.com/byAd12/AILI-SS/blob/main/README-es.md"><img style="width: 100px;" src="https://img.shields.io/badge/lenguaje-español-red?style=flat" alt="AILI-SS"></a>
   <a href="https://github.com/byAd12/AILI-SS/blob/main/README-gl.md"><img style="width: 100px;" src="https://img.shields.io/badge/linguaxe-galego-blue?style=flat" alt="AILI-SS"></a>
-  <a href="https://github.com/byAd12/AILI-SS/blob/main/README-en.md"><img style="width: 100px;" src="https://img.shields.io/badge/language-english-gray?style=flat" alt="AILI-SS"></a>
+  <a href="https://github.com/byAd12/AILI-SS/blob/main/README-en.md"><img style="width: 100px;" src="https://img.shields.io/badge/language-english-orange?style=flat" alt="AILI-SS"></a>
 </p>
 
 ---
