@@ -1,4 +1,6 @@
-<p align="center"><img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></p>
+<p align="center">
+  <a href="https://aili-ss.pages.dev/"><img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></a>
+</p>
 
 <p align="center">English</p>
 
@@ -65,5 +67,5 @@ _Installers (Version 2.0 and up)_: Run the installer and grant permissions if ne
 </p>
 
 <p align="center">
-  <img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS">
+  <a href="https://aili-ss.pages.dev/"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS"></a>
 </p>
