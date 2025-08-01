@@ -3,7 +3,7 @@
 <p>
   <img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS">
   <br>
-  Security Services
+  Security Software
 </p>
 
 ---
