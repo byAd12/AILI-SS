@@ -1,4 +1,6 @@
-<p align="center"><img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></p>
+<p align="center">
+  <a href="https://aili-ss.pages.dev/"><img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></a>
+</p>
 
 <p align="center">Galego</p>
 
@@ -65,6 +67,6 @@ _Instaladores (Versión 2.0 en diante)_: Executar o instalador e, se é necesari
 </p>
 
 <p align="center">
-  <img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS">
+  <a href="https://aili-ss.pages.dev/"><img style="width: 100px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Escudo.svg" alt="AILI-SS"></a>
 </p>
 
