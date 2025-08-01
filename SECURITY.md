@@ -19,7 +19,7 @@ Versions that have security patches and fixes applied.
 
 ## Reporting a Vulnerability
 
-Please contact the developer via email: adgimenezp@gmail.com.
+Please contact the developer via email: adgimenezp@gmail.com or [post an issue](https://github.com/byAd12/AILI-SS/issues). 
 
 ---
 
