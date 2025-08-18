@@ -428,12 +428,12 @@ img.FooterIESjg{user-select: none;}
 .PorqueELERGIRNOS ul{margin-left: 25px;}
 .PorqueELERGIRNOS ul li{margin-top: 5px;}
 .ListadoELEGIR{text-decoration: underline;}
-.PorqueELERGIRNOS .ExplicacionELEGIR{width: 80%;}
+.PorqueELERGIRNOS .ExplicacionELEGIR{width: 100%;}
 .PorqueELERGIRNOS .ExplicacionELEGIR p a, .ExplicacionELEGIRP2 a{color: white; background-color: black; padding: 0 5px; border-radius: 20px; text-decoration: none; transition: all .5s;}
 .PorqueELERGIRNOS .ExplicacionELEGIR p a:hover, .ExplicacionELEGIRP2 a:hover{background-color: blue; border-radius: 0px;}
 .margenantesdeH2{margin: 10px 0 10px 0;}
-.PorqueELERGIRNOS .ELEGIRfoto{width: 15%; height: 75%; justify-content: center; padding: 15px; display: flex; flex-wrap: wrap; justify-content: right; margin: 0 auto;}
-.PorqueELERGIRNOS .ELEGIRfoto a img{width: 80%; height: 90%; user-select: none; border-radius: 10px;}
+.PorqueELERGIRNOS .ELEGIRfoto{justify-content: center; padding: 15px; display: flex; flex-wrap: wrap; justify-content: right; margin: 0 auto;}
+.PorqueELERGIRNOS .ELEGIRfoto a img{user-select: none; border-radius: 10px; width: 500px; margin-top: 20px;}
 .Nomargenabajo{margin-bottom: -30px !important;}
 
 /* Qué problemas solucionamos */
