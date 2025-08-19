@@ -12,8 +12,30 @@
 
 ---
 
-[![AILI-SS | v.2.0](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNdtsoQZuFgg)](https://www.youtube.com/watch?v=DGkqmM8FMDU)
-
+<table>
+   <tr>
+      <td width="50%" align="center">
+         <h4>Basic configuration</h4>
+         <video src="https://github.com/user-attachments/assets/de6f8087-7832-4376-9616-8dea85eba9a6" controls style="width:100%; 
+            max-width:400px; height:250px;">
+      </td>
+      <td width="50%" align="center">
+         <h4>IP addressing</h4>
+         <video src="https://github.com/user-attachments/assets/b97527fa-76a0-447d-a2b4-1398aea67586" controls style="width:100%; max-width:400px; height:250px;">
+      </td>
+   </tr>
+   <tr>
+      <td width="50%" align="center">
+         <h4>Host mapping</h4>
+         <video src="https://github.com/user-attachments/assets/8b60dae6-539f-4431-9170-44d79b89784d" controls style="width:100%; 
+            max-width:400px; height:250px;">
+      </td>
+      <td width="50%" align="center">
+         <h4>Full app preview</h4>
+         <p>https://www.youtube.com/watch?v=DGkqmM8FMDU</p>
+      </td>
+   </tr>
+</table>
 
 ---
 
