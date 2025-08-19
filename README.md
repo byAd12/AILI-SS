@@ -4,13 +4,16 @@
   <a href="https://aili-ss.pages.dev/"><img style="width: 300px;" src="https://aili-ss.pages.dev/Img/Logos/Logo_Nombre_Blanco.png" alt="AILI-SS"></a>
 </p>
 
----
-
 <p>
   <a href="https://github.com/byAd12/AILI-SS/blob/main/README-es.md"><img style="width: 100px;" src="https://img.shields.io/badge/lenguaje-español-red?style=flat" alt="AILI-SS"></a>
   <a href="https://github.com/byAd12/AILI-SS/blob/main/README-gl.md"><img style="width: 100px;" src="https://img.shields.io/badge/linguaxe-galego-blue?style=flat" alt="AILI-SS"></a>
   <a href="https://github.com/byAd12/AILI-SS/blob/main/README-en.md"><img style="width: 100px;" src="https://img.shields.io/badge/language-english-orange?style=flat" alt="AILI-SS"></a>
 </p>
+
+---
+
+[![AILI-SS | v.2.0](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNdtsoQZuFgg)](https://www.youtube.com/watch?v=DGkqmM8FMDU)
+
 
 ---
 
