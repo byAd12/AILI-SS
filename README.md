@@ -52,7 +52,7 @@ Install dependencies:
 ```sh
 apt install -y libxcb-cursor0 libxcb-xinerama0 libxcb-keysyms1 libxcb-image0 libxcb-shm0 libxcb-randr0 libxcb-render-util0 libxcb-render0 libxcb-util1 libxcb-xfixes0 libxkbcommon-x11-0
 ```
-Set execution permissions, and run the program:
+Set execution permissions and run the program:
 ```sh
 chmod +x ./AILI-SS
 ```
