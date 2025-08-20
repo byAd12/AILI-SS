@@ -65,7 +65,7 @@ chmod +x ./AILI-SS
 
 # 🪟 Windows download 
 
-Download the version: https://aili-ss.pages.dev/Descargar
+Download the latest version: https://aili-ss.pages.dev/Descargar
 
 Unzip the file and run ```AILI-SS.exe```
 
