@@ -31,7 +31,7 @@
             max-width:400px; height:250px;">
       </td>
       <td width="50%" align="center">
-         <h4>Full app preview</h4>
+         <h4>Full app preview (v.2.0)</h4>
          <p>https://www.youtube.com/watch?v=DGkqmM8FMDU</p>
       </td>
    </tr>
