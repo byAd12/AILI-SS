@@ -138,6 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (externalUrl === "MEGA11") {externalUrl = "https://mega.nz/file/BOtnhJga#wmiYHhpqVQ_RVK7R2JUPoJyzC9f2McisVQQvkeBXzqQ";}
             if (externalUrl === "GIT11") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/win-2.0-p";}
 
+            if (externalUrl === "MEGA12") {externalUrl = "https://mega.nz/file/JGN3ADKZ#oC_V7jHyPqSqaSstfd6KT1DufxLOYUJgBiAHy7tuSmE";}
+            if (externalUrl === "GIT12") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/lin-2.0";}
+
 
             window.open(externalUrl, "_blank");
         });
