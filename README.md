@@ -39,6 +39,38 @@
 
 ---
 
+# 🐧 Linux download
+Download and unzip the file:
+```sh
+wget https://github.com/byAd12/AILI-SS/releases/download/lin-2.0/AILI-SS_Linux_v2-0.zip
+```
+```sh
+unzip AILI-SS_Linux_v2-0.zip
+```
+Install dependencies:
+
+```sh
+apt install -y libxcb-cursor0 libxcb-xinerama0 libxcb-keysyms1 libxcb-image0 libxcb-shm0 libxcb-randr0 libxcb-render-util0 libxcb-render0 libxcb-util1 libxcb-xfixes0 libxkbcommon-x11-0
+```
+Navigate to the directory, set execution permissions, and run the program:
+```sh
+cd AILI-SS_Linux_v2-0
+```
+```sh
+chmod +x ./AILI-SS
+```
+```sh
+./AILI-SS
+```
+
+# 🪟 Windows download 
+
+Download the version: https://aili-ss.pages.dev/Descargar
+
+Unzip the file and run ```AILI-SS.exe```
+
+---
+
 <p>
   <a href="https://byad12.pages.dev" target="_blank_">Adrián Leonardo Giménez Payo</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>
   <br>
