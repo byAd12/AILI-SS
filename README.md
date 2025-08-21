@@ -12,6 +12,8 @@
 
 ---
 
+⚠️ The upcoming version ```v.2.1``` will fix Linux performance issues
+
 <table>
    <tr>
       <td width="50%" align="center">
