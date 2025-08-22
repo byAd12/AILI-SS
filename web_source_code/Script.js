@@ -127,19 +127,19 @@ document.addEventListener("DOMContentLoaded", () => {
             if (externalUrl === "GIT7") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/win-1.6";}
 
             if (externalUrl === "MEGA8") {externalUrl = "https://mega.nz/file/VP9GkBbQ#xqnaTVlmewvzUSBWPLPg_AOKpV-Xg6Pm5mOgBO8tu0c";}
-            if (externalUrl === "GIT8") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/win-1.7";}
+            if (externalUrl === "GIT8") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v1.7";}
 
             if (externalUrl === "MEGA9") {externalUrl = "https://mega.nz/file/QXcBmYKT#-nK7HEOl_P4H2fqVVC-RbwSGGNjWIxskz6l03qeJbOs";}
-            if (externalUrl === "GIT9") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/lin-1.7";}
+            if (externalUrl === "GIT9") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v1.7";}
 
             if (externalUrl === "MEGA10") {externalUrl = "https://mega.nz/file/IK1VFCJb#6cnU_oD4cX3NrTB9guMzZsuEGEOX2ni1GWUsZeyk6Vk";}
-            if (externalUrl === "GIT10") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/win-2.0";}
+            if (externalUrl === "GIT10") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.0";}
 
             if (externalUrl === "MEGA11") {externalUrl = "https://mega.nz/file/BOtnhJga#wmiYHhpqVQ_RVK7R2JUPoJyzC9f2McisVQQvkeBXzqQ";}
-            if (externalUrl === "GIT11") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/win-2.0-p";}
+            if (externalUrl === "GIT11") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.0";}
 
             if (externalUrl === "MEGA12") {externalUrl = "https://mega.nz/file/JGN3ADKZ#oC_V7jHyPqSqaSstfd6KT1DufxLOYUJgBiAHy7tuSmE";}
-            if (externalUrl === "GIT12") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/lin-2.0";}
+            if (externalUrl === "GIT12") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.0";}
 
 
             window.open(externalUrl, "_blank");
