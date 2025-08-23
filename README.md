@@ -12,8 +12,6 @@
 
 ---
 
-⚠️ The upcoming version ```v.2.1``` will fix Linux performance issues
-
 <table>
    <tr>
       <td width="50%" align="center">
@@ -33,7 +31,7 @@
             max-width:400px; height:250px;">
       </td>
       <td width="50%" align="center">
-         <h4>Full app preview (v.2.0)</h4>
+         <h4>Full app preview (v2.0 - v2.1)</h4>
          <p>https://www.youtube.com/watch?v=DGkqmM8FMDU</p>
       </td>
    </tr>
@@ -44,10 +42,10 @@
 # 🐧 Linux download
 Download and unzip the file:
 ```sh
-wget https://github.com/byAd12/AILI-SS/releases/download/lin-2.0/AILI-SS_Linux_v2-0.zip
+wget https://github.com/byAd12/AILI-SS/releases/download/lin-2.0/AILI-SS_Linux_v2-1.zip
 ```
 ```sh
-unzip AILI-SS_Linux_v2-0.zip
+unzip AILI-SS_Linux_v2-1.zip
 ```
 Install dependencies:
 
