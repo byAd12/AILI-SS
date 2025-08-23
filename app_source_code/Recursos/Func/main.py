@@ -11,10 +11,10 @@
 ##                                                              ##
 ## ____________________________________________________________ ##
 
-import os, subprocess, json, psutil, socket, datetime, struct, nmap, netifaces, asyncio, requests, sys, hashlib, pywifi, ipaddress, platform
+import os, subprocess, json, psutil, socket, datetime, struct, nmap, netifaces, asyncio, requests, sys, hashlib, pywifi, ipaddress, platform, shutil
 from scapy.all import *
 from scapy.all import (
-    IP, ARP, Ether, sniff, TCP, UDP, ICMP, DNS,
+    IP, ARP, Ether, sniff, TCP, UDP, ICMP, DNS, IPv6, ICMPv6EchoRequest, ICMPv6EchoReply,
     send, sr, hexdump, Raw, wrpcap, rdpcap, ls
 )
 from scapy.all import Ether, IP, UDP, BOOTP, DHCP, sendp, RandMAC
@@ -1477,8 +1477,8 @@ def Monitorizar_Paquetes_(FILTRO_DADO, tipo=None, TIEMPO_ENTRE_PAQUETES=1):
                 sys_stdout_original = sys.stdout
                 sys.stdout = buffer
 
+                # ENSEÑAR TODO EL PAQUETE
                 if tipo2 == False or tipo2 == None:
-
                     try:
                         packet.show()
                         output = buffer.getvalue()
@@ -1487,16 +1487,30 @@ def Monitorizar_Paquetes_(FILTRO_DADO, tipo=None, TIEMPO_ENTRE_PAQUETES=1):
                     finally:
                         sys.stdout = sys_stdout_original
                 
+                # ESCANEO SIMPLE
                 if tipo2 == 1:
+                    # PREDEFINIR LOS VALORES
+                    version, tipo, sport, dport, smac, dmac = "IPv4", "Otro", "-", "-", "-", "-"
+                    pase = 0
+
+                    # TIPO IPv4
                     if IP in packet:
                         origen = packet[IP].src
                         destino = packet[IP].dst
-                        tipo = "Otro"
-                        sport = "-"
-                        dport = "-"
-                        smac = "-"
-                        dmac = "-"
 
+                    # TIPO IPv6
+                    elif IPv6 in packet:
+                        version = "IPv6"
+                        origen = packet[IPv6].src
+                        destino = packet[IPv6].dst
+
+                    # OTRO TIPO - SE IGNORA
+                    else: pase = 1; print(1)
+
+                    # SE IMPRIME EL RESULTADO
+                    if pase == 0:
+
+                        # ANTES SE COGE MÁS INFORMACIÓN
                         if Ether in packet:
                             smac = packet[Ether].src
                             dmac = packet[Ether].dst
@@ -1509,16 +1523,26 @@ def Monitorizar_Paquetes_(FILTRO_DADO, tipo=None, TIEMPO_ENTRE_PAQUETES=1):
                             dport = packet[UDP].dport
                             tipo = "UDP"
                         elif ICMP in packet: tipo = "ICMP"
-                        elif DNS in packet: tipo = "DNS"
+                        elif ICMPv6EchoRequest in packet or ICMPv6EchoReply in packet: tipo = "ICMPv6"
+                        elif DNS in packet:  tipo = "DNS"
+                        if ARP in packet:
+                            origen = packet[ARP].psrc
+                            destino = packet[ARP].pdst
+                            tipo = "ARP"
 
+
+                        # FIN :)
                         self.new_log.emit('-'*60)
-                        self.new_log.emit(f"<span style='color: {obt_json_(6)};'>### {tipo} ### <br>src</span>: {origen}<span style='color: {obt_json_(7)};'>:{sport}</span> <br> <span style='color: {obt_json_(6)};'>smac</span>: {smac}<br><br><span style='color: {obt_json_(6)};'>dst</span>: {destino}<span style='color: {obt_json_(7)};'>:{dport}</span> <br> <span style='color: {obt_json_(6)};'>dmac</span>: {dmac}")
-                    else:
-                        pass
-                try:
-                    time.sleep(int(TIEMPO_ENTRE_PAQUETES))
-                except:
-                    pass
+                        self.new_log.emit(f"""<span style='color: {obt_json_(6)};'>### {tipo} - {version} ### 
+                                          <br> src</span>: {origen}{f'<span style="color: {obt_json_(7)};">:{sport}</span> ' if tipo not in ['ARP', 'ICMP', 'ICMPv6'] else ''}
+                                          <br> <span style='color: {obt_json_(6)};'>smac</span>: {smac}
+                                          
+                                          <br><br> <span style='color: {obt_json_(6)};'>dst</span>: {destino}{f'<span style="color: {obt_json_(7)};">:{dport}</span> ' if tipo not in ['ARP', 'ICMP', 'ICMPv6'] else ''}
+                                          <br> <span style='color: {obt_json_(6)};'>dmac</span>: {dmac}""")
+                
+                # ESPERAR AL SIGUIENTE PAQUETE
+                try:    time.sleep(int(TIEMPO_ENTRE_PAQUETES))
+                except: pass
             
             #################################
             filtro_red = FILTRO_DADO
@@ -1656,19 +1680,25 @@ def devolver_redes_wifi_():
             iface = interfaz_(obt_json_(5))
             iface.scan()
             res0 = ""
+
+            SSID_GUARDAR, CANTIDAD_ESCANEADA = [], 0
             
             for network in iface.scan_results():
-                res0 += f"<br>SSID: <span style='color: {obt_json_(7)};'>{network.ssid}</span>"
-                res0 += f"<br>BSSID: <span style='color: {obt_json_(7)};'>{network.bssid}</span>"
-                res0 += f"<br>Señal: <span style='color: {obt_json_(7)};'>{network.signal} dBm</span>"
-                res0 += f"<br>Frecuencia: <span style='color: {obt_json_(7)};'>{network.freq} MHz</span>"
-                res0 += f"<br>Requiere clave: <span style='color: {obt_json_(7)};'>{network.key}</span>"
-                res0 += f"<br>Auth: <span style='color: {obt_json_(7)};'>{interpretar_auth(network.auth)[0]}</span>"
-                res0 += f"<br>AKM: <span style='color: {obt_json_(7)};'>{interpretar_akm(network.akm)[0]}</span>"
-                res0 += f"<br>Cifrado: <span style='color: {obt_json_(7)};'>{interpretar_cipher(network.cipher)}</span>"
-                res0 += "<br>"
+                if str(network.ssid) not in SSID_GUARDAR:
+                    SSID_GUARDAR.append(str(network.ssid))
+                    CANTIDAD_ESCANEADA += 1
+
+                    res0 += f"<br>SSID: <span style='color: {obt_json_(7)};'>{network.ssid}</span>"
+                    res0 += f"<br>BSSID: <span style='color: {obt_json_(7)};'>{network.bssid}</span>"
+                    res0 += f"<br>Señal: <span style='color: {obt_json_(7)};'>{network.signal} dBm</span>"
+                    res0 += f"<br>Frecuencia: <span style='color: {obt_json_(7)};'>{network.freq} MHz</span>"
+                    res0 += f"<br>Requiere clave: <span style='color: {obt_json_(7)};'>{network.key}</span>"
+                    res0 += f"<br>Auth: <span style='color: {obt_json_(7)};'>{interpretar_auth(network.auth)[0]}</span>"
+                    res0 += f"<br>AKM: <span style='color: {obt_json_(7)};'>{interpretar_akm(network.akm)[0]}</span>"
+                    res0 += f"<br>Cifrado: <span style='color: {obt_json_(7)};'>{interpretar_cipher(network.cipher)}</span>"
+                    res0 += "<br>"
             
-            return [res0, len(iface.scan_results())]
+            return [res0, CANTIDAD_ESCANEADA]
 
         except Exception as e:
             return [f"Error: {e}", 0]
@@ -1785,8 +1815,11 @@ def mirar_dependencias_instaladas_(tipo):
         try:
             PRUEBA = sniff(count=1)
             RES = [True, f"{__TR__('ENCONTRADO')}"]
+        except PermissionError:
+            RES = [False, f"{__TR__('NO_ENCONTRADO_PERMISOS')}"]
         except:
-            RES = [False, f"{__TR__('NO_ENCONTRADO')}"]
+            RES = [False, f"{__TR__('NO_ENCONTRADO')} - apt install libpcap0.8 libpcap0.8-dev"]
+
         
         return RES
 
@@ -2054,9 +2087,9 @@ def manejar_1_servidor_(SERVIDOR, ACCION, LABEL):
         return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: orange'>{__TR__('NO_DISPONILBE_WIN')}</span><br>{__TR__('ULTIMO_RES')} <span style='color: red'>{ACCION} - {__TR__('NO_DISPONILBE_WIN')}</span>")
 
     # LINUX
-    RESULTADO = subprocess.run(["service", SERVIDOR, ACCION], capture_output=True, text=True)
+    RESULTADO = subprocess.run(["systemctl", ACCION, SERVIDOR], capture_output=True, text=True)
 
-    ESTADO = estado_servidor_(SERVIDOR)
+    ESTADO = estado_servidor_(SERVIDOR, True)
     color = "green" if ESTADO == "active" else "red"
 
     if RESULTADO.returncode != 0:
@@ -2069,20 +2102,32 @@ def manejar_1_servidor_(SERVIDOR, ACCION, LABEL):
 # Abrir los registros de un servidor
 
 def abrir_registros_servidor_(SERVIDOR, LABEL):
+    SERVIDOR = str(SERVIDOR).lower()
+
     if os.name == "nt":
         return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: orange'>{__TR__('NO_DISPONILBE_WIN')}</span><br>{__TR__('ULTIMO_RES')} <span style='color: red'>{__TR__('REGISTROS')} - {__TR__('NO_DISPONILBE_WIN')}</span>")
 
     # LINUX
-    ESTADO = estado_servidor_(SERVIDOR)
+    ESTADO = estado_servidor_(SERVIDOR, True)
     color = "green" if ESTADO == "active" else "red"
 
-    try: subprocess.run(["gedit", "/var/log/syslog"])
-    except:
-        try: subprocess.run(["nano", "/var/log/syslog"])
-        except Exception as e:
-            ERR_REG_(f"[abrir_registros_servidor_] No se encuentra el archivo /var/log/syslog o no se encuentra un editor.\n\n")
+    # Buscar un terminal disponible
+    terminales = ["gnome-terminal", "konsole", "xterm", "tilix", "xfce4-terminal", "lxterminal"]
+    terminal_disponible = None
+    for i in terminales:
+        if shutil.which(i):
+            terminal_disponible = i
+            break
 
-            return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: {color}'>{ESTADO}</span><br>{__TR__('ULTIMO_RES')} <span style='color: red'>{__TR__('REGISTROS')} - {__TR__('NO_HAY_EDITORES')}</span>")
+    try:
+        if terminal_disponible in ["xterm", "lxterminal"]:
+            subprocess.Popen([terminal_disponible, "-e", "sudo nano '/var/log/syslog'"])
+        else:
+            subprocess.Popen([str(terminal_disponible), "--", "bash", "-c", "sudo nano '/var/log/syslog'; exec bash"])
+    except:
+        ERR_REG_(f"[abrir_registros_servidor_] No se encuentra el archivo /var/log/syslog o no se encuentra un editor.\n\n")
+
+        return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: {color}'>{ESTADO}</span><br>{__TR__('ULTIMO_RES')} <span style='color: red'>{__TR__('REGISTROS')} - {__TR__('NO_HAY_EDITORES')}</span>")
 
     return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: {color}'>{ESTADO}</span><br>{__TR__('ULTIMO_RES')} <span style='color: green'>{__TR__('REGISTROS')} - OK</span>")
 
@@ -2091,6 +2136,8 @@ def abrir_registros_servidor_(SERVIDOR, LABEL):
 # Configurar un servidor
 
 def configurar_servidor_(SERVIDOR, LABEL):
+    SERVIDOR = str(SERVIDOR).lower()
+
     if os.name == "nt":
         return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: orange'>{__TR__('NO_DISPONILBE_WIN')}</span><br>{__TR__('ULTIMO_RES')} <span style='color: red'>Config - {__TR__('NO_DISPONILBE_WIN')}</span>")
 
@@ -2101,26 +2148,36 @@ def configurar_servidor_(SERVIDOR, LABEL):
     if SERVIDOR == "isc-dhcp-server":
         ARCHIVOS = ["/etc/dhcp/dhcpd.conf", "/etc/default/isc-dhcp-server"]
     if SERVIDOR == "bind9":
-        ARCHIVO = ["/etc/bind/named.conf", "/etc/bind/named.conf.local", "/etc/bind/named.conf.default-zones", "/etc/bind/named.conf.options"]
+        ARCHIVOS = ["/etc/bind/named.conf", "/etc/bind/named.conf.local", "/etc/bind/named.conf.default-zones", "/etc/bind/named.conf.options"]
     if SERVIDOR == "apache2":
-        ARCHIVO = ["/etc/apache2/apache2.conf", "/etc/apache2/ports.conf"]
+        ARCHIVOS = ["/etc/apache2/apache2.conf", "/etc/apache2/ports.conf"]
     if SERVIDOR == "vsftpd":
-        ARCHIVO = ["/etc/vsftpd.conf"]
+        ARCHIVOS = ["/etc/vsftpd.conf"]
     if SERVIDOR == "postfix":
-        ARCHIVO = ["/etc/postfix/main.cf", "/etc/postfix/master.cf"]
+        ARCHIVOS = ["/etc/postfix/main.cf", "/etc/postfix/master.cf"]
 
 
-    ESTADO = estado_servidor_(SERVIDOR)
+    ESTADO = estado_servidor_(SERVIDOR, True)
     color = "green" if ESTADO == "active" else "red"
 
-    for i in ARCHIVOS:
-        try: subprocess.run(["gedit", i])
-        except:
-            try: subprocess.run(["nano", i])
-            except Exception as e:
-                ERR_REG_(f"[abrir_registros_servidor_] No se encuentra el archivo {i} o no se encuentra un editor.\n\n")
+    # Buscar un terminal disponible
+    terminales = ["gnome-terminal", "konsole", "xterm", "tilix", "xfce4-terminal", "lxterminal"]
+    terminal_disponible = None
+    for i in terminales:
+        if shutil.which(i):
+            terminal_disponible = i
+            break
 
-                return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: {color}'>{ESTADO}</span><br>{__TR__('ULTIMO_RES')} <span style='color: red'>Config - {__TR__('NO_HAY_EDITORES')}</span>")
+    for i in ARCHIVOS:
+        try:
+            if terminal_disponible in ["xterm", "lxterminal"]:
+                subprocess.Popen([terminal_disponible, "-e", f"sudo nano '{i}'"])
+            else:
+                subprocess.Popen([str(terminal_disponible), "--", "bash", "-c", f"sudo nano '{i}'; exec bash"])
+        except:
+            ERR_REG_(f"[abrir_registros_servidor_] No se encuentra el archivo {i} o no se encuentra un editor.\n\n")
+
+            return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: {color}'>{ESTADO}</span><br>{__TR__('ULTIMO_RES')} <span style='color: red'>Config - {__TR__('NO_HAY_EDITORES')}</span>")
 
     return LABEL.setText(f"{__TR__('ESTADO')} <span style='color: {color}'>{ESTADO}</span><br>{__TR__('ULTIMO_RES')} <span style='color: green'>Config - OK</span>")
 
@@ -2154,11 +2211,11 @@ def desinstalar_servidor_(SERVIDOR):
     if os.name == "nt":
         return "win"
 
-    if SERVIDOR == "isc-dhcp-server": COMANDOS = ["sudo apt uninstall isc-dhcp-server", "sudo ufw deny 67"]  
-    if SERVIDOR == "bind9":           COMANDOS = ["sudo apt uninstall bind9", "sudo ufw deny 53"]  
-    if SERVIDOR == "apache2":         COMANDOS = ["sudo apt uninstall apache2 apache2-utils", "sudo ufw deny 80"]  
-    if SERVIDOR == "vsftpd":          COMANDOS = ["sudo apt uninstall vsftpd", "sudo ufw deny 21"]  
-    if SERVIDOR == "postfix":         COMANDOS = ["sudo apt uninstall postfix", "sudo ufw deny 25"]
+    if SERVIDOR == "isc-dhcp-server": COMANDOS = ["sudo apt remove isc-dhcp-server", "sudo ufw deny 67"]  
+    if SERVIDOR == "bind9":           COMANDOS = ["sudo apt remove bind9", "sudo ufw deny 53"]  
+    if SERVIDOR == "apache2":         COMANDOS = ["sudo apt remove apache2 apache2-utils", "sudo ufw deny 80"]  
+    if SERVIDOR == "vsftpd":          COMANDOS = ["sudo apt remove vsftpd", "sudo ufw deny 21"]  
+    if SERVIDOR == "postfix":         COMANDOS = ["sudo apt remove postfix", "sudo ufw deny 25"]
 
     for i in COMANDOS:
         try:

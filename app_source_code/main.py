@@ -19,13 +19,19 @@ global IDIOMA_ELEGIDO; IDIOMA_ELEGIDO = False
 
 import sys, os, json
 from PySide6.QtGui import QPixmap
+from PySide6 import QtCore
 from string import Template
+
+# En LINUX se fuerza buscar los paquetes de Qt en esa ruta
+if os.name != "nt":
+    if hasattr(sys, "_MEIPASS"):
+        os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = os.path.join(sys._MEIPASS, "platforms")
 
 from Recursos.Func.main import crear_directorios_
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
-# Ruta de ejecución 
+# Ruta de ejecución
 
 crear_directorios_()
 
@@ -115,6 +121,7 @@ import Recursos.Func.GUI as FuncGuiPY
 def p_carga_():
     VENTANA_carga = QMainWindow()
     VENTANA_carga.setFixedSize(200, 200)
+    FuncGuiPY.centrar_ventana_(VENTANA_carga)
     VENTANA_carga.setWindowTitle(f"{__TR__('CARGAR_SOFTWARE')}")
     VENTANA_carga.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.CustomizeWindowHint)
 
@@ -134,6 +141,7 @@ def p_carga_():
 def p_idioma_():
     VENTANA0 = QMainWindow()
     VENTANA0.setFixedSize(425, 150)
+    FuncGuiPY.centrar_ventana_(VENTANA0)
     VENTANA0.setWindowTitle("AILI-SS")
     VENTANA0.setStyleSheet(FuncMainPY.estilos_())
     main_layout = QVBoxLayout()
@@ -233,6 +241,7 @@ def p_terminos_(ventana=None):
 
     VENTANA1 = QMainWindow()
     VENTANA1.setFixedSize(700, 400)
+    FuncGuiPY.centrar_ventana_(VENTANA1)
     VENTANA1.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -335,6 +344,8 @@ def p_error_(ventana_, err, excp=None):
         VENTANA2.setFixedSize(450, 115)
     else:
         VENTANA2.setFixedSize(450, 100)
+    
+    FuncGuiPY.centrar_ventana_(VENTANA2)
     
     ############
 
@@ -452,6 +463,7 @@ def p_REGISTRAR_licencia_(ventana):
     global VENTANA3
     VENTANA3 = QMainWindow()
     VENTANA3.setFixedSize(665, 300)
+    FuncGuiPY.centrar_ventana_(VENTANA3)
     VENTANA3.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -677,6 +689,7 @@ def p_principal_(ventana, es_movil=False):
     VENTANA4 = QMainWindow()
     
     VENTANA4.setFixedSize(665, 315)
+    FuncGuiPY.centrar_ventana_(VENTANA4)
     VENTANA4.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -755,7 +768,20 @@ def p_principal_(ventana, es_movil=False):
 
     ############
 
-    label = QLabel(f"{__TR__('P_PRINCIPAL_EXPLICACION')}")
+    ACTUALIZACION = ""
+
+    try:
+        soup = BeautifulSoup(requests.get("https://aili-ss.pages.dev/App").text, 'html.parser')
+        primer_h1 = soup.find("h1")
+        if primer_h1:
+            if FuncMainPY.obt_aili_json_(0) == primer_h1.text:
+                pass
+            else:
+                ACTUALIZACION = f". {__TR__('NUEVA_ACTUALIZACION')}: <b>{primer_h1.text}</b>"
+    except:
+        pass
+
+    label = QLabel(f"{__TR__('P_PRINCIPAL_EXPLICACION')}" + ACTUALIZACION)
     label.setWordWrap(True)
     main_layout.addWidget(label)
     
@@ -770,7 +796,6 @@ def p_principal_(ventana, es_movil=False):
     apoya1 = QPushButton("")
     apoya1.setStyleSheet("padding: 10px;")
     apoya1.clicked.connect(lambda: webbrowser.open("https://www.patreon.com/c/byAd12"))
-    apoya1.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoPATREON.png")))
     apoya1.setIconSize(QSize(50, 50))
     apoya1.setCursor(Qt.CursorShape.PointingHandCursor)
     apoya1.setObjectName("buttonNOESTILOS")
@@ -779,22 +804,31 @@ def p_principal_(ventana, es_movil=False):
     apoya2 = QPushButton("")
     apoya2.setStyleSheet("padding: 10px;")
     apoya2.clicked.connect(lambda: webbrowser.open("https://paypal.me/byAd112"))
-    apoya2.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoPAYPAL.png")))
     apoya2.setCursor(Qt.CursorShape.PointingHandCursor)
     apoya2.setIconSize(QSize(50, 50))
     apoya2.setObjectName("buttonNOESTILOS")
+
+    apoya3 = QPushButton("")
+    apoya3.setStyleSheet("padding: 10px;")
+    apoya3.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/byad12"))
+    apoya3.setCursor(Qt.CursorShape.PointingHandCursor)
+    apoya3.setIconSize(QSize(50, 50))
+    apoya3.setObjectName("buttonNOESTILOS")
 
     GRID = QGridLayout()
 
     GRID.setColumnStretch(0, 1)
     GRID.setColumnStretch(1, 1)
+    GRID.setColumnStretch(2, 1)
 
     GRID.addWidget(apoya1, 0, 0)
     GRID.addWidget(apoya2, 0, 1)
+    GRID.addWidget(apoya3, 0, 2)
 
     main_layout.addLayout(GRID)
     FuncGuiPY.ocultar_elemento_(apoya1)
     FuncGuiPY.ocultar_elemento_(apoya2)
+    FuncGuiPY.ocultar_elemento_(apoya3)
     
     ############
     ############
@@ -1202,7 +1236,7 @@ def p_principal_(ventana, es_movil=False):
         if mover: FuncGuiPY.centrar_ventana_(VENTANA4)
         # TEXTO
         title_label.setText(f"AILI-<span style='color: {FuncMainPY.obt_json_(6)};'>SS</span>. {__TR__('P_PRINCIPAL_TITULO')}")
-        label.setText(f"{__TR__('P_PRINCIPAL_EXPLICACION')}")
+        label.setText(f"{__TR__('P_PRINCIPAL_EXPLICACION')}" + ACTUALIZACION)
         # BOTONES
         button1.setText(f"{__TR__('HERRAMIENTAS_RED')}")
         button2.setText(f"{__TR__('OTRAS_HERRAMIENTAS')}")
@@ -1227,7 +1261,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
 
     accion_principal.triggered.connect(mostrar_p_principal_)
@@ -1249,6 +1283,8 @@ def p_principal_(ventana, es_movil=False):
         # FUNCIONES
         def mirar_dep_():
             texto_label_final = f"{__TR__('P_DEPENDENCIAS_EXPLICACION')}"
+            if os.name != "nt":
+                texto_label_final = texto_label_final.replace("Npcap", "Libpcap")
 
             # Nmap
             res1 = FuncMainPY.mirar_dependencias_instaladas_(1)
@@ -1262,10 +1298,10 @@ def p_principal_(ventana, es_movil=False):
             label.setText(texto_label_final)
             QApplication.processEvents()
 
-            # Npcap
+            # Npcap O libpcap
             res2 = FuncMainPY.mirar_dependencias_instaladas_(2)
             
-            if res2[0] == True: FuncGuiPY.ocultar_elemento_(button2)
+            if res2[0] == True and os.name == "nt": FuncGuiPY.ocultar_elemento_(button2)
             texto_label_final = texto_label_final.replace(f"{__TR__('AGUARDA__')}", f"{res2[1]}")
             
             label.setText(texto_label_final)
@@ -1302,7 +1338,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
 
     accion_dependencias.triggered.connect(mostrar_p_dependencias_)
@@ -1326,6 +1362,11 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button3.setShortcut("")
         button3.clicked.connect(mostrar_p_info_tecnica_)
+
+        apoya1.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoPATREON.png")))
+        apoya2.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoPAYPAL.png")))
+        apoya3.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoKOFI.png")))
+
         # CAMBIAR VARIABLES
         ESTA_EN_TERMINOS = False
         # SHORTCUT
@@ -1338,7 +1379,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button1, button2, button4, button5, button6, button7, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
-        for i in [apoya1, apoya2, label]:
+        for i in [apoya1, apoya2, apoya3, label]:
             FuncGuiPY.mostrar_elemento_(i)
 
     button6.clicked.connect(mostrar_p_apoyanos_)
@@ -1384,7 +1425,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(0, 0)
@@ -1429,7 +1470,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
         # SHORTCUT
         accion_salir.setShortcut("")
@@ -1510,7 +1551,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button2, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button2, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(665, 500)
@@ -1629,7 +1670,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button1, button2, button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button4, button5, button6, apoya1, apoya2, button2_1]:
+        for i in [button4, button5, button6, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
         # HABILITAR BOTONES
         for i in [button1, button2, button3, button4, button5, button6, button7]:
@@ -1757,7 +1798,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button1, button2, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button1, button2, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(665, 500)
@@ -1802,7 +1843,7 @@ def p_principal_(ventana, es_movil=False):
                             <ul>
                                 <li><span style='color: {FuncMainPY.obt_json_(6)};'>{__TR__('CEO')}</span>: {datos_json['Emp']['Programadores']}</li>
                                 <li><span style='color: {FuncMainPY.obt_json_(6)};'>{__TR__('BETA')}</span>: {datos_json['Emp']['BetaTester']}</li>
-                                <li><span style='color: {FuncMainPY.obt_json_(6)};'>{__TR__('INSPIRACION')}</span>: {datos_json['Emp']['Inspiracion']} 🙏</li>
+                                <li><span style='color: {FuncMainPY.obt_json_(6)};'>{__TR__('INSPIRACION')}</span>: <span style='color: {FuncMainPY.obt_json_(7)};'>{datos_json['Emp']['Inspiracion']}</span> 🙏</li>
                             </ul>""")
 
         # BOTONES
@@ -1834,7 +1875,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [apoya1, apoya2]:
+        for i in [apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
         for i in [button1, button2, button4, button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
@@ -1892,7 +1933,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
 
     button1.clicked.connect(mostrar_p_herramientas_red_)
@@ -1935,7 +1976,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila7, botones_fila8, botones_fila9]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
 
     button2.clicked.connect(mostrar_p_herramientas_otras_)
@@ -1977,7 +2018,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
             FuncGuiPY.ocultar_elemento_(i)
 
     button2_1.clicked.connect(mostrar_p_OTRAS_HERRAMIENTAS_)
@@ -2000,6 +2041,7 @@ def p_principal_(ventana, es_movil=False):
         TIEMPO_CARGA_V_PRINCIPAL = datetime.now()
 
     VENTANA4.show()
+    FuncGuiPY.centrar_ventana_(VENTANA4)
     return VENTANA4
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
@@ -2019,6 +2061,7 @@ def p_ayuda_msg_(ventana=None, tipo=1):
         VENTANA9.setFixedSize(650, 250)
     
     VENTANA9.setWindowTitle("AILI-SS")
+    FuncGuiPY.centrar_ventana_(VENTANA9)
 
     # Estilo general
     VENTANA9.setStyleSheet(FuncMainPY.estilos_())
@@ -2058,7 +2101,7 @@ def p_ayuda_msg_(ventana=None, tipo=1):
     button1.setProperty("tipo", "button1")
 
     button2 = QPushButton(f"{__TR__('COLORES')}")
-    button2.clicked.connect(lambda: webbrowser.open("https://htmlcolorcodes.com/es/"))
+    button2.clicked.connect(lambda: webbrowser.open("https://htmlcolorcodes.com/"))
     button2.setProperty("tipo", "button1")
 
     button3 = QPushButton(f"{__TR__('CERRAR')}")
@@ -2101,6 +2144,7 @@ def p_ayuda_licencia_(ventana):
     global VENTANA10
     VENTANA10 = QMainWindow()
     VENTANA10.setFixedSize(680, 330)
+    FuncGuiPY.centrar_ventana_(VENTANA10)
     VENTANA10.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -2972,6 +3016,32 @@ def p_configuracion_(ventana=None):
             button3.setText(f"{__TR__('VOLVER_ATRAS')}")
             actualizar_campos_()
             reiniciar_estilos_titulos_()
+
+    ############
+
+    def gua_tema5_(): # Tema océano
+        PASE_IDIOMA = False
+        if FuncMainPY.obt_json_("IDIOMA") != config_param7.currentText():
+            PASE_IDIOMA = True
+
+        FuncMainPY.gua_json_("#1E2A38",
+                             "#E0F2F1",
+                             "#016359",
+                             "#FFFFFF",
+                             "#26A69A",
+                             "#EF5350",
+                             config_param0.currentText(),
+                             "#00BFA5",
+                             "#FFD54F",
+                             config_param1.currentData(),
+                             config_param7.currentText())
+        if PASE_IDIOMA:
+            p_configuracion_(VENTANA11)
+        else:
+            VENTANA11.setStyleSheet(FuncMainPY.estilos_())
+            button3.setText(f"{__TR__('VOLVER_ATRAS')}")
+            actualizar_campos_()
+            reiniciar_estilos_titulos_()
     
     ############
 
@@ -3074,6 +3144,11 @@ def p_configuracion_(ventana=None):
     button8.setProperty("tipo", "button1")
     elementos_visibles.append(button8)
 
+    button8_1 = QPushButton(f"{__TR__('TEMA_OCEANO')}")
+    button8_1.clicked.connect(gua_tema5_)
+    button8_1.setProperty("tipo", "button1")
+    elementos_visibles.append(button8_1)
+
     button9 = QPushButton(f"{__TR__('TEMA_PERSONALIZADO')}")
     #button9.clicked.connect(lambda: gua_tema_personalizado_("RESTAURAR"))
     button9.clicked.connect(mostrar_p_tema_personalizado_)
@@ -3132,6 +3207,7 @@ def p_configuracion_(ventana=None):
     button_layout.addWidget(button5)
     button_layout.addWidget(button7)
     button_layout.addWidget(button8)
+    button_layout.addWidget(button8_1)
     button_layout.addWidget(button9)
 
     # Botones a la derecha
@@ -3160,6 +3236,7 @@ def pF_interfaces_red_(ventana):
     global VENTANA13
     VENTANA13 = QMainWindow()
     VENTANA13.setFixedSize(700, 600)
+    FuncGuiPY.centrar_ventana_(VENTANA13)
     VENTANA13.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -3374,6 +3451,7 @@ def pF_deteccion_arp_spoofing_(ventana):
     VENTANA14.timer = QTimer()
 
     VENTANA14.setFixedSize(700, 600)
+    FuncGuiPY.centrar_ventana_(VENTANA14)
     VENTANA14.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -3511,6 +3589,7 @@ def pF_monitorizacion_trafico_red_(ventana):
         return p_error_(ventana, f"{__TR__('ACEPTAR_TERMINOS')}", 5)
 
     VENTANA15.setFixedSize(700, 600)
+    FuncGuiPY.centrar_ventana_(VENTANA15)
     VENTANA15.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -3844,7 +3923,7 @@ def pF_escaneo_dispositivos_(ventana):
     ############
 
     text_edit = QTextEdit()
-    text_edit.setText(f"""{__TR__('P_HOSTS_EXPLICACION')}
+    text_edit.setText(f"""{__TR__('P_HOSTS_EXPLICACION')}  <span style='color: {FuncMainPY.obt_json_(6)};'>-n -sP -PE -PA21,23,80,3389</span> <span style='color: {FuncMainPY.obt_json_(7)};'>(+ {__TR__('EVASION')})</span>
 
 <br><br> <span style='color: {FuncMainPY.obt_json_(7)}; font-size: 12px;'>{__TR__('DEBES_TENER_NMAP')}</span>""")
     text_edit.setReadOnly(True)
@@ -4164,7 +4243,7 @@ def pF_escaneo_puertos_(ventana):
     ############
 
     text_edit = QTextEdit()
-    text_edit.setHtml(f"""{__TR__('P_PUERTOS_EXPLICACION')}
+    text_edit.setHtml(f"""{__TR__('P_PUERTOS_EXPLICACION')} <span style='color: {FuncMainPY.obt_json_(6)};'>-sT -sV -T [...]</span> <span style='color: {FuncMainPY.obt_json_(7)};'>(+ {__TR__('EVASION')})</span>
 
 <br><br> <span style='color: {FuncMainPY.obt_json_(7)}; font-size: 12px;'>{__TR__('DEBES_TENER_NMAP')}</span>""")
     text_edit.setReadOnly(True)
@@ -5087,6 +5166,7 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
     global VENTANA19
     VENTANA19 = QMainWindow()
     VENTANA19.setFixedSize(720, 500)
+    FuncGuiPY.centrar_ventana_(VENTANA19)
     VENTANA19.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -5409,6 +5489,7 @@ def pF_ping_grafica_(ventana=None):
     global VENTANA20
     VENTANA20 = QMainWindow()
     VENTANA20.setFixedSize(690, 300)
+    FuncGuiPY.centrar_ventana_(VENTANA20)
     VENTANA20.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -5562,6 +5643,7 @@ def pF_tiempos_respuesta(ventana):
     VENTANA21.timer = QTimer()
 
     VENTANA21.setFixedSize(700, 600)
+    FuncGuiPY.centrar_ventana_(VENTANA21)
     VENTANA21.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -5856,6 +5938,7 @@ def p_apoya_proyecto_(ventana, e=None):
     global VENTANA23
     VENTANA23 = QMainWindow()
     VENTANA23.setFixedSize(305, 180)
+    FuncGuiPY.centrar_ventana_(VENTANA23)
     VENTANA23.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -5908,15 +5991,25 @@ def p_apoya_proyecto_(ventana, e=None):
     button2.setIconSize(QSize(50, 50))
     button2.setObjectName("buttonNOESTILOS")
 
+    button3 = QPushButton("")
+    button3.setStyleSheet("padding: 10px;")
+    button3.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/byad12"))
+    button3.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoKOFI.png")))
+    button3.setCursor(Qt.CursorShape.PointingHandCursor)
+    button3.setIconSize(QSize(50, 50))
+    button3.setObjectName("buttonNOESTILOS")
+
     ############
 
     GRID = QGridLayout()
 
     GRID.setColumnStretch(0, 1)
     GRID.setColumnStretch(1, 1)
+    GRID.setColumnStretch(2, 1)
 
     GRID.addWidget(button1, 0, 0)
     GRID.addWidget(button2, 0, 1)
+    GRID.addWidget(button3, 0, 2)
 
     main_layout.addLayout(GRID)
     
@@ -5944,6 +6037,7 @@ def pF_dispositivos_bluetooth_(ventana):
     VENTANA24.timer = QTimer()
 
     VENTANA24.setFixedSize(700, 600)
+    FuncGuiPY.centrar_ventana_(VENTANA24)
     VENTANA24.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -6148,6 +6242,7 @@ def pF_hosts_red_disponibles_(ventana, IP_RED_DADA, MASCARA_DADA):
     VENTANA25.timer = QTimer()
 
     VENTANA25.setFixedSize(700, 600)
+    FuncGuiPY.centrar_ventana_(VENTANA25)
     VENTANA25.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -6348,6 +6443,7 @@ def pF_exportar_res_(ventana, EXPORTAR, CUAL):
     global VENTANA27
     VENTANA27 = QMainWindow()
     VENTANA27.setFixedSize(400, 125)
+    FuncGuiPY.centrar_ventana_(VENTANA27)
     VENTANA27.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -6700,6 +6796,7 @@ def pF_evasion_ids_(IP_F, PUERTO_F, OTRAS_F):
         return p_error_(VENTANA29, f"{__TR__('ACEPTAR_TERMINOS')}", 5)
 
     VENTANA29.setFixedSize(700, 280)
+    FuncGuiPY.centrar_ventana_(VENTANA29)
     VENTANA29.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -6850,6 +6947,7 @@ def pF_hashing_(ventana):
     VENTANA30.timer = QTimer()
 
     VENTANA30.setFixedSize(355, 170)
+    FuncGuiPY.centrar_ventana_(VENTANA30)
     VENTANA30.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -7312,6 +7410,7 @@ def pF_evitar_partes_():
         return p_error_(VENTANA34, f"{__TR__('ACEPTAR_TERMINOS')}", 5)
 
     VENTANA34.setFixedSize(500, 200)
+    FuncGuiPY.centrar_ventana_(VENTANA34)
     VENTANA34.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -7511,6 +7610,7 @@ def pF_reporte_equipo_(ventana):
     global VENTANA35
     VENTANA35 = QMainWindow()
     VENTANA35.setFixedSize(500, 200)
+    FuncGuiPY.centrar_ventana_(VENTANA35)
     VENTANA35.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -7641,6 +7741,7 @@ def p_easter_():
     global VENTANA36
     VENTANA36 = QMainWindow()
     VENTANA36.setFixedSize(400, 400)
+    FuncGuiPY.centrar_ventana_(VENTANA36)
     VENTANA36.setWindowTitle("AWW")
 
     label = QLabel(VENTANA36)
@@ -7660,6 +7761,7 @@ def pF_control_servidores_(ventana, SERVER_ELEGIDO):
     global VENTANA37
     VENTANA37 = QMainWindow()
     VENTANA37.setFixedSize(500, 385)
+    FuncGuiPY.centrar_ventana_(VENTANA37)
     VENTANA37.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -7709,28 +7811,37 @@ def pF_control_servidores_(ventana, SERVER_ELEGIDO):
 
     ############
 
+    def anadir_botones_segundo_plano_():
 
-    botones_fila1 = [
-        FuncGuiPY.crear_boton_(f"{__TR__('INICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "start", label), True, True),
-        FuncGuiPY.crear_boton_(f"{__TR__('REINICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "restart", label), True, True),
-        FuncGuiPY.crear_boton_(f"{__TR__('PARAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "stop", label), True, True),
-    ]
+        botones_fila1 = [
+            FuncGuiPY.crear_boton_(f"{__TR__('INICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "start", label), True, True),
+            FuncGuiPY.crear_boton_(f"{__TR__('REINICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "restart", label), True, True),
+            FuncGuiPY.crear_boton_(f"{__TR__('PARAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "stop", label), True, True),
+        ]
 
-    botones_fila2 = [
-        FuncGuiPY.crear_boton_(f"{__TR__('REGISTROS')}", "NINGUNO", lambda: FuncMainPY.abrir_registros_servidor_(SERVER_ELEGIDO, label), True, True),
-        FuncGuiPY.crear_boton_(f"{__TR__('CONFIGURAR')}", "NINGUNO", lambda: FuncMainPY.configurar_servidor_(SERVER_ELEGIDO, label), True, True),
-        FuncGuiPY.crear_boton_(f"{__TR__('GUÍA')}", "NINGUNO", lambda: webbrowser.open("https://byad12.pages.dev/guides"), True, True),
-    ]
+        botones_fila2 = [
+            FuncGuiPY.crear_boton_(f"{__TR__('REGISTROS')}", "NINGUNO", lambda: FuncMainPY.abrir_registros_servidor_(SERVER_ELEGIDO, label), True, True),
+            FuncGuiPY.crear_boton_(f"{__TR__('CONFIGURAR')}", "NINGUNO", lambda: FuncMainPY.configurar_servidor_(SERVER_ELEGIDO, label), True, True),
+            FuncGuiPY.crear_boton_(f"{__TR__('GUÍA')}", "NINGUNO", lambda: webbrowser.open("https://byad12.pages.dev/guides"), True, True),
+        ]
 
-    botones_fila3 = [
-        FuncGuiPY.crear_boton_(f"{__TR__('INSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_instalar_servidor_(SERVER_ELEGIDO), True, True),
-        FuncGuiPY.crear_boton_(f"{__TR__('DESINSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_desinstalar_servidor_(SERVER_ELEGIDO), True, True),
-    ]
+        botones_fila3 = [
+            FuncGuiPY.crear_boton_(f"{__TR__('INSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_instalar_servidor_(SERVER_ELEGIDO), True, True),
+            FuncGuiPY.crear_boton_(f"{__TR__('DESINSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_desinstalar_servidor_(SERVER_ELEGIDO), True, True),
+        ]
 
-    # Agregar a layout principal
-    FuncGuiPY.agregar_fila_botones(main_layout, botones_fila1)
-    FuncGuiPY.agregar_fila_botones(main_layout, botones_fila2)
-    FuncGuiPY.agregar_fila_botones(main_layout, botones_fila3)
+        # Agregar a layout principal
+        FuncGuiPY.agregar_fila_botones(main_layout, botones_fila1)
+        FuncGuiPY.agregar_fila_botones(main_layout, botones_fila2)
+        FuncGuiPY.agregar_fila_botones(main_layout, botones_fila3)
+
+    def empezar_():
+        global stop_thread, thread
+        stop_thread = False
+        thread = threading.Thread(target=anadir_botones_segundo_plano_)
+        thread.start()
+
+    empezar_()
 
     ############
 
@@ -7768,6 +7879,7 @@ def pF_instalar_servidor_(SERVIDOR):
     global VENTANA38
     VENTANA38 = QMainWindow()
     VENTANA38.setFixedSize(500, 385)
+    FuncGuiPY.centrar_ventana_(VENTANA38)
     VENTANA38.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -7950,6 +8062,7 @@ def pF_desinstalar_servidor_(SERVIDOR):
     global VENTANA39
     VENTANA39 = QMainWindow()
     VENTANA39.setFixedSize(500, 385)
+    FuncGuiPY.centrar_ventana_(VENTANA39)
     VENTANA39.setWindowTitle("AILI-SS")
 
     # Estilo general
@@ -8001,11 +8114,11 @@ def pF_desinstalar_servidor_(SERVIDOR):
 
     label_direc_red = QLabel("")
 
-    if SERVIDOR == "isc-dhcp-server": label_direc_red.setText("sudo apt-get uninstall isc-dhcp-server")
-    if SERVIDOR == "bind9": label_direc_red.setText("sudo apt uninstall bind9")
-    if SERVIDOR == "apache2": label_direc_red.setText("sudo apt uninstall apache2 apache2-utils")
-    if SERVIDOR == "vsftpd": label_direc_red.setText("sudo apt uninstall vsftpd")
-    if SERVIDOR == "postfix": label_direc_red.setText("sudo apt uninstall postfix")
+    if SERVIDOR == "isc-dhcp-server": label_direc_red.setText("sudo apt-get remove isc-dhcp-server")
+    if SERVIDOR == "bind9": label_direc_red.setText("sudo apt remove bind9")
+    if SERVIDOR == "apache2": label_direc_red.setText("sudo apt remove apache2 apache2-utils")
+    if SERVIDOR == "vsftpd": label_direc_red.setText("sudo apt remove vsftpd")
+    if SERVIDOR == "postfix": label_direc_red.setText("sudo apt remove postfix")
 
     label_direc_red.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
     GRID.addWidget(label_direc_red, 1, 0)
@@ -8129,10 +8242,12 @@ def pF_desinstalar_servidor_(SERVIDOR):
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 
-print(f"\nAILI-SS • Por Adrián L. G. P.")
+print(f"\nAILI-SS • Por Adrián L. G. P.\n")
+print(f"Inicio:\t\t\t{TIEMPO_INICIO.strftime('%d/%m/%Y, %H:%M:%S')}")
 print(f"Ejecutándose desde:\t{os.path.abspath('.')}")
 print(f"Recursos en:\t\t{os.path.abspath(RUTA_RECURSOS)}")
 print(f"Carpeta del usuario:\t{os.path.abspath(conseguir_RUTA_DIR_USUARIO_())}\n")
+print("="*28)
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~

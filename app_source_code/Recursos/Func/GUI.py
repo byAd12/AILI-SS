@@ -121,10 +121,10 @@ def mostrar_elemento_(elemento):
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 
 def centrar_ventana_(ventana):
-    screen_geometry = QApplication.primaryScreen().availableGeometry()
-    x = (screen_geometry.width() - ventana.width()) // 2
-    y = (screen_geometry.height() - ventana.height()) // 2
-    ventana.move(x, y)
+    qr = ventana.frameGeometry()
+    cp = QApplication.primaryScreen().availableGeometry().center()
+    qr.moveCenter(cp)
+    ventana.move(qr.topLeft())
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
