@@ -134,13 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (externalUrl === "MEGA10") {externalUrl = "https://mega.nz/file/IK1VFCJb#6cnU_oD4cX3NrTB9guMzZsuEGEOX2ni1GWUsZeyk6Vk";}
             if (externalUrl === "GIT10") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.0";}
-
             if (externalUrl === "MEGA11") {externalUrl = "https://mega.nz/file/BOtnhJga#wmiYHhpqVQ_RVK7R2JUPoJyzC9f2McisVQQvkeBXzqQ";}
-            if (externalUrl === "GIT11") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.0";}
-
             if (externalUrl === "MEGA12") {externalUrl = "https://mega.nz/file/JGN3ADKZ#oC_V7jHyPqSqaSstfd6KT1DufxLOYUJgBiAHy7tuSmE";}
-            if (externalUrl === "GIT12") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.0";}
 
+
+            if (externalUrl === "MEGA13") {externalUrl = "https://mega.nz/file/UDUhQLDY#8DC5-p0t75AWQsjAl834j2ZoBl8t-SixPyUz705lPkU";}
+            if (externalUrl === "GIT13") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.1";}
+            if (externalUrl === "MEGA14") {externalUrl = "https://mega.nz/file/QKlzSS7I#wf5mNPo8xj4dEmDPbj6FgWV2p2VOYHJqoJDWS604wWI";}
+            if (externalUrl === "MEGA15") {externalUrl = "https://mega.nz/file/wL0TAIJI#IOWRBFuqczgmCI5VzQ5xvhLrlZeCr7O6rCSJMWgUSvk";}
 
             window.open(externalUrl, "_blank");
         });
