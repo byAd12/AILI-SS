@@ -143,6 +143,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (externalUrl === "MEGA14") {externalUrl = "https://mega.nz/file/QKlzSS7I#wf5mNPo8xj4dEmDPbj6FgWV2p2VOYHJqoJDWS604wWI";}
             if (externalUrl === "MEGA15") {externalUrl = "https://mega.nz/file/wL0TAIJI#IOWRBFuqczgmCI5VzQ5xvhLrlZeCr7O6rCSJMWgUSvk";}
 
+            if (externalUrl === "MEGA16") {externalUrl = "https://mega.nz/file/RedmXLqa#u8LRZ2sV_pqDkGYhjbnfFYZLbE8XH5T9EXHNQGPGwmY";}
+            if (externalUrl === "GIT16") {externalUrl = "https://github.com/byAd12/AILI-SS/releases/tag/v2.2";}
+            if (externalUrl === "MEGA17") {externalUrl = "https://mega.nz/file/8CNGwJhZ#OB7uMHSDUIgNM4FlYgvm7ToCv2L8NbkS39n9YrjFjso";}
+            if (externalUrl === "MEGA18") {externalUrl = "https://mega.nz/file/QKkBwJqQ#h6iWp_TsyrOnFqvmKV2fwU0XpYaXQlLqf98T51LWVAQ";}
+
+
             window.open(externalUrl, "_blank");
         });
     });

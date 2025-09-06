@@ -43,6 +43,36 @@
             <div class="RegistroCambios">
                 <div class="d1 block">
                     <div>
+                        <h2 id="v2-0">Versión 2.2</h2>
+                        <h3>06/09/2025</h3>
+                    </div>
+                </div>
+                <div class="d2">
+                    <div class="z100 block">
+                        <a href="?link=GIT16">Descargar</a>
+                        <a href="https://forms.gle/fZnLpJuD6iJ2Z9sP7">Reportar un Error</a>
+                    </div>
+                    <br><p class="block">Arreglado que en los servidores linux no aparecían los botones de control.</p>
+                    <br><p class="block">Se movió el botón de los servidores de Linux dentro de "Otras herramientas".</p>
+                    <br><p class="block">En detección de interfaces de red si detecta un gateway le hace ping con un timeout de 0.5ms.</p>
+                    <br><p class="block">Se añadió en detección de dispositivos BLE el rango de señal medido en dBm.</p>
+                    <br><p class="block">Ahora se marca correctamente con otro color todas las licencias en la vista de licencias y uso.</p>
+                    <br><p class="block">Se modificaron varias explicaciones de cada funcionalidad.</p>
+                    <br><p class="block">Se arregló que la primera vez que se realiza un escaneo de WLAN solo devuelve una red <- Ahora hay que esperar 3 segundos antes de enseñar el resultado.</p>
+                    <br><p class="block">Ahora en direccionamiento IP se detecta que tipo de IP es.</p>
+                    <br><p class="block">Se arregló la detección del tipo de IPs añadiendo más tipos definidos por IANA.</p>
+                    <br><p class="block">Ya no se pueden introducir IPs incorrectas con más de 4 campos de 0 a 255.</p>
+                    <br><p class="block">Se añadieron más dominios aleatorios para calcular la resolución DNS.</p>
+                    <br><p class="block">Se añadió un campo en direccionamiento IP para in-addr.arpa, otro para la máscara wildcard y otro para detectar que clase es la IPv4 (A, B, C, D, E).</p>
+                    <br><p class="block">Se añadió una nueva función donde se escanea de una URL: búsqueda de IP/DNS, búsqueda WHOIS, búsqueda de páginas mediante una wordlist en una ruta especifica.</p>
+                    <br><p class="block">Se creó en la página de direccionamiento IP un botón que crea una tabla en un documento HTML que abre automáticamente que incluye las máscaras de /0 a /32 calculando su máscara binaria, hosts totales y usables.</p>
+                    <br><p class="block">Se cambió una imágen easter egg (shh, pista: blog).</p>
+                </div>
+            </div>
+        <div class="RegistrosGloba">
+            <div class="RegistroCambios">
+                <div class="d1 block">
+                    <div>
                         <h2 id="v2-0">Versión 2.1</h2>
                         <h3>23/08/2025</h3>
                     </div>
@@ -52,7 +82,7 @@
                         <a href="?link=GIT13">Descargar</a>
                         <a href="https://forms.gle/fZnLpJuD6iJ2Z9sP7">Reportar un Error</a>
                     </div>
-                    <br><p class="block">Arreglado el centrado de ventanas en Linux</p>
+                    <br><p class="block">Arreglado el centrado de ventanas en Linux.</p>
                     <br><p class="block">En administración de servidores:
                         <br>- Arreglado el comando para desinstalar un servicio de Linux.
                         <br>- Cambiado el comando 'system' por 'systemctl'.
