@@ -42,7 +42,7 @@ SOFTWARE.
 LICENCIAS DE BIBLIOTECAS (Python3):
 
 
-1. os, subprocess, json, base64, socket, datetime, struct, time, sys, string (Template), platform, hashlib, asyncio
+1. os, subprocess, json, base64, socket, datetime, struct, time, sys, string (Template), platform, hashlib, asyncio, urllib
    -  Licencia:  Python Software Foundation License (PSF)
    -  Enlace:    https://docs.python.org/3/license.html
 
@@ -70,12 +70,12 @@ LICENCIAS DE BIBLIOTECAS (Python3):
    -  Licencia:  Apache License 2.0
    -  Enlace:    https://github.com/mongodb/mongo-python-driver/blob/master/LICENSE
 
-8. PySide6 (Qt for Python), incluyendo PySide6.QtGui, PySide6.QtWidgets, PySide6.QtCore
+8. PySide6
    -  Licencia:  LGPLv3
    -  Enlace:    https://github.com/pyside/PySide
 
 9. matplotlib
-   -  Licencia:  PSF-based (similar a BSD)
+   -  Licencia:  PSF-based
    -  Enlace:    https://github.com/matplotlib/matplotlib/blob/main/LICENSE/LICENSE
 
 10. bleak
@@ -113,6 +113,10 @@ LICENCIAS DE BIBLIOTECAS (Python3):
 18. chardet
    -  Licencia:  LGPLv2.1
    -  Enlace:    https://github.com/chardet/chardet/blob/main/LICENSE
+
+19. python-whois
+   -  Licencia:  MIT License
+   -  Enlace:    https://github.com/richardpenman/whois/blob/master/LICENSE.txt
 
 
 ───────────────────────────────────────────────

@@ -1,6 +1,6 @@
 {
     "App": {
-        "Version": "2.1",
+        "Version": "2.2",
         "Tecnologia": "Python3, HTML, CSS",
         "GUI": "PySide6"
     },

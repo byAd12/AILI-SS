@@ -7,6 +7,7 @@
 ## ████████████████████████████████████████████████████████████ ##
 ##                                                              ##
 ##                      @ 2024 - Presente                       ##
+##                         MIT LICENSE                          ##
 ##           byAd12.pages.dev | aili-ss.pages.dev               ##
 ##                                                              ##
 ## ____________________________________________________________ ##
@@ -56,6 +57,7 @@ def __TR__(STRING):
         "FuncMainPY_obt_json_6": FuncMainPY.obt_json_(6),
         "FuncMainPY_obt_json_7": FuncMainPY.obt_json_(7),
         "FuncMainPY_obt_json_8": FuncMainPY.obt_json_(8),
+        "ruta_usuario_carpeta": os.path.abspath(conseguir_RUTA_DIR_USUARIO_()),
         "NMAP_VERSION": FuncMainPY.version_nmap(),
     }
 

@@ -7,6 +7,7 @@
 ## ████████████████████████████████████████████████████████████ ##
 ##                                                              ##
 ##                      @ 2024 - Presente                       ##
+##                         MIT LICENSE                          ##
 ##           byAd12.pages.dev | aili-ss.pages.dev               ##
 ##                                                              ##
 ## ____________________________________________________________ ##
@@ -144,6 +145,7 @@ def __TR__(STRING, ES_TERMINOS=False, ES_BLOG=False):
         "FuncMainPY_obt_json_7": obt_json_(7),
         "FuncMainPY_obt_json_8": obt_json_(8),
         "Dolar": "$",
+        "ruta_usuario_carpeta": os.path.abspath(conseguir_RUTA_DIR_USUARIO_()),
         "NMAP_VERSION": version_nmap(),
     }
 
@@ -558,8 +560,18 @@ def get_network_data(interfaz_config, e=None):
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 # Calcular las partes de la IP
 
-def CALCULAR_PARTES__(INTERFAZ_DADA_, ip=None, mascara=None):
+def CALCULAR_PARTES__(INTERFAZ_DADA_, ip=None, mascara=None, es_direccionamiento=False):
     try:
+        # COMPROBACIONES DE PARÁMETROS
+
+        if es_direccionamiento:
+            if str(ip).count(".") != 3:
+                return f"{__TR__('IP_INVALIDA')}"
+            if mascara == "" or mascara == None:
+                return f"{__TR__('MASCARA_INVALIDA')}"
+            
+        ##########################################
+
         def FUNCION_GUAPA_(ip_decimal):
             bin_ip = ""
             partes = ip_decimal.split(".")
@@ -597,8 +609,14 @@ def CALCULAR_PARTES__(INTERFAZ_DADA_, ip=None, mascara=None):
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 # Calcular máscara binaria
 
-def CALCULAR_MASCARA_BINARIA__(mascara=None):
+def CALCULAR_MASCARA_BINARIA__(mascara=None, es_direccionamiento=False):
     try:
+        # COMPROBACIONES DE PARÁMETROS
+
+        if es_direccionamiento:
+            if mascara == "" or mascara == None:
+                return f"{__TR__('MASCARA_INVALIDA')}"
+        
         #################################################
         def FUNCION_GUAPA_(oplk):
             ip_bin = ""
@@ -697,8 +715,16 @@ def CALCULAR_BITS__(mascara=None):
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 # Calcular dirección de red
 
-def CALCULAR_DIRECCION_RED__(INTERFAZ_DADA_, ip=None, mascara=None):
+def CALCULAR_DIRECCION_RED__(INTERFAZ_DADA_, ip=None, mascara=None, es_direccionamiento=False):
     try:
+        # COMPROBACIONES DE PARÁMETROS
+
+        if es_direccionamiento:
+            if str(ip).count(".") != 3:
+                return f"{__TR__('IP_INVALIDA')}"
+            if mascara == "" or mascara == None:
+                return f"{__TR__('MASCARA_INVALIDA')}"
+
         #################################################
         def FUNCION_GUAPA_(oplk):
             ip_bin = ""
@@ -855,14 +881,22 @@ def CALCULAR_DIRECCION_RED__(INTERFAZ_DADA_, ip=None, mascara=None):
     except:
         if INTERFAZ_DADA_ != None: ERR_REG_(f"[CALCULAR_DIRECCION_RED__] No se pudo detectar la dirección de red.\n\n")
 
-        return f"{__TR__('NO_PUDO_DETECTAR')}"
+        return f"{__TR__('IP_INVALIDA')}"
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 # Calcular dirección de difusión
 
-def CALCULAR_DIRECCION_DIFUSION__(INTERFAZ_DADA_, ip=None, mascara=None):
+def CALCULAR_DIRECCION_DIFUSION__(INTERFAZ_DADA_, ip=None, mascara=None, es_direccionamiento=False):
     try:
+        # COMPROBACIONES DE PARÁMETROS
+
+        if es_direccionamiento:
+            if str(ip).count(".") != 3:
+                return f"{__TR__('IP_INVALIDA')}"
+            if mascara == "" or mascara == None:
+                return f"{__TR__('MASCARA_INVALIDA')}"
+        
         #################################################
         def FUNCION_GUAPA_(oplk):
             ip_bin = ""
@@ -1005,7 +1039,7 @@ def CALCULAR_DIRECCION_DIFUSION__(INTERFAZ_DADA_, ip=None, mascara=None):
     except:
         if INTERFAZ_DADA_ != None: (f"[CALCULAR_DIRECCION_DIF__] No se pudo detectar la dirección de difusión.\n\n")
         
-        return f"{__TR__('NO_PUDO_DETECTAR')}"
+        return f"{__TR__('IP_INVALIDA')}"
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
@@ -1045,7 +1079,7 @@ def NMAP_detectar_dispositivos_(MAC_FALSIFICADA="", PUERTO_FALSIFICADO="", OTRAS
     if DESTINO == "":
         try:
             DIREC_ = CALCULAR_DIRECCION_RED__(obt_json_(5))
-            if str(DIREC_) == f"{__TR__('NO_PUDO_DETECTAR')}":
+            if str(DIREC_) == f"{__TR__('IP_INVALIDA')}":
                 return [f"{__TR__('DIREC_RED_MAL')}", "DIREC_RED_ERROR"]
         except:
             ERR_REG_(f"[NMAP_detectar_dispositivos_] La dirección de red no se puede calcular.\n\n")
@@ -1606,25 +1640,39 @@ def PING_generar_gráfico(objetivo, cantidad, RESULTADO):
 # Detectar dispositivos bluetooth
 
 def dispositivos_bluetooth_():
-    # BLE
     async def run():
         try:
-            devices = await BleakScanner.discover()
-        except: return f"{__TR__('SE_NECESITA_BLUETOOTH')}"
-        res, index = "", 0
-        for d in devices:
-            index += 1
-            # HOSTNAME
-            hostname = ""
-            if d.name not in [None, ""]:
-                hostname = f"  •  Hostname: <span style='color: {obt_json_(7)};'>{d.name}</span>"
-            
-            # FINAL
-            res += f"({index}.)  •  MAC: <span style='color: {obt_json_(7)};'>{d.address}</span>{hostname} <br><br>"
-        
-        return res
+            dispositivos = {}
 
-    return(asyncio.run(run()))
+            def deteccion(device, advertisement_data):
+                dispositivos[device.address] = (device.name, advertisement_data.rssi)
+
+            scanner = BleakScanner(detection_callback=deteccion)
+            await scanner.start()
+            await asyncio.sleep(5)
+            await scanner.stop()
+
+            if not dispositivos:
+                return f"{__TR__('SE_NECESITA_BLUETOOTH')}"
+
+            res = ""
+            for index, (mac, (name, rssi)) in enumerate(dispositivos.items(), start=1):
+                if int(str(rssi).split("-")[1]) <= 50:
+                    rssi_color_detectado = "green"
+                elif int(str(rssi).split("-")[1]) >= 50 and int(str(rssi).split("-")[1]) <= 80:
+                    rssi_color_detectado = "orange"
+                else:
+                    rssi_color_detectado = "red"
+
+                hostname_str = f"  •  Hostname: <span style='color: {obt_json_(7)};'>{name}</span>" if name else ""
+                rssi_str = f"  •  RSSI: <span style='color: {rssi_color_detectado};'>{rssi} dBm</span>" if rssi else ""
+                res += f"({index}.)  MAC: <span style='color: {obt_json_(7)};'>{mac}</span>{rssi_str}{hostname_str} <br><br>"
+            return res
+
+        except Exception as e:
+            return f"{__TR__('SE_NECESITA_BLUETOOTH')} ({str(e)})"
+
+    return asyncio.run(run())
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
@@ -1643,6 +1691,7 @@ def version_nmap():
 def devolver_redes_wifi_():
     def interfaz_(name=obt_json_(5)):
         wifi = pywifi.PyWiFi()
+
         for iface in wifi.interfaces():
             if name in iface.name():
                 return iface
@@ -1679,6 +1728,7 @@ def devolver_redes_wifi_():
         try:
             iface = interfaz_(obt_json_(5))
             iface.scan()
+            time.sleep(3)
             res0 = ""
 
             SSID_GUARDAR, CANTIDAD_ESCANEADA = [], 0
@@ -1833,14 +1883,25 @@ def tipo_ip_(IP):
     except:
         return "N/A"
 
+    # DEFINIR PRIMERO LAS DE IANA
+    if IP_res in ipaddress.ip_network("0.0.0.0/8"): return f"{__TR__('ESTA_RED')}"
+    if IP_res in ipaddress.ip_network("192.88.99.0/24"): return f"6to4 Relay Anycast"
+    if IP_res in ipaddress.ip_network("192.0.0.0/24"): return f"IETF Protocol Assignments"
+    if IP_res in ipaddress.ip_network("198.18.0.0/15"): return f"{__TR__('BENCHMARK_TEST')}"
+    if IP_res in ipaddress.ip_network("192.0.2.0/24"): return f"TEST-NET-1"
+    if IP_res in ipaddress.ip_network("198.51.100.0/24"): return f"TEST-NET-2"
+    if IP_res in ipaddress.ip_network("203.0.113.0/24"): return f"TEST-NET-3"
+    if IP_res in ipaddress.ip_network("240.0.0.0/24"): return f"{__TR__('RESERVADA_USO_FUTURO')}"
+    if IP_res in ipaddress.ip_network("255.255.255.255/32"): return f"{__TR__('BROADCAST_LIMITADO')}"
+
+    # LUEGO DEFINIR LAS DEMÁS
+    if IP_res.is_unspecified: return f"{__TR__('NO_ESPECIFICADA')}"
+    if IP_res.is_reserved: return f"{__TR__('RESERVADA')}"
+    if IP_res.is_loopback: return f"Loopback"
+    if IP_res.is_multicast: return f"Multicast"
     if IP_res.is_link_local: return f"Link-local"
     if IP_res.is_private: return f"{__TR__('PRIVADA')}"
     if IP_res.is_global: return f"{__TR__('PUBLICA')}"
-    if IP_res.is_loopback: return f"Loopback"
-    if IP_res.is_multicast: return f"Multicast"
-    if IP_res.is_reserved: return f"{__TR__('RESERVADA')}"
-    if IP_res.is_unspecified: return f"N/A"
-    
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
@@ -2224,6 +2285,70 @@ def desinstalar_servidor_(SERVIDOR):
             return f"{e}"
     
     return "Ok"
+
+####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
+#~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
+# Invertir una IP para in-addr.arpa
+
+def invertir_ip_(IP):
+    try:
+        ipaddress.ip_address(IP)
+
+        LISTA = str(IP).split(".")
+        IP_INVERTIDA, INDICE = "", 1
+
+        for PARTE in LISTA[::-1]:
+            IP_INVERTIDA += PARTE + ("." if INDICE <= 3 else "")
+            INDICE += 1
+
+        return IP_INVERTIDA
+    except:
+        return f"{__TR__('IP_INVALIDA')}"
+
+####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
+#~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
+# Calcular máscara wildcard
+
+def calcular_mascara_wildcard_(MASCARA):
+    if MASCARA == None or MASCARA == "":
+        return f"{__TR__('MASCARA_INVALIDA')}"
+
+    LISTA, LISTA2, FINAL, INDICE = MASCARA.split("."), [], "", 1
+
+    for i in LISTA:
+        LISTA2.append(255 - int(i))
+    
+    for i in LISTA2:
+        FINAL += str(i) + ("." if INDICE <= 3 else "")
+        INDICE += 1
+        print(i)
+    
+    return FINAL
+
+####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
+#~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
+# Detectar que clase es la IP
+
+def calcular_clase_IP(IP):
+    try:
+        IPv4 = ipaddress.ip_address(IP)
+    except:
+        return f"{__TR__('IP_INVALIDA')}"
+    
+    primer_octeto = int(str(IPv4).split(".")[0])
+
+    if 1 <= primer_octeto <= 126:
+        return f"<span style='color: {obt_json_(7)};'>A"
+    elif 128 <= primer_octeto <= 191:
+        return f"<span style='color: {obt_json_(7)};'>B"
+    elif 192 <= primer_octeto <= 223:
+        return f"<span style='color: {obt_json_(7)};'>C"
+    elif 224 <= primer_octeto <= 239:
+        return f"<span style='color: {obt_json_(7)};'>D (Multicast)"
+    elif 240 <= primer_octeto <= 255:
+        return f"<span style='color: {obt_json_(7)};'>E (Experimental)"
+    else:
+        return "N/A"
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~

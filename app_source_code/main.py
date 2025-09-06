@@ -7,12 +7,13 @@
 ## ████████████████████████████████████████████████████████████ ##
 ##                                                              ##
 ##                      @ 2024 - Presente                       ##
+##                         MIT LICENSE                          ##
 ##           byAd12.pages.dev | aili-ss.pages.dev               ##
 ##                                                              ##
 ## ____________________________________________________________ ##
 
 
-import datetime
+import datetime, os
 
 global TIEMPO_INICIO; TIEMPO_INICIO = datetime.datetime.now()
 global IDIOMA_ELEGIDO; IDIOMA_ELEGIDO = False
@@ -73,6 +74,7 @@ def __TR__(STRING):
         "FuncMainPY_obt_json_6": FuncMainPY.obt_json_(6),
         "FuncMainPY_obt_json_7": FuncMainPY.obt_json_(7),
         "FuncMainPY_obt_json_8": FuncMainPY.obt_json_(8),
+        "ruta_usuario_carpeta": os.path.abspath(conseguir_RUTA_DIR_USUARIO_()),
         "NMAP_VERSION": FuncMainPY.version_nmap(),
     }
 
@@ -104,6 +106,8 @@ def listar_archivos_directorio(directorio):
 # Primero instalar las dependencias
 
 import time, requests, webbrowser, socket, nmap, ipaddress, ping3
+import whois as whois_lib
+from urllib.parse import urlparse
 from scapy.all import *
 from bs4 import BeautifulSoup
 from PySide6.QtWidgets import *
@@ -829,6 +833,47 @@ def p_principal_(ventana, es_movil=False):
     FuncGuiPY.ocultar_elemento_(apoya1)
     FuncGuiPY.ocultar_elemento_(apoya2)
     FuncGuiPY.ocultar_elemento_(apoya3)
+
+    ############
+    ############
+
+    def mostrar_p_OTRAS_HERRAMIENTAS_(): # SERVIDORES LINUX
+        # MOSTRAR ELEMENTOS
+        mostrar_todos_elementos_()
+        global ESTA_EN_TERMINOS
+        # VENTANA
+        VENTANA4.setFixedSize(665, 364)
+        # TEXTO
+        title_label.setText(f"{__TR__('P_HERRAMIENTAS_server_TITULO')}")
+        # BOTONES
+        button1.setText(f"?")
+        button3.setText(f"{__TR__('VOLVER_ATRAS')}")
+        button1.clicked.disconnect()
+        button2.clicked.disconnect()
+        button3.clicked.disconnect()
+        button1.setShortcut("")
+        button2.setShortcut("")
+        button3.setShortcut("")
+        button1.clicked.connect(lambda: p_ayuda_msg_(VENTANA4, 4))
+        button3.clicked.connect(mostrar_p_herramientas_otras_)
+        # OCULTAR ELEMENTOS
+        FuncGuiPY.ocultar_elemento_(button2)
+        FuncGuiPY.ocultar_elemento_(label)
+        FuncGuiPY.ocultar_elemento_(spacer_x1)
+        # CAMBIAR VARIABLES
+        ESTA_EN_TERMINOS = False
+        # SHORTCUT
+        accion_salir.setShortcut("")
+        button3.setShortcut("Escape")
+        # MOSTRAR ELEMENTOS
+        for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9]:
+            for z in i:
+                FuncGuiPY.ocultar_elemento_(z)
+        for i in [botones_fila10, botones_fila11, botones_fila12]:
+            for z in i:
+                FuncGuiPY.mostrar_elemento_(z)
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+            FuncGuiPY.ocultar_elemento_(i)
     
     ############
     ############
@@ -841,12 +886,12 @@ def p_principal_(ventana, es_movil=False):
 
     botones_fila1 = [
         FuncGuiPY.crear_boton_(f"{__TR__('INTERFACES_ACTIVAS')}", icon_logo, lambda: pF_interfaces_red_(VENTANA4), False),
-        FuncGuiPY.crear_boton_(f"{__TR__('DETECCION_ARP_SPOOF')}", icon_logo, lambda: pF_deteccion_arp_spoofing_(VENTANA4), False)
+        FuncGuiPY.crear_boton_(f"{__TR__('CALCULAR_IP')}", icon_logo, lambda: pF_calcular_direcciones_(VENTANA4), False)
     ]
 
     botones_fila2 = [
-        FuncGuiPY.crear_boton_(f"{__TR__('ESCANEO_BLE')}", icon_logo, lambda: pF_dispositivos_bluetooth_(VENTANA4), False),
-        FuncGuiPY.crear_boton_(f"{__TR__('CALCULAR_IP')}", icon_logo, lambda: pF_calcular_direcciones_(VENTANA4), False)
+        FuncGuiPY.crear_boton_(f"{__TR__('DETECCION_ARP_SPOOF')}", icon_logo, lambda: pF_deteccion_arp_spoofing_(VENTANA4), False),
+        FuncGuiPY.crear_boton_(f"{__TR__('ESCANEO_BLE')}", icon_logo, lambda: pF_dispositivos_bluetooth_(VENTANA4), False)
     ]
 
     botones_fila3 = [
@@ -856,6 +901,7 @@ def p_principal_(ventana, es_movil=False):
 
     botones_fila4 = [
         FuncGuiPY.crear_boton_(f"{__TR__('ESCANEO_REDES_WIFI')}", icon_logo, lambda: pF_escaneo_redes_WiFi_(VENTANA4), True),
+        FuncGuiPY.crear_boton_(f"{__TR__('ESCANEO_DOMINIO_WORDLIST')}", icon_logo, lambda: pF_escaneo_TLD_wordlist_(VENTANA4), True),
     ]
 
     botones_fila5 = [
@@ -878,7 +924,7 @@ def p_principal_(ventana, es_movil=False):
     ]
 
     botones_fila9 = [
-        # https://open.spotify.com/intl-es/track/70C4NyhjD5OZUMzvWZ3njJ?si=e226f764ebbc4a28   ;-)
+        FuncGuiPY.crear_boton_(f"{__TR__('SERVIDORES_LINUX')}", icon_logo, mostrar_p_OTRAS_HERRAMIENTAS_, False),
     ]
 
     botones_fila10 = [
@@ -1133,9 +1179,6 @@ def p_principal_(ventana, es_movil=False):
     #button2.clicked.connect(lambda: p_herramientas_otras_(VENTANA4))
     button2.setProperty("tipo", "button1")
 
-    button2_1 = QPushButton(f"{__TR__('SERVIDORES_LINUX')}")
-    button2_1.setProperty("tipo", "button1")
-
     button3 = QPushButton(f"{__TR__('BLOG_SEGURIDAD')}")
     #button3.clicked.connect(lambda: p_blog_(VENTANA4))
     button3.setProperty("tipo", "button1")
@@ -1161,7 +1204,6 @@ def p_principal_(ventana, es_movil=False):
     # Agregar los botones al layout 
     button_layout.addWidget(button1)
     button_layout.addWidget(button2)
-    button_layout.addWidget(button2_1)
     button_layout.addWidget(button4)
     button_layout.addWidget(button5)
     button_layout.addWidget(button6)
@@ -1192,7 +1234,6 @@ def p_principal_(ventana, es_movil=False):
     def mostrar_todos_elementos_():
         FuncGuiPY.mostrar_elemento_(button1)
         FuncGuiPY.mostrar_elemento_(button2)
-        FuncGuiPY.mostrar_elemento_(button2_1)
         FuncGuiPY.mostrar_elemento_(button3)
         FuncGuiPY.mostrar_elemento_(label)
         FuncGuiPY.mostrar_elemento_(spacer_x1)
@@ -1246,7 +1287,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("Alt+1")
         button2.setShortcut("Alt+2")
-        button2_1.setShortcut("Alt+3")
         button3.setShortcut("Alt+4")
         button1.clicked.connect(mostrar_p_herramientas_red_)
         button2.clicked.connect(mostrar_p_herramientas_otras_)
@@ -1323,7 +1363,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button1.clicked.connect(lambda: webbrowser.open("https://nmap.org/download"))
         button2.clicked.connect(lambda: webbrowser.open("https://npcap.com/"))
@@ -1338,7 +1377,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
 
     accion_dependencias.triggered.connect(mostrar_p_dependencias_)
@@ -1377,7 +1416,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button1, button2, button4, button5, button6, button7, button2_1]:
+        for i in [button1, button2, button4, button5, button6, button7]:
             FuncGuiPY.ocultar_elemento_(i)
         for i in [apoya1, apoya2, apoya3, label]:
             FuncGuiPY.mostrar_elemento_(i)
@@ -1401,10 +1440,9 @@ def p_principal_(ventana, es_movil=False):
         button1.setText(f"«")
         button2.setText(f"»")
         button3.setText(f"{__TR__('VOLVER_ATRAS')}")
-        button4.setText(f"AWW")
+        button4.setText(f"")
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button1.setShortcut("Left")
         button2.setShortcut("Right")
@@ -1425,7 +1463,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(0, 0)
@@ -1457,7 +1495,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button1.clicked.connect(limpiar)
         button3.clicked.connect(mostrar_p_info_tecnica_)
@@ -1470,7 +1507,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
         # SHORTCUT
         accion_salir.setShortcut("")
@@ -1533,7 +1570,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button3.clicked.connect(mostrar_p_info_tecnica_)
 
@@ -1551,7 +1587,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button2, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button2, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(665, 500)
@@ -1577,7 +1613,6 @@ def p_principal_(ventana, es_movil=False):
         button7.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         with open(FuncMainPY.obtener_ruta_config(), "r") as f: data = json.load(f)
         # DEESHABILITAR BOTONES
@@ -1652,7 +1687,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button1.clicked.connect(lambda: p_ayuda_licencia_(VENTANA4))
         button2.clicked.connect(cerrar_sesion_)
@@ -1670,7 +1704,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button1, button2, button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button4, button5, button6, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button4, button5, button6, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
         # HABILITAR BOTONES
         for i in [button1, button2, button3, button4, button5, button6, button7]:
@@ -1691,18 +1725,27 @@ def p_principal_(ventana, es_movil=False):
 
             datos2 = datos.replace("AILI-SS · Licencias de Uso y Créditos", f"<span style='color:{FuncMainPY.obt_json_(6)};'>AILI-SS</span> · <span style='color:{FuncMainPY.obt_json_(7)};'>Licencias de Uso y Créditos</span>")
             datos2 = datos2.replace("MIT License", f"<span style='color:{FuncMainPY.obt_json_(6)};'>MIT License</span>")
+            datos2 = datos2.replace("ISC License", f"<span style='color:{FuncMainPY.obt_json_(6)};'>ISC License</span>")
+            datos2 = datos2.replace("Apache License 2.0", f"<span style='color:{FuncMainPY.obt_json_(6)};'>Apache License 2.0</span>")
+            datos2 = datos2.replace("PSF-based", f"<span style='color:{FuncMainPY.obt_json_(6)};'>PSF-based</span>")
+            datos2 = datos2.replace("LGPLv3", f"<span style='color:{FuncMainPY.obt_json_(6)};'>LGPLv3</span>")
+            datos2 = datos2.replace("GPLv3", f"<span style='color:{FuncMainPY.obt_json_(6)};'>GPLv3</span>")
+            datos2 = datos2.replace("BSD 3-Clause License", f"<span style='color:{FuncMainPY.obt_json_(6)};'>BSD 3-Clause License</span>")
+            datos2 = datos2.replace("GPLv2", f"<span style='color:{FuncMainPY.obt_json_(6)};'>GPLv2</span>")
+            datos2 = datos2.replace("Python Software Foundation License (PSF)", f"<span style='color:{FuncMainPY.obt_json_(6)};'>Python Software Foundation License (PSF)</span>")
             datos2 = datos2.replace("LICENCIAS DE BIBLIOTECAS (Python3):", f"<span style='color:{FuncMainPY.obt_json_(6)};'>LICENCIAS DE BIBLIOTECAS (Python3)</span>:")
             datos2 = datos2.replace("CRÉDITOS:", f"<span style='color:{FuncMainPY.obt_json_(6)};'>CRÉDITOS</span>:")
             datos2 = datos2.replace("Idioma: Español", f"Idioma: <span style='color:{FuncMainPY.obt_json_(7)};'>Español</span>")
+            datos2 = datos2.replace("Adrián Leonardo Giménez Payo", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Adrián Leonardo Giménez Payo</span>")
             datos2 = datos2.replace("Cheque", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Cheque</span>")
             datos2 = datos2.replace("Cerca", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Cerca</span>")
             datos2 = datos2.replace("Esperar", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Esperar</span>")
             datos2 = datos2.replace("\n", f"<br>")
 
-            for i in ["https://aili-ss.pages.dev", "https://byad12.pages.dev", "https://docs.python.org/3/license.html", "https://github.com/giampaolo/psutil/blob/master/LICENSE", "https://bitbucket.org/xael/python-nmap/src/master/gpl-3.0.txt", "https://github.com/al45tair/netifaces/blob/master/LICENSE", "https://github.com/kyan001/ping3/blob/master/LICENSE", "https://github.com/secdev/scapy/blob/master/LICENSE", "https://github.com/mongodb/mongo-python-driver/blob/master/LICENSE", "https://github.com/pyside/PySide", "https://github.com/matplotlib/matplotlib/blob/main/LICENSE/LICENSE", "https://github.com/hbldh/bleak/blob/develop/LICENSE", "https://github.com/psf/requests/blob/main/LICENSE", "https://docs.python.org/3/library/webbrowser.html", "https://docs.python.org/3/library/ipaddress.html", "https://www.crummy.com/software/BeautifulSoup/#Download", "https://github.com/rthalley/dnspython/blob/master/LICENSE", "https://github.com/awkman/pywifi/blob/master/LICENSE", "https://github.com/enthought/comtypes/blob/master/LICENSE.txt", "https://github.com/chardet/chardet/blob/main/LICENSE", "https://www.flaticon.es/icono-gratis/cheque_3285799", "https://www.flaticon.es/autores/freepik", "https://www.flaticon.es/icono-gratis/cerca_2919559", "https://www.flaticon.es/icono-gratis/esperar_1686925"]:
+            for i in ["https://aili-ss.pages.dev", "https://byad12.pages.dev", "https://docs.python.org/3/license.html", "https://github.com/giampaolo/psutil/blob/master/LICENSE", "https://bitbucket.org/xael/python-nmap/src/master/gpl-3.0.txt", "https://github.com/al45tair/netifaces/blob/master/LICENSE", "https://github.com/kyan001/ping3/blob/master/LICENSE", "https://github.com/secdev/scapy/blob/master/LICENSE", "https://github.com/mongodb/mongo-python-driver/blob/master/LICENSE", "https://github.com/pyside/PySide", "https://github.com/matplotlib/matplotlib/blob/main/LICENSE/LICENSE", "https://github.com/hbldh/bleak/blob/develop/LICENSE", "https://github.com/psf/requests/blob/main/LICENSE", "https://docs.python.org/3/library/webbrowser.html", "https://docs.python.org/3/library/ipaddress.html", "https://www.crummy.com/software/BeautifulSoup/#Download", "https://github.com/rthalley/dnspython/blob/master/LICENSE", "https://github.com/awkman/pywifi/blob/master/LICENSE", "https://github.com/enthought/comtypes/blob/master/LICENSE.txt", "https://github.com/chardet/chardet/blob/main/LICENSE", "https://www.flaticon.es/icono-gratis/cheque_3285799", "https://www.flaticon.es/autores/freepik", "https://www.flaticon.es/icono-gratis/cerca_2919559", "https://www.flaticon.es/icono-gratis/esperar_1686925", "https://github.com/richardpenman/whois/blob/master/LICENSE.txt"]:
                 datos2 = datos2.replace(i, f"<span style='color:{FuncMainPY.obt_json_(6)};'>{i}</span>")
 
-            for i in range(18, -1, -1):
+            for i in range(19, -1, -1):
                 datos2 = datos2.replace(f"{i}. ", f"<span style='color:{FuncMainPY.obt_json_(7)};'>{i}</span>. ")
 
         # TEXTO
@@ -1721,12 +1764,11 @@ def p_principal_(ventana, es_movil=False):
         FuncGuiPY.ocultar_elemento_(button1)
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, button2_1]:
+        for i in [button4, button5, button6, button7]:
             FuncGuiPY.ocultar_elemento_(i)
         # SHORTCUT
         accion_salir.setShortcut("")
@@ -1779,7 +1821,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button1.clicked.connect(comprobar_actualizaciones_)
         button2.clicked.connect(mostrar_p_app_licencias_)
@@ -1798,7 +1839,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button1, button2, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button1, button2, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(665, 500)
@@ -1857,7 +1898,6 @@ def p_principal_(ventana, es_movil=False):
         button4.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         #button1.clicked.connect(comprobar_actualizaciones_)
         button1.clicked.connect(mostrar_p_actualizaciones_)
@@ -1879,7 +1919,6 @@ def p_principal_(ventana, es_movil=False):
             FuncGuiPY.ocultar_elemento_(i)
         for i in [button1, button2, button4, button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        FuncGuiPY.ocultar_elemento_(button2_1)
         # VENTANA
         VENTANA4.setMinimumSize(665, 500)
         VENTANA4.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -1914,7 +1953,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button1.clicked.connect(lambda: p_ayuda_msg_(VENTANA4, 2))
         button3.clicked.connect(mostrar_p_principal_)
@@ -1933,7 +1971,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
 
     button1.clicked.connect(mostrar_p_herramientas_red_)
@@ -1946,7 +1984,7 @@ def p_principal_(ventana, es_movil=False):
         mostrar_todos_elementos_()
         global ESTA_EN_TERMINOS
         # VENTANA
-        VENTANA4.setFixedSize(665, 308)
+        VENTANA4.setFixedSize(665, 364)
         if ESTA_EN_TERMINOS: FuncGuiPY.centrar_ventana_(VENTANA4)
         if ESTA_EN_TERMINOS: FuncGuiPY.centrar_ventana_(VENTANA4)
         # TEXTO
@@ -1959,7 +1997,6 @@ def p_principal_(ventana, es_movil=False):
         button3.clicked.disconnect()
         button1.setShortcut("")
         button2.setShortcut("")
-        button2_1.setShortcut("")
         button3.setShortcut("")
         button1.clicked.connect(lambda: p_ayuda_msg_(VENTANA4, 3))
         button3.clicked.connect(mostrar_p_principal_)
@@ -1973,55 +2010,16 @@ def p_principal_(ventana, es_movil=False):
         accion_salir.setShortcut("")
         button3.setShortcut("Escape")
         # MOSTRAR ELEMENTOS
+        for i in [botones_fila10, botones_fila11, botones_fila12]:
+            for z in i:
+                FuncGuiPY.ocultar_elemento_(z)
         for i in [botones_fila7, botones_fila8, botones_fila9]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
             FuncGuiPY.ocultar_elemento_(i)
 
     button2.clicked.connect(mostrar_p_herramientas_otras_)
-
-    ############
-    ############
-
-    def mostrar_p_OTRAS_HERRAMIENTAS_():
-        # MOSTRAR ELEMENTOS
-        mostrar_todos_elementos_()
-        global ESTA_EN_TERMINOS
-        # VENTANA
-        VENTANA4.setFixedSize(665, 364)
-        FuncGuiPY.centrar_ventana_(VENTANA4)
-        # TEXTO
-        title_label.setText(f"{__TR__('P_HERRAMIENTAS_server_TITULO')}")
-        # BOTONES
-        button1.setText(f"?")
-        button3.setText(f"{__TR__('VOLVER_ATRAS')}")
-        button1.clicked.disconnect()
-        button2.clicked.disconnect()
-        button3.clicked.disconnect()
-        button1.setShortcut("")
-        button2.setShortcut("")
-        button2_1.setShortcut("")
-        button3.setShortcut("")
-        button1.clicked.connect(lambda: p_ayuda_msg_(VENTANA4, 4))
-        button3.clicked.connect(lambda: mostrar_p_principal_(True))
-        # OCULTAR ELEMENTOS
-        FuncGuiPY.ocultar_elemento_(button2)
-        FuncGuiPY.ocultar_elemento_(label)
-        FuncGuiPY.ocultar_elemento_(spacer_x1)
-        # CAMBIAR VARIABLES
-        ESTA_EN_TERMINOS = False
-        # SHORTCUT
-        accion_salir.setShortcut("")
-        button3.setShortcut("Escape")
-        # MOSTRAR ELEMENTOS
-        for i in [botones_fila10, botones_fila11, botones_fila12]:
-            for z in i:
-                FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3, button2_1]:
-            FuncGuiPY.ocultar_elemento_(i)
-
-    button2_1.clicked.connect(mostrar_p_OTRAS_HERRAMIENTAS_)
 
     ############
     ############
@@ -2033,7 +2031,6 @@ def p_principal_(ventana, es_movil=False):
     if es_movil == "IrADependencias": mostrar_p_dependencias_()
     button1.setShortcut("Alt+1")
     button2.setShortcut("Alt+2")
-    button2_1.setShortcut("Alt+3")
     button3.setShortcut("Alt+4")
 
     global TIEMPO_CARGA_V_PRINCIPAL
@@ -3284,8 +3281,13 @@ def pF_interfaces_red_(ventana):
         texto_poner0_ = f"{__TR__('INTERFACES_DETECTADAS')} {FuncMainPY.INTERFACES_()}<br><br>{__TR__('PROCESO')}<br>"
         texto_poner_ = f"<span style='color: {FuncMainPY.obt_json_(6)};'>{__TR__('INTERFACES_DE')}</span> '<span style='color: {FuncMainPY.obt_json_(7)};'>{socket.gethostname()}</span>'<br>"
         
+        indice = 0
+
         for i in FuncMainPY.INTERFACES_():
-            texto_poner0_ += f"<br>---- <span style='color: {FuncMainPY.obt_json_(6)};'>{i}</span> ----"
+            texto_poner0_ += f"{'<br>' if indice != 0 else ''}<br>---- <span style='color: {FuncMainPY.obt_json_(6)};'>{i}</span> ----"
+
+            indice += 1
+
             if pase == False:
                 text_edit.setText(texto_poner0_); QApplication.processEvents()
 
@@ -3329,6 +3331,20 @@ def pF_interfaces_red_(ventana):
             except:
                 GATEWAY_SI, GATEWAY = False, None
 
+            if GATEWAY_SI:
+                texto_poner0_ += f"<br>{__TR__('PING_GATEWAY_EN_RED')}"
+                GATEWAY_PING = ""
+
+                if pase == False:
+                    text_edit.setText(texto_poner0_); QApplication.processEvents()
+
+                try:
+                    ping = ping3.ping(GATEWAY, timeout=0.5)
+                    if ping != None:
+                        GATEWAY_PING = f"(Ping: <span style='color: {FuncMainPY.obt_json_(7)};'>{round(ping, 6)} ms</span>)"
+                except:
+                    pass
+
             texto_poner0_ += f"<br>{__TR__('DETECTANDO_DNS_EN_RED')} "
             if pase == False:
                 text_edit.setText(texto_poner0_); QApplication.processEvents()
@@ -3340,6 +3356,7 @@ def pF_interfaces_red_(ventana):
                 if ipaddress.ip_address(dns_) in ipaddress.ip_network(DIREC_RED):
                     DNS_FIN_ = str(dns_)
                     break
+
             ########
 
             texto_poner_ += f"""<p><span style='color: {FuncMainPY.obt_json_(6)};'>{i}</span>:</p>
@@ -3353,7 +3370,7 @@ def pF_interfaces_red_(ventana):
     <li>{__TR__('DIREC_RED_2')}<span style='color: {FuncMainPY.obt_json_(7)};'>{DIREC_RED}</span></li>
     <li>{__TR__('DIREC_DIF_2')}<span style='color: {FuncMainPY.obt_json_(7)};'>{DIREC_DIF}</span></li>
     
-    {f"<br style='font-size: 8px;'><li>Gateway: <span style='color: {FuncMainPY.obt_json_(7)};'>{GATEWAY}</span></li>" if GATEWAY_SI == True else ""}
+    {f"<br style='font-size: 8px;'><li>Gateway: <span style='color: {FuncMainPY.obt_json_(7)};'>{GATEWAY}</span> {GATEWAY_PING}</li>" if GATEWAY_SI == True else ""}
     {f"<li>{__TR__('SERVER_DNS')}<span style='color: {FuncMainPY.obt_json_(7)};'>{DNS_FIN_}</span></li>" if DNS_FIN_ != None else ""}
 
 </ul>"""
@@ -5165,7 +5182,7 @@ def pF_escaneo_vulnerabilidades_(ventana):
 def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, Fue_de_calcular_lista=False):
     global VENTANA19
     VENTANA19 = QMainWindow()
-    VENTANA19.setFixedSize(720, 500)
+    VENTANA19.setFixedSize(750, 500)
     FuncGuiPY.centrar_ventana_(VENTANA19)
     VENTANA19.setWindowTitle("AILI-SS")
 
@@ -5210,13 +5227,30 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
 
     ############
 
-    label = QLabel(f"{__TR__('IP_HOST')}")
+    label_container = QWidget()
+    label_layout = QHBoxLayout()
+    label_layout.setContentsMargins(0, 0, 0, 0)
+    label_layout.setSpacing(10)
+
+    label1 = QLabel(f"{__TR__('BITS_RED_HOST')}")
+    label2 = QLabel("Hosts:")
+
+    label_layout.addWidget(label1)
+    label_layout.addWidget(label2)
+
+    label_container.setLayout(label_layout)
+    GRID.addWidget(label_container, 9, 1)
+
+    ############
+    ############
+
+    label_ip = QLabel(f"IPv4:")
     config_entrada0 = QLineEdit()
     config_entrada0.setPlaceholderText("127.0.0.1")
     if IP != None:
         config_entrada0.setText(IP)
     
-    GRID.addWidget(label, 0, 0)
+    GRID.addWidget(label_ip, 0, 0)
     GRID.addWidget(config_entrada0, 1, 0)
 
     ############
@@ -5245,12 +5279,37 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
 
     ############
     
-    label_poner_que_otra_mascara = QLabel(f"")
-    GRID.addWidget(label_poner_que_otra_mascara, 3, 1)
+    label_container = QWidget()
+    label_layout = QHBoxLayout()
+    label_layout.setContentsMargins(0, 0, 0, 0)
+    label_layout.setSpacing(10)
+
+    label_poner_que_otra_mascara = QLabel(f"{__TR__('MASCARA_INVERSA')}")
+    label_poner_mascara_wildcard = QLabel(f"{__TR__('MASCARA_WILDCARD')}")
+
+    label_layout.addWidget(label_poner_que_otra_mascara)
+    label_layout.addWidget(label_poner_mascara_wildcard)
+
+    label_container.setLayout(label_layout)
+    GRID.addWidget(label_container, 3, 1)
+
+    # ---
+
+    label_container = QWidget()
+    label_layout = QHBoxLayout()
+    label_layout.setContentsMargins(0, 0, 0, 0)
+    label_layout.setSpacing(10)
 
     label_ensenar_mascara_cidr_dot = QLabel("")
     label_ensenar_mascara_cidr_dot.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
-    GRID.addWidget(label_ensenar_mascara_cidr_dot, 4, 1)
+    label_ensenar_mascara_wildcard = QLabel("")
+    label_ensenar_mascara_wildcard.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
+
+    label_layout.addWidget(label_ensenar_mascara_cidr_dot)
+    label_layout.addWidget(label_ensenar_mascara_wildcard)
+
+    label_container.setLayout(label_layout)
+    GRID.addWidget(label_container, 4, 1)
 
     ############
 
@@ -5258,21 +5317,71 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
 
     ############
 
-    label = QLabel(f"{__TR__('DIREC_RED_2')}")
-    GRID.addWidget(label, 6, 0)
+    label_container = QWidget()
+    label_layout = QHBoxLayout()
+    label_layout.setContentsMargins(0, 0, 0, 0)
+    label_layout.setSpacing(10)
 
-    label_direc_red = QLabel("")
-    label_direc_red.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
-    GRID.addWidget(label_direc_red, 7, 0)
+    label1 = QLabel(f"{__TR__('DIREC_RED_2')}")
+    label2 = QLabel(f"{__TR__('DIREC_DIF_2')}")
+
+    label_layout.addWidget(label1)
+    label_layout.addWidget(label2)
+
+    label_container.setLayout(label_layout)
+    GRID.addWidget(label_container, 6, 0)
 
     ############
 
-    label = QLabel(f"{__TR__('DIREC_DIF_2')}")
-    GRID.addWidget(label, 6, 1)
+    label_container = QWidget()
+    label_layout = QHBoxLayout()
+    label_layout.setContentsMargins(0, 0, 0, 0)
+    label_layout.setSpacing(10)
 
+    label_direc_red = QLabel("")
+    label_direc_red.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
     label_direc_dif = QLabel("")
     label_direc_dif.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
-    GRID.addWidget(label_direc_dif, 7, 1)
+
+    label_layout.addWidget(label_direc_red)
+    label_layout.addWidget(label_direc_dif)
+
+    label_container.setLayout(label_layout)
+    GRID.addWidget(label_container, 7, 0)
+
+    ############ zzz
+
+    label_container = QWidget()
+    label_layout = QHBoxLayout()
+    label_layout.setContentsMargins(0, 0, 0, 0)
+    label_layout.setSpacing(10)
+
+    label_arpa = QLabel(f"<span style='color: {FuncMainPY.obt_json_(7)};'>(__)</span>.in-addr.arpa: ")
+    label2 = QLabel(f"{__TR__('CLASE_IP')}")
+
+    label_layout.addWidget(label_arpa)
+    label_layout.addWidget(label2)
+
+    label_container.setLayout(label_layout)
+    GRID.addWidget(label_container, 6, 1)
+
+    ############
+
+    label_container = QWidget()
+    label_layout = QHBoxLayout()
+    label_layout.setContentsMargins(0, 0, 0, 0)
+    label_layout.setSpacing(10)
+
+    label_ensenar_in_addr_arpa = QLabel("")
+    label_ensenar_in_addr_arpa.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
+    label_ensenar_clase_ip = QLabel("")
+    label_ensenar_clase_ip.setStyleSheet("border: 1px solid white; font-weight: bold; padding: 10px; border-radius: 10px; text-align: center;")
+
+    label_layout.addWidget(label_ensenar_in_addr_arpa)
+    label_layout.addWidget(label_ensenar_clase_ip)
+
+    label_container.setLayout(label_layout)
+    GRID.addWidget(label_container, 7, 1)
 
     ############
 
@@ -5321,8 +5430,6 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
     value_container.setLayout(value_layout)
     GRID.addWidget(value_container, 10, 1)
 
-
-
     ############
 
     main_layout.addLayout(GRID)
@@ -5350,12 +5457,13 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
         ############
         ############
 
-        mascara = ""
+        mascara, mascara_punteada = "", ""
 
         if config_entrada01.text() != "":
 
             if str(config_entrada01.text()).__contains__("."): # DOT A CIDR
                 mascara = config_entrada01.text()
+                mascara_punteada = config_entrada01.text()
 
                 label_poner_que_otra_mascara.setText(f"{__TR__('MASCARA_CON_2')}")
                 label_entry_mascara.setText(f"{__TR__('MASCARA_CON_1')}")
@@ -5365,6 +5473,7 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
             
             else: # CIDR A DOT
                 mascara = cidr_a_mascara(f"{'' if config_entrada01.text().startswith('/') else '/'}{config_entrada01.text()}")
+                mascara_punteada = mascara
 
                 label_poner_que_otra_mascara.setText(f"{__TR__('MASCARA_CON_1')}")
                 label_entry_mascara.setText(f"{__TR__('MASCARA_CON_2')}")
@@ -5373,8 +5482,8 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
                 except: label_ensenar_mascara_cidr_dot.setText("")
 
         else:
-            label_poner_que_otra_mascara.setText(f"")
-            label_ensenar_mascara_cidr_dot.setText("")
+            label_poner_que_otra_mascara.setText(f"{__TR__('MASCARA_INVERSA')}")
+            label_ensenar_mascara_cidr_dot.setText(f"{__TR__('MASCARA_INVALIDA')}")
             label_entry_mascara.setText(f"{__TR__('MASCARA_CON_EJ')}")
             label2.setText("Hosts:")
             formula_host.setText("")
@@ -5389,16 +5498,26 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
         
         ############
 
-        DIREC_RED = FuncMainPY.CALCULAR_DIRECCION_RED__(None, config_entrada0.text(), mascara)
+        label_ip.setText(f"IPv4 - <span style='color: {FuncMainPY.obt_json_(7)};'>{FuncMainPY.tipo_ip_(config_entrada0.text())}</span>:")
+
+        label_ensenar_clase_ip.setText(str(FuncMainPY.calcular_clase_IP(config_entrada0.text())))
+        
+        label_ensenar_in_addr_arpa.setText(str(FuncMainPY.invertir_ip_(config_entrada0.text())))
+
+        label_ensenar_mascara_wildcard.setText(str(FuncMainPY.calcular_mascara_wildcard_(mascara_punteada)))
+
+        ############
+
+        DIREC_RED = FuncMainPY.CALCULAR_DIRECCION_RED__(None, config_entrada0.text(), mascara, True)
         label_direc_red.setText(DIREC_RED)
 
-        DIREC_DIF = FuncMainPY.CALCULAR_DIRECCION_DIFUSION__(None, config_entrada0.text(), mascara)
+        DIREC_DIF = FuncMainPY.CALCULAR_DIRECCION_DIFUSION__(None, config_entrada0.text(), mascara, True)
         label_direc_dif.setText(DIREC_DIF)
 
-        LABEL_PARTES = FuncMainPY.CALCULAR_PARTES__(None, config_entrada0.text(), str(mascara))
+        LABEL_PARTES = FuncMainPY.CALCULAR_PARTES__(None, config_entrada0.text(), str(mascara), True)
         label_ensenar_parte_red_y_host.setText(str(LABEL_PARTES))
 
-        LABEL_MASCARA = FuncMainPY.CALCULAR_MASCARA_BINARIA__(str(mascara))
+        LABEL_MASCARA = FuncMainPY.CALCULAR_MASCARA_BINARIA__(str(mascara), True)
         label_ensenar_mascara.setText(str(LABEL_MASCARA))
 
         BITS_IP = FuncMainPY.CALCULAR_BITS__(str(mascara))
@@ -5430,6 +5549,83 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
 
     ############
 
+    def abrir_host_por_mascara_():
+        def cidr_a_mascara(cidr):
+            try:
+                red = ipaddress.IPv4Network("0.0.0.0" + cidr, strict=False)
+                return str(red.netmask)
+            except:
+                return ""
+    
+        ###########
+
+        ESTILOS = """<style>
+            * {
+                font-family: Arial;
+                background-color: FuncMainPY.obt_json_(0);
+                color: FuncMainPY.obt_json_(2);
+            }
+            th {
+                color: FuncMainPY.obt_json_(6);
+                padding: 0 20px 10px 20px;
+            }
+            td:hover {
+                background-color: #555 !important;
+                color: white;
+            }
+        </style>"""
+
+        ESTILOS = ESTILOS.replace("FuncMainPY.obt_json_(0)", FuncMainPY.obt_json_(0))
+        ESTILOS = ESTILOS.replace("FuncMainPY.obt_json_(2)", FuncMainPY.obt_json_(2))
+        ESTILOS = ESTILOS.replace("FuncMainPY.obt_json_(6)", FuncMainPY.obt_json_(6))
+
+        ###########
+
+        with open(os.path.join(os.path.abspath(conseguir_RUTA_DIR_USUARIO_()), "MaskHosts.html"), "w", encoding="UTF-8") as file:
+
+            tabla = f"""<tr>
+                \n<th>{__TR__('MASCARA_CON_2').replace(': ', '')}</th>
+                \n<th>{__TR__('MASCARA_CON_1').replace(': ', '')}</th>
+                \n<th>HOSTS - Total</th>
+                \n<th>HOSTS - Usable</th>
+            \n</tr>"""
+
+            ###########
+
+            for i in range(33): # es 32
+                tabla += f"""\n<tr>
+                    \n<td style='border: 1px solid gray; padding: 5px;'>/{i}</td>
+                    \n<td style='border: 1px solid gray; padding: 5px;'>{cidr_a_mascara(f"/{i}")}</td>
+                    \n<td style='border: 1px solid gray; padding: 5px;'>{2 ** (32-i):,}</td>
+                    \n<td style='border: 1px solid gray; padding: 5px;'>{0 if i == 32 else 2 ** (32-i) - 2:,}</td>
+                \n</tr>"""
+
+            ###########
+            
+            html = f"""<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MASK - HOSTS</title>
+        {ESTILOS}
+    </head>
+
+    <body style='font-size: 20px;'>
+        <p><a target='_bank' href='https://aili-ss.pages.dev' style='color: {FuncMainPY.obt_json_(6)};'>AILI-SS</a> • {FuncMainPY.obt_json_('IDIOMA')} • {datetime.now().strftime('%d/%m/%Y, %H:%M:%S')}</p>
+        <br>
+        <table>
+        {tabla}
+        </table>
+    </body>
+</html>"""
+            ###########
+
+            file.write(html)
+            webbrowser.open(os.path.join(os.path.abspath(conseguir_RUTA_DIR_USUARIO_()), "MaskHosts.html"))
+
+    ############
+
     spacer = QSpacerItem(20, 13, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
     main_layout.addItem(spacer)
 
@@ -5452,6 +5648,10 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
     button2.clicked.connect(lambda: calcular_direcciones_(1))
     button2.setProperty("tipo", "button1")
 
+    button2_1 = QPushButton(f"{__TR__('MAPA_MASK_HOST')}")
+    button2_1.clicked.connect(abrir_host_por_mascara_)
+    button2_1.setProperty("tipo", "button1")
+
     button3 = QPushButton(f"{__TR__('VOLVER_ATRAS')}")
     button3.clicked.connect(volver_)
     button3.setShortcut("Escape")
@@ -5462,6 +5662,7 @@ def pF_calcular_direcciones_(ventana=None, IP=None, MASC=None, DIREC_RED=None, F
 
     # Agregar los botones al layout 
     button_layout.addWidget(button2)
+    button_layout.addWidget(button2_1)
     button_layout.addWidget(button3)
 
     # Botones a la derecha
@@ -5779,7 +5980,7 @@ def pF_tiempos_respuesta(ventana):
 
         ##
 
-        random_dns = random.choice(["google.com", "cloudflare.com", "marca.es", "amazon.com", "whatsapp.com", "steamcommunity.com", "drive.google.com", "github.com", "patreon.com", "render.com", "gmail.com", "mega.nz"])
+        random_dns = random.choice(["google.com", "cloudflare.com", "marca.es", "amazon.com", "whatsapp.com", "steamcommunity.com", "drive.google.com", "github.com", "patreon.com", "render.com", "gmail.com", "mega.nz", "discord.com", "alienwarearena.com", "dell.com", "msi.com", "asus.com", "vercel.com", "wireshark.org", "nmap.org", "npcap.org"])
         actualizar_texto(respuesta + f"<br><br>{__TR__('RESOLVIENDO_DNS_')} '{random_dns}'...")
         respuesta += f"<br><br><span style='color: {FuncMainPY.obt_json_(6)};'>{__TR__('RESOLUCIÓN_DNS')} - '{random_dns}' ({__TR__('ALEATORIO')})</span>"
 
@@ -6557,6 +6758,9 @@ def pF_exportar_res_(ventana, EXPORTAR, CUAL):
         if CUAL == 7 and FORMATO == "TXT":  archivo = "Hardware.txt"
         if CUAL == 7 and FORMATO == "HTML": archivo = "Hardware.html"
 
+        if CUAL == 8 and FORMATO == "TXT":  archivo = "EscaneoTLD.txt"
+        if CUAL == 8 and FORMATO == "HTML": archivo = "EscaneoTLD.html"
+
         with open(os.path.join(RUTA_DIR_USUARIO, archivo), "w", encoding="UTF-8") as f:
             f.write(EXPORTAR)
         
@@ -6639,7 +6843,7 @@ def pF_escaneo_redes_WiFi_(ventana):
     ############
 
     text_edit = QTextEdit()
-    text_edit.setText(f"{__TR__('P_HOSTS_EXPLICACION')}")
+    text_edit.setText(f"{__TR__('P_WIFI_EXPLICACION')}")
     text_edit.setReadOnly(True)
     text_edit.setObjectName("BlogText")
     text_edit.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
@@ -7742,7 +7946,7 @@ def p_easter_():
     VENTANA36 = QMainWindow()
     VENTANA36.setFixedSize(400, 400)
     FuncGuiPY.centrar_ventana_(VENTANA36)
-    VENTANA36.setWindowTitle("AWW")
+    VENTANA36.setWindowTitle(" ")
 
     label = QLabel(VENTANA36)
     label.setGeometry(0, 0, VENTANA36.width(), VENTANA36.height())
@@ -7811,37 +8015,28 @@ def pF_control_servidores_(ventana, SERVER_ELEGIDO):
 
     ############
 
-    def anadir_botones_segundo_plano_():
+    botones_fila1 = [
+        FuncGuiPY.crear_boton_(f"{__TR__('INICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "start", label), True, True),
+        FuncGuiPY.crear_boton_(f"{__TR__('REINICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "restart", label), True, True),
+        FuncGuiPY.crear_boton_(f"{__TR__('PARAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "stop", label), True, True),
+    ]
 
-        botones_fila1 = [
-            FuncGuiPY.crear_boton_(f"{__TR__('INICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "start", label), True, True),
-            FuncGuiPY.crear_boton_(f"{__TR__('REINICIAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "restart", label), True, True),
-            FuncGuiPY.crear_boton_(f"{__TR__('PARAR')}", "NINGUNO", lambda: FuncMainPY.manejar_1_servidor_(SERVER_ELEGIDO, "stop", label), True, True),
-        ]
+    botones_fila2 = [
+        FuncGuiPY.crear_boton_(f"{__TR__('REGISTROS')}", "NINGUNO", lambda: FuncMainPY.abrir_registros_servidor_(SERVER_ELEGIDO, label), True, True),
+        FuncGuiPY.crear_boton_(f"{__TR__('CONFIGURAR')}", "NINGUNO", lambda: FuncMainPY.configurar_servidor_(SERVER_ELEGIDO, label), True, True),
+        FuncGuiPY.crear_boton_(f"{__TR__('GUÍA')}", "NINGUNO", lambda: webbrowser.open("https://byad12.pages.dev/guides"), True, True),
+    ]
 
-        botones_fila2 = [
-            FuncGuiPY.crear_boton_(f"{__TR__('REGISTROS')}", "NINGUNO", lambda: FuncMainPY.abrir_registros_servidor_(SERVER_ELEGIDO, label), True, True),
-            FuncGuiPY.crear_boton_(f"{__TR__('CONFIGURAR')}", "NINGUNO", lambda: FuncMainPY.configurar_servidor_(SERVER_ELEGIDO, label), True, True),
-            FuncGuiPY.crear_boton_(f"{__TR__('GUÍA')}", "NINGUNO", lambda: webbrowser.open("https://byad12.pages.dev/guides"), True, True),
-        ]
+    botones_fila3 = [
+        FuncGuiPY.crear_boton_(f"{__TR__('INSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_instalar_servidor_(SERVER_ELEGIDO), True, True),
+        FuncGuiPY.crear_boton_(f"{__TR__('DESINSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_desinstalar_servidor_(SERVER_ELEGIDO), True, True),
+    ]
 
-        botones_fila3 = [
-            FuncGuiPY.crear_boton_(f"{__TR__('INSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_instalar_servidor_(SERVER_ELEGIDO), True, True),
-            FuncGuiPY.crear_boton_(f"{__TR__('DESINSTALAR_SERVICIO')}", "NINGUNO", lambda: pF_desinstalar_servidor_(SERVER_ELEGIDO), True, True),
-        ]
+    # Agregar a layout principal
+    FuncGuiPY.agregar_fila_botones(main_layout, botones_fila1)
+    FuncGuiPY.agregar_fila_botones(main_layout, botones_fila2)
+    FuncGuiPY.agregar_fila_botones(main_layout, botones_fila3)
 
-        # Agregar a layout principal
-        FuncGuiPY.agregar_fila_botones(main_layout, botones_fila1)
-        FuncGuiPY.agregar_fila_botones(main_layout, botones_fila2)
-        FuncGuiPY.agregar_fila_botones(main_layout, botones_fila3)
-
-    def empezar_():
-        global stop_thread, thread
-        stop_thread = False
-        thread = threading.Thread(target=anadir_botones_segundo_plano_)
-        thread.start()
-
-    empezar_()
 
     ############
 
@@ -8234,6 +8429,317 @@ def pF_desinstalar_servidor_(SERVIDOR):
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
+# Escaneo de dominios - WORDLIST, WHOIS, etc
+
+def pF_escaneo_TLD_wordlist_(ventana):
+    global VENTANA40
+    VENTANA40 = QMainWindow()
+    VENTANA40.timer = QTimer()
+
+    if FuncMainPY.obt_json_(8) != True:
+        VENTANA40.close()
+        return p_error_(ventana, f"{__TR__('ACEPTAR_TERMINOS')}", 5)
+
+    VENTANA40.setMinimumSize(700, 600)
+    VENTANA40.setWindowTitle("AILI-SS")
+
+    # Estilo general
+    VENTANA40.setStyleSheet(FuncMainPY.estilos_())
+
+    # Layout principal
+    main_layout = QVBoxLayout()
+
+    ############
+
+    # Layout 
+    header_layout = QHBoxLayout()
+
+    # Imagen
+    global img_label
+    img_label = QLabel()
+    pixmap = QPixmap(f"{RUTA_RECURSOS}/Logos/Logo.png")
+    pixmap = pixmap.scaled(50, 50, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+    img_label.setPixmap(pixmap)
+
+    # Título
+    title_label = QLabel(f"{__TR__('ESCANEO_DOMINIO_WORDLIST_TITULO')}")
+    title_label.setStyleSheet("font-size: 24px; font-weight: bold; padding-left: 10px;")
+
+    header_layout.addWidget(img_label)
+    header_layout.addWidget(title_label)
+    header_layout.addStretch()
+
+    main_layout.addLayout(header_layout)
+    
+    ############
+
+    spacer = QSpacerItem(20, 12, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+    main_layout.addItem(spacer)
+
+    ############
+
+    grid_layout = QGridLayout()
+
+    ############
+    
+    label = QLabel(f"URL:")
+    config_entrada0 = QLineEdit()
+
+    grid_layout.addWidget(label, 0, 0)
+    grid_layout.addWidget(config_entrada0, 1, 0)
+    
+    config_entrada0.setPlaceholderText(f"https://aili-ss.pages.dev")
+
+    ############
+
+    main_layout.addLayout(grid_layout)
+
+    ############
+
+    text_edit = QTextEdit()
+    text_edit.setText(f"{__TR__('P_TLD_EXPLICACION')}")
+    text_edit.setReadOnly(True)
+    text_edit.setObjectName("BlogText")
+    text_edit.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+
+    VENTANA40.resizeEvent = lambda event: adjust_text_edit_height(VENTANA40, text_edit)
+    def adjust_text_edit_height(window, text_edit):
+        text_edit.setFixedHeight(int(window.height() * 0.65))
+    
+    main_layout.addWidget(text_edit)
+
+    ############
+
+    class TextoUpdater(QObject):
+        signal_actualizar = Signal(str)
+
+    updater = TextoUpdater()
+
+    def manejar_html(html):
+        try:
+            text_edit.setHtml(html)
+            text_edit.moveCursor(QTextCursor.End)
+            QApplication.processEvents()
+        except Exception:
+            global stop_thread
+            stop_thread = True
+
+    updater.signal_actualizar.connect(manejar_html)
+
+    def actualizar_texto(html):
+        bar = text_edit.verticalScrollBar()
+        pos = bar.value()
+
+        updater.signal_actualizar.emit(html)
+        bar.setValue(pos)
+
+    ############
+
+    def camb_():
+        try: button0.clicked.disconnect()
+        except: pass
+        button0.clicked.connect(camb_)
+
+        pixmap = QPixmap(f"{RUTA_RECURSOS}/Logos/IconoReloj.png")
+        pixmap = pixmap.scaled(50, 50, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+        img_label.setPixmap(pixmap)
+
+        button0.setEnabled(False)
+
+        ############
+
+        texto_poner_ = ""
+        URL = config_entrada0.text()
+        if URL.endswith("/"): URL = URL[:-1]
+
+        if stop_thread: return
+
+        ############ DETECTAR SI LA URL ES ALCANZABLE
+
+        try:
+            SOLICITUD = requests.get(URL)
+        except:
+            button0.setEnabled(True)
+
+            pixmap = QPixmap(f"{RUTA_RECURSOS}/Logos/IconoX.png")
+            pixmap = pixmap.scaled(50, 50, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+            img_label.setPixmap(pixmap)
+
+            actualizar_texto(f"{__TR__('URL_INVALIDO')}")
+            return
+
+        ############ DETECTAR DOMINIO
+
+        actualizar_texto(f"{__TR__('AILI_ANALIZANDO')} - DNS")
+        if stop_thread: return
+
+        parsed_url = urlparse(URL)
+        HOSTNAME = parsed_url.hostname
+        IP_DETECTADA = socket.gethostbyname(HOSTNAME)
+
+        if str(HOSTNAME) == str(IP_DETECTADA):
+            texto_poner_ = f"HOST: <span style='color: {FuncMainPY.obt_json_(7)};'>{IP_DETECTADA}</span> / <span style='color: red;'>{__TR__('NO_PUDO_DETECTAR_DNS')}</span>"
+        else:
+            texto_poner_ = f"HOST: <span style='color: {FuncMainPY.obt_json_(7)};'>{IP_DETECTADA}</span> / <span style='color: {FuncMainPY.obt_json_(7)};'>{HOSTNAME}</span>"
+        
+        actualizar_texto(texto_poner_)
+
+        if stop_thread: return
+
+        ############ WHOIS
+        
+        actualizar_texto(f"{texto_poner_} <br> {__TR__('AILI_ANALIZANDO')} - WHOIS")
+        if stop_thread: return
+
+        texto_poner_ += f"<br><br> {'_'*50} <br><br> <span style='color: {FuncMainPY.obt_json_(6)};'>WHOIS</span>:"
+        
+        try:
+            WHOIS_resultado = whois_lib.whois(URL)
+
+            texto_poner_ += f""" <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.domain_name}</span> <br>
+            <br>
+            Registrar: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.registrar}</span> <br>
+            Registrar URL: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.registrar_url}</span> <br>
+            Reseller: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.reseller}</span> <br>
+            <br>
+            WHOIS Server: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.whois_server}</span> <br>
+            Referral URL: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.referral_url}</span> <br>
+            <br>
+            Updated date: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.updated_date}</span> <br>
+            Creation date: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.creation_date}</span> <br>
+            Expiration date: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.expiration_date}</span> <br>
+            <br>
+            Name servers: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.name_servers}</span> <br>
+            <br>
+            Status: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.status}</span> <br>
+            <br>
+            E-Mails: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.emails}</span> <br>
+            <br>
+            DNSSEC: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.dnssec}</span> <br>
+            <br>
+            Name: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.name}</span> <br>
+            ORG: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.org}</span> <br>
+            <br>
+            Address: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.address}</span> <br>
+            City: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.city}</span> <br>
+            State: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.state}</span> <br>
+            Registrant postal code: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.registrant_postal_code}</span> <br>
+            Country: <span style='color: {FuncMainPY.obt_json_(7)};'>{WHOIS_resultado.country}</span> <br>
+
+            """
+
+        except:
+            texto_poner_ += f" {__TR__('SIN_INFO_WHOIS')}"
+        
+        actualizar_texto(texto_poner_)
+        if stop_thread: return
+
+        ############ WORDLIST
+
+        texto_poner_ += f"""<br> {'_'*50} <br><br> <span style='color: {FuncMainPY.obt_json_(6)};'>WORDLIST</span>: <br>"""
+        actualizar_texto(texto_poner_ + f"<br>{__TR__('CONTACTANDO')}")
+
+        if os.path.exists(os.path.join(conseguir_RUTA_DIR_USUARIO_(), "wordlist.txt")):
+            with open(os.path.join(conseguir_RUTA_DIR_USUARIO_(), "wordlist.txt"), "r") as f:
+                PALABRAS = str(f.read()).split("\n")
+
+            for i in PALABRAS:
+                try:
+                    SOLICITUD = requests.get(f"{URL}/{i}")
+
+                    if str(SOLICITUD.status_code) != "404":
+                        texto_poner_ += f"""<br> {SOLICITUD.elapsed} • <span style='color: {FuncMainPY.obt_json_(7)};'>{URL}/{i}</span> • {SOLICITUD.reason} ({SOLICITUD.status_code})"""
+                        actualizar_texto(texto_poner_ + f"<br><br>{__TR__('CONTACTANDO')}")
+
+                except Exception as Error_e:
+                    texto_poner_ += f"""<br> ERROR • <span style='color: {FuncMainPY.obt_json_(7)};'>{URL}/{i}</span> • {Error_e}"""
+                    actualizar_texto(texto_poner_ + f"<br><br>{__TR__('CONTACTANDO')}")
+
+        else:
+            texto_poner_ += f"""<br> ERROR • <span style='color: {FuncMainPY.obt_json_(7)};'>{os.path.join(conseguir_RUTA_DIR_USUARIO_(), "wordlist.txt")}</span>"""
+            actualizar_texto(texto_poner_)
+
+        texto_poner_ += f"<br><br> {'_'*50}"
+
+        actualizar_texto(texto_poner_)
+
+        ############ FINAL
+
+        if True: # siempre :)
+            button0.setEnabled(True)
+            try: button0.clicked.disconnect()
+            except: pass
+            button0.setText(f"{__TR__('EXPORTAR')}")
+            button0.clicked.connect(lambda: pF_exportar_res_(VENTANA40, texto_poner_, 8))
+
+            cursor = text_edit.textCursor()
+            cursor.movePosition(QTextCursor.Start)
+            text_edit.setTextCursor(cursor)
+
+            pixmap = QPixmap(f"{RUTA_RECURSOS}/Logos/IconoV.png")
+            pixmap = pixmap.scaled(50, 50, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+            img_label.setPixmap(pixmap)
+
+    ############
+
+    spacer = QSpacerItem(20, 12, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+    main_layout.addItem(spacer)
+
+    ############
+
+    def start_thread():
+        global stop_thread, thread
+        stop_thread = False
+        thread = threading.Thread(target=camb_)
+        thread.start()
+    
+    ############
+
+    button0 = QPushButton(f"{__TR__('EMPEZAR')}")
+    button0.clicked.connect(start_thread)
+    button0.setProperty("tipo", "button1")
+
+    ############
+
+    def hide_show_():
+        VENTANA40.close()
+        ventana.show()
+
+    button3 = QPushButton(f"{__TR__('VOLVER_ATRAS')}")
+    button3.clicked.connect(hide_show_)
+    button3.setShortcut("Escape")
+    button3.setProperty("tipo", "button2")
+
+    ############
+
+    button1 = QPushButton(f"{__TR__('IR_CONFIG')}")
+    button1.clicked.connect(lambda: p_configuracion_(VENTANA40))
+    button1.setProperty("tipo", "button1")
+
+    ############
+
+    button_layout = QHBoxLayout()
+
+    button_layout.addWidget(button0)
+    button_layout.addWidget(button3)
+    button_layout.addStretch()
+
+    ############
+
+    main_layout.addLayout(button_layout)
+
+    ############
+
+    widget_principal = QWidget()
+    widget_principal.setLayout(main_layout)
+    VENTANA40.setCentralWidget(widget_principal)
+
+    VENTANA40.show()
+    ventana.hide()
+    return VENTANA40
+
+####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
+#~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 # (Las que por alguna razón se eliminaron)
 
 # LIBRE - VENTANA5, VENTANA6, VENTANA7, VENTANA8, VENTANA12, VENTANA22, 
@@ -8283,7 +8789,6 @@ def main(e=None):
 
 
 if __name__ == "__main__": main()
-
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
