@@ -14,9 +14,9 @@ Versions that have security patches and fixes applied.
 
 | Version | Supported          |
 | ------- | ------------------ |
-|   2.1   | :white_check_mark: |
-|   2.0   | :x:                |
-| < 1.7   | :x:                |
+|   2.2   | :white_check_mark: |
+|   2.1   | :x:                |
+| < 2.0   | :x:                |
 
 ## Reporting a Vulnerability
 
