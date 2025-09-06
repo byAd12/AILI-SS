@@ -42,10 +42,10 @@
 # 🐧 Linux download
 Download and unzip the file:
 ```sh
-wget https://github.com/byAd12/AILI-SS/releases/download/lin-2.0/AILI-SS_Linux_v2-1.zip
+wget https://github.com/byAd12/AILI-SS/releases/download/lin-2.0/AILI-SS_Linux_v2-2.zip
 ```
 ```sh
-unzip AILI-SS_Linux_v2-1.zip
+unzip AILI-SS_Linux_v2-2.zip
 ```
 Install dependencies:
 
