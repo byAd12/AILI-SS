@@ -61,7 +61,7 @@ _Installers (Version 2.0 and up)_: Run the installer and grant permissions if ne
 ---
 
 <p align="center">
-  <a href="https://byad12.pages.dev/contact" target="_blank_">Adrián Leonardo Giménez Payo</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>
+  <a href="https://byad12.pages.dev/contact" target="_blank_">byAd12</a>  •  <a href="https://aili-ss.pages.dev" target="_blank_">aili-ss.pages.dev</a>
   <br>
   <a href="https://www.paypal.com/donate/?hosted_button_id=9D8YV9UW5LYKQ" target="_blank_">PayPal</a>  •  <a href="https://www.patreon.com/c/byAd12" target="_blank_">Patreon</a>  •  <a href="https://ko-fi.com/byad12" target="_blank_">Ko-Fi</a>
 </p>
