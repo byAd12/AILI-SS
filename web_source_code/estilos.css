@@ -208,8 +208,8 @@ br{user-select: none;}
 /* Principal */
 footer{background-image: url("Img/Fondos/FondoFooter.png"); filter: brightness(1.2); background-repeat: no-repeat; background-size: cover; height: 100% !important;}
 footer div.ContenidoNoBotton{display: flex; flex-wrap: wrap; justify-content: space-between !important; padding: 50px;}
-.FooterAviso a{color: rgb(107, 107, 236); text-decoration: none; transition: all .2s;}
-.FooterAviso a:hover{color: rgb(141, 141, 216); text-decoration: underline;}
+footer a{color: rgb(107, 107, 236); text-decoration: none; transition: all .2s;}
+footer a:hover{color: rgb(141, 141, 216); text-decoration: underline;}
 footer p{color: white; user-select: none;}
 footer h2, footer br{user-select: none;}
 footer *::selection{background-color: rgb(89, 89, 254); color: black;}
