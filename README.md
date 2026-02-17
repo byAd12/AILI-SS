@@ -16,18 +16,18 @@
    <tr>
       <td width="50%" align="center">
          <h4>Basic configuration</h4>
-         <video src="https://github.com/user-attachments/assets/de6f8087-7832-4376-9616-8dea85eba9a6" controls style="width:100%; 
+         <video src="videos/479650841-de6f8087-7832-4376-9616-8dea85eba9a6.mp4" controls style="width:100%; 
             max-width:400px; height:250px;">
       </td>
       <td width="50%" align="center">
          <h4>IP addressing</h4>
-         <video src="https://github.com/user-attachments/assets/b97527fa-76a0-447d-a2b4-1398aea67586" controls style="width:100%; max-width:400px; height:250px;">
+         <video src="videos/479651364-b97527fa-76a0-447d-a2b4-1398aea67586.mp4" controls style="width:100%; max-width:400px; height:250px;">
       </td>
    </tr>
    <tr>
       <td width="50%" align="center">
          <h4>Host mapping</h4>
-         <video src="https://github.com/user-attachments/assets/8b60dae6-539f-4431-9170-44d79b89784d" controls style="width:100%; 
+         <video src="videos/479653524-8b60dae6-539f-4431-9170-44d79b89784d.mp4" controls style="width:100%; 
             max-width:400px; height:250px;">
       </td>
       <td width="50%" align="center">
