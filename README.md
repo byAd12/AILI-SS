@@ -12,16 +12,8 @@
 
 ---
 
-<table>
-   <tr>
-      <td width="50%" align="center">
-         <h4>Full app preview (v2.0)</h4>
-         <p>https://www.youtube.com/watch?v=DGkqmM8FMDU</p>
-      </td>
-   </tr>
-</table>
-
----
+# Preview
+https://www.youtube.com/watch?v=DGkqmM8FMDU
 
 # 🐧 Linux download
 Download and unzip the file:
