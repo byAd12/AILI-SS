@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=DGkqmM8FMDU
 # 🐧 Linux download
 Download and unzip the file:
 ```sh
-wget https://github.com/byAd12/AILI-SS/releases/download/lin-2.0/AILI-SS_Linux_v2-2.zip
+wget https://github.com/byAd12/AILI-SS/releases/download/lin-2.0/AILI-SS_Linux_v2-3.zip
 ```
 ```sh
 unzip AILI-SS_Linux_v2-2.zip
