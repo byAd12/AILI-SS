@@ -311,8 +311,6 @@ def blog_5_():
 
 def blog_6_():
     return f"""6/6 • <span style='color: {obt_json_(7)};'>© 2024 - {datetime.now().strftime('%Y')}</span> • AILI-SS<br><br>
-Adrián L. G. P.<br>
-adgimenezp@gmail.com<br>
 byad12.pages.dev<br><br>
 aili-ss.pages.dev
 """
@@ -2338,18 +2336,17 @@ def calcular_clase_IP(IP):
     primer_octeto = int(str(IPv4).split(".")[0])
 
     if 1 <= primer_octeto <= 126:
-        return f"<span style='color: {obt_json_(7)};'>A"
+        return f"<span style='color: {obt_json_(7)};'>A</span>"
     elif 128 <= primer_octeto <= 191:
-        return f"<span style='color: {obt_json_(7)};'>B"
+        return f"<span style='color: {obt_json_(7)};'>B</span>"
     elif 192 <= primer_octeto <= 223:
-        return f"<span style='color: {obt_json_(7)};'>C"
+        return f"<span style='color: {obt_json_(7)};'>C</span>"
     elif 224 <= primer_octeto <= 239:
-        return f"<span style='color: {obt_json_(7)};'>D (Multicast)"
+        return f"<span style='color: {obt_json_(7)};'>D</span> (Multicast)"
     elif 240 <= primer_octeto <= 255:
-        return f"<span style='color: {obt_json_(7)};'>E (Experimental)"
+        return f"<span style='color: {obt_json_(7)};'>E</span> (Experimental)"
     else:
         return "N/A"
 
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
-# 

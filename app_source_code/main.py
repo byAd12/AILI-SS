@@ -812,27 +812,17 @@ def p_principal_(ventana, es_movil=False):
     apoya2.setIconSize(QSize(50, 50))
     apoya2.setObjectName("buttonNOESTILOS")
 
-    apoya3 = QPushButton("")
-    apoya3.setStyleSheet("padding: 10px;")
-    apoya3.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/byad12"))
-    apoya3.setCursor(Qt.CursorShape.PointingHandCursor)
-    apoya3.setIconSize(QSize(50, 50))
-    apoya3.setObjectName("buttonNOESTILOS")
-
     GRID = QGridLayout()
 
     GRID.setColumnStretch(0, 1)
     GRID.setColumnStretch(1, 1)
-    GRID.setColumnStretch(2, 1)
 
     GRID.addWidget(apoya1, 0, 0)
     GRID.addWidget(apoya2, 0, 1)
-    GRID.addWidget(apoya3, 0, 2)
 
     main_layout.addLayout(GRID)
     FuncGuiPY.ocultar_elemento_(apoya1)
     FuncGuiPY.ocultar_elemento_(apoya2)
-    FuncGuiPY.ocultar_elemento_(apoya3)
 
     ############
     ############
@@ -872,7 +862,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
     
     ############
@@ -1101,9 +1091,9 @@ def p_principal_(ventana, es_movil=False):
         if RESULTADOS:
             for item in RESULTADOS:
                 ### DEFINIR VARIABLES
-                caducidad = item.get('CADUCIDAD')
-                tipo = item.get('TIPO')
-                cliente = item.get('CLIENTE')
+                if item == "CADUCIDAD": caducidad = RESULTADOS[item]
+                if item == "CLIENTE": cliente = RESULTADOS[item]
+                if item == "TIPO": tipo = RESULTADOS[item]
             
         print("")
 
@@ -1301,7 +1291,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
 
     accion_principal.triggered.connect(mostrar_p_principal_)
@@ -1377,7 +1367,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
 
     accion_dependencias.triggered.connect(mostrar_p_dependencias_)
@@ -1404,7 +1394,6 @@ def p_principal_(ventana, es_movil=False):
 
         apoya1.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoPATREON.png")))
         apoya2.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoPAYPAL.png")))
-        apoya3.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoKOFI.png")))
 
         # CAMBIAR VARIABLES
         ESTA_EN_TERMINOS = False
@@ -1418,7 +1407,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button1, button2, button4, button5, button6, button7]:
             FuncGuiPY.ocultar_elemento_(i)
-        for i in [apoya1, apoya2, apoya3, label]:
+        for i in [apoya1, apoya2, label]:
             FuncGuiPY.mostrar_elemento_(i)
 
     button6.clicked.connect(mostrar_p_apoyanos_)
@@ -1463,7 +1452,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(0, 0)
@@ -1507,7 +1496,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
         # SHORTCUT
         accion_salir.setShortcut("")
@@ -1587,7 +1576,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button2, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button2, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(665, 500)
@@ -1663,7 +1652,7 @@ def p_principal_(ventana, es_movil=False):
         <li>{__TR__('P_LICENCLA_4')} <span style='color: {FuncMainPY.obt_json_(7)};'>{FuncMainPY.r_gr_(3).split('.')[0]}</span>.</li>
         </ul><br>
         {__TR__('P_LICENCLA_5')}<br>
-        - Adrián L. G. P.""")
+        - byad12.pages.dev""")
 
 
             button7.setText(f"{__TR__('ELIMINAR_LINEA')}")
@@ -1704,7 +1693,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button1, button2, button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button4, button5, button6, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
         # HABILITAR BOTONES
         for i in [button1, button2, button3, button4, button5, button6, button7]:
@@ -1736,7 +1725,7 @@ def p_principal_(ventana, es_movil=False):
             datos2 = datos2.replace("LICENCIAS DE BIBLIOTECAS (Python3):", f"<span style='color:{FuncMainPY.obt_json_(6)};'>LICENCIAS DE BIBLIOTECAS (Python3)</span>:")
             datos2 = datos2.replace("CRÉDITOS:", f"<span style='color:{FuncMainPY.obt_json_(6)};'>CRÉDITOS</span>:")
             datos2 = datos2.replace("Idioma: Español", f"Idioma: <span style='color:{FuncMainPY.obt_json_(7)};'>Español</span>")
-            datos2 = datos2.replace("Adrián Leonardo Giménez Payo", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Adrián Leonardo Giménez Payo</span>")
+            datos2 = datos2.replace("byAd12", f"<span style='color:{FuncMainPY.obt_json_(7)};'>byAd12</span>")
             datos2 = datos2.replace("Cheque", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Cheque</span>")
             datos2 = datos2.replace("Cerca", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Cerca</span>")
             datos2 = datos2.replace("Esperar", f"<span style='color:{FuncMainPY.obt_json_(7)};'>Esperar</span>")
@@ -1839,7 +1828,7 @@ def p_principal_(ventana, es_movil=False):
                 FuncGuiPY.ocultar_elemento_(z)
         for i in [button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
-        for i in [button1, button2, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button1, button2, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
         # VENTANA
         VENTANA4.setMinimumSize(665, 500)
@@ -1915,7 +1904,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6, botones_fila7, botones_fila8, botones_fila9, botones_fila10, botones_fila11, botones_fila12]:
             for z in i:
                 FuncGuiPY.ocultar_elemento_(z)
-        for i in [apoya1, apoya2, apoya3]:
+        for i in [apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
         for i in [button1, button2, button4, button5, button6]:
             FuncGuiPY.mostrar_elemento_(i)
@@ -1971,7 +1960,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila1, botones_fila2, botones_fila3, botones_fila4, botones_fila5, botones_fila6]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
 
     button1.clicked.connect(mostrar_p_herramientas_red_)
@@ -2016,7 +2005,7 @@ def p_principal_(ventana, es_movil=False):
         for i in [botones_fila7, botones_fila8, botones_fila9]:
             for z in i:
                 FuncGuiPY.mostrar_elemento_(z)
-        for i in [button4, button5, button6, button7, apoya1, apoya2, apoya3]:
+        for i in [button4, button5, button6, button7, apoya1, apoya2]:
             FuncGuiPY.ocultar_elemento_(i)
 
     button2.clicked.connect(mostrar_p_herramientas_otras_)
@@ -6192,25 +6181,15 @@ def p_apoya_proyecto_(ventana, e=None):
     button2.setIconSize(QSize(50, 50))
     button2.setObjectName("buttonNOESTILOS")
 
-    button3 = QPushButton("")
-    button3.setStyleSheet("padding: 10px;")
-    button3.clicked.connect(lambda: webbrowser.open("https://ko-fi.com/byad12"))
-    button3.setIcon(QIcon(os.path.join(RUTA_RECURSOS, "Logos", "LogoKOFI.png")))
-    button3.setCursor(Qt.CursorShape.PointingHandCursor)
-    button3.setIconSize(QSize(50, 50))
-    button3.setObjectName("buttonNOESTILOS")
-
     ############
 
     GRID = QGridLayout()
 
     GRID.setColumnStretch(0, 1)
     GRID.setColumnStretch(1, 1)
-    GRID.setColumnStretch(2, 1)
 
     GRID.addWidget(button1, 0, 0)
     GRID.addWidget(button2, 0, 1)
-    GRID.addWidget(button3, 0, 2)
 
     main_layout.addLayout(GRID)
     
@@ -8748,7 +8727,7 @@ def pF_escaneo_TLD_wordlist_(ventana):
 ####~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~~~~~~~#############
 #~~~#################~~~~~~~~~~~~~~~~~~~###################~~~~~~~~~~~
 
-print(f"\nAILI-SS • Por Adrián L. G. P.\n")
+print(f"\nAILI-SS • Por byad12.pages.dev\n")
 print(f"Inicio:\t\t\t{TIEMPO_INICIO.strftime('%d/%m/%Y, %H:%M:%S')}")
 print(f"Ejecutándose desde:\t{os.path.abspath('.')}")
 print(f"Recursos en:\t\t{os.path.abspath(RUTA_RECURSOS)}")

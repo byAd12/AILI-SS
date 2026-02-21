@@ -1,12 +1,12 @@
 {
     "App": {
-        "Version": "2.2",
+        "Version": "2.3",
         "Tecnologia": "Python3, HTML, CSS",
         "GUI": "PySide6"
     },
     "Emp": {
-        "Programadores": "Adrián L. G. P. (byAd12.pages.dev)",
-        "BetaTester": "Perricoat (laperricueva.pages.dev)",
+        "Programadores": "byAd12.pages.dev",
+        "BetaTester": "laperricueva.pages.dev",
         "Inspiracion": "Ruth"
     },
     "Pro": {
