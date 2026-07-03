@@ -1,0 +1,10 @@
+2026-07-03, 14:01 UTC+2
+
+Ownership Verification for https://aili-ss.pages.dev/ to be excluded from the Wayback Machine (https://archive.org/)
+
+URL/URL path to exclude: aili-ss.pages.dev (full subdomain)
+Time period of domain ownership: 2024-11-09 to present
+Time period to exclude: 2024-11-09 to future (This includes existing and new content)
+
+Sincerely,
+byAd12
